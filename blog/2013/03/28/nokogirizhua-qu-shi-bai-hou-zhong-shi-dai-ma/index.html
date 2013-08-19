@@ -5,20 +5,18 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Tianshuai de Blog</title>
+  <title>Nokogiri抓取失败后重试代码 - Tianshuai de Blog</title>
   <meta name="author" content="TianShuai">
 
   
-  <meta name="description" content="1.下载网页中图片 1
+  <meta name="description" content="非常喜欢Nokogiri的简洁，尤其是根据css和xpath查找元素。有时又觉得Nokogiri太简洁了，连抓取失败重试的机制都没有。可惜在景德镇，网络经常丢包，真是郁闷。
+所以写这段代码，以后肯定常用。 1
 2
 3
 4
 5
 6
-7
-8
-require &#39;net/http&#39;
-Net::HTTP.start(&quot;www.google.com.hk&quot;) { |http| resp = http.get(&quot;/images/srpr/ &hellip;">
+begin doc = Nokogiri::HTML(open( &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -27,7 +25,7 @@ Net::HTTP.start(&quot;www.google.com.hk&quot;) { |http| resp = http.get(&quot;/i
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://tianshuai.github.io">
+  <link rel="canonical" href="http://tianshuai.github.io/blog/2013/03/28/nokogirizhua-qu-shi-bai-hou-zhong-shi-dai-ma">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Tianshuai de Blog" type="application/atom+xml">
@@ -72,203 +70,12 @@ Net::HTTP.start(&quot;www.google.com.hk&quot;) { |http| resp = http.get(&quot;/i
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2013/03/28/ruby-jin-jie/">Ruby 进阶</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-03-28T14:48:00+08:00" pubdate data-updated="true">Mar 28<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>1.下载网页中图片</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;net/http&#39;</span>
-</span><span class='line'><span class="ss">Net</span><span class="p">:</span><span class="ss">:HTTP</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s2">&quot;www.google.com.hk&quot;</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">http</span><span class="o">|</span>
-</span><span class='line'>  <span class="n">resp</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/images/srpr/nav_logo27.png&quot;</span><span class="p">)</span>
-</span><span class='line'>  <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;D:/test.png&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span>
-</span><span class='line'>    <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
-</span><span class='line'>   <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;OK&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/03/28/ruby-jin-jie/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/03/28/ruby-bian-cheng-feng-ge-jie-shao/">Ruby 编程风格介绍</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-03-28T14:33:00+08:00" pubdate data-updated="true">Mar 28<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>学习一门新的语言时，要先养成好的编程风格，然后将这种风格应用到coding中，慢慢地成为习惯。</p>
-
-<p>本页用于介绍 Ruby 社区首推的代码编写风格，本文翻译来自： <a href="https://github.com/bbatsov/ruby-style-guide">https://github.com/bbatsov/ruby-style-guide</a>
-目录</p>
-
-<pre><code>格式，文件格式
-语法
-命名
-注释
-注解
-类相关
-异常
-集合
-字符串
-正则表达式
-百分号
-元编程
-杂项
-</code></pre>
-
-<p>The Ruby Style Guide</p>
-
-<p>This Ruby style guide recommends best practices so that real-world Ruby programmers can write code that can be maintained by other real-world Ruby programmers. A style guide that reflects real-world usage gets used, and a style guide that holds to an ideal that has been rejected by the people it is supposed to help risks not getting used at all – no matter how good it is.</p>
-
-<p>The guide is separated into several sections of related rules. I&rsquo;ve tried to add the rationale behind the rules (if it&rsquo;s omitted I&rsquo;ve assumed that is pretty obvious).</p>
-
-<p>I didn&rsquo;t come up with all the rules out of nowhere &ndash; they are mostly based on my extensive career as a professional software engineer, feedback and suggestions from members of the Ruby community and various highly regarded Ruby programming resources, such as &ldquo;Programming Ruby 1.9&rdquo; and &ldquo;The Ruby Programming Language&rdquo;.</p>
-
-<p>The guide is still a work in progress &ndash; some rules are lacking examples, some rules don&rsquo;t have examples that illustrate them clearly enough. In due time these issues will be addressed &ndash; just keep them in mind for now.
-格式, 文件格式</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/03/28/ruby-bian-cheng-feng-ge-jie-shao/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/03/28/rails-feng-ge-zhi-dao/">Rails 风格指导</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-03-28T14:20:00+08:00" pubdate data-updated="true">Mar 28<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>感谢译者。</p>
-
-<p>本页用于介绍 Ruby 社区首推的Rails代码编写风格，翻译来自: <a href="https://github.com/JuanitoFatas/rails-style-guide">https://github.com/JuanitoFatas/rails-style-guide</a>
-序幕</p>
-
-<pre><code>风格是从伟大事物中分离出的美好事物。 
- Bozhidar Batsov
-</code></pre>
-
-<p>这份指南目的于演示一整套 Rails 3 开发的风格惯例及最佳实践。这是一份与由现存社群所驱动的Ruby 编码风格指南互补的指南。</p>
-
-<p>而本指南中测试 Rails 应用小节摆在开发 Rails 应用之后，因为我相信行为驱动开发
-(BDD) 是最佳的软体开发之道。铭记在心吧。</p>
-
-<p>Rails 是一个坚持己见的框架，而这也是一份坚持己见的指南。在我的心里，我坚信 RSpec 优于 Test::Unit，Sass 优于 CSS 以及
-Haml，(Slim) 优于 Erb. 所以不要期望在这里找到 Test::Unit, CSS 及 Erb 的忠告。</p>
-
-<p>某些忠告仅适用于 Rails 3.1+ 以上版本。</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/03/28/rails-feng-ge-zhi-dao/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/03/28/nokogirizhua-qu-shi-bai-hou-zhong-shi-dai-ma/">Nokogiri抓取失败后重试代码</a></h1>
+      <h1 class="entry-title">Nokogiri抓取失败后重试代码</h1>
     
     
       <p class="meta">
@@ -291,7 +98,7 @@ Haml，(Slim) 优于 Erb. 所以不要期望在这里找到 Test::Unit, CSS 及 
   </header>
 
 
-  <div class="entry-content"><p>非常喜欢Nokogiri的简洁，尤其是根据css和xpath查找元素。有时又觉得Nokogiri太简洁了，连抓取失败重试的机制都没有。可惜在景德镇，网络经常丢包，真是郁闷。
+<div class="entry-content"><p>非常喜欢Nokogiri的简洁，尤其是根据css和xpath查找元素。有时又觉得Nokogiri太简洁了，连抓取失败重试的机制都没有。可惜在景德镇，网络经常丢包，真是郁闷。
 所以写这段代码，以后肯定常用。</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -349,66 +156,16 @@ Haml，(Slim) 优于 Erb. 所以不要期望在这里找到 Test::Unit, CSS 及 
 
 <p>原文链接：<a href="http://rubyer.me/blog/537/">http://rubyer.me/blog/537/</a></p>
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/02/19/vimcao-zuo-ji-qiao/">Vim操作技巧</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
   
 
+<span class="byline author vcard">Posted by <span class="fn">TianShuai</span></span>
 
-<time datetime="2013-02-19T20:22:00+08:00" pubdate data-updated="true">Feb 19<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>[Linux]Vim的NERDTree快捷键
-切换工作台和目录
-ctr+w+h  光标focus左侧树形目录，ctrl+w+l 光标focus右侧文件显示窗口。
-ctrl+w+w，光标自动在左右侧窗口切换</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/02/19/vimcao-zuo-ji-qiao/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/02/19/a-great-starting-point/">A Great Starting Point</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -420,27 +177,34 @@ ctrl+w+w，光标自动在左右侧窗口切换</p>
   
 
 
-<time datetime="2013-02-19T18:33:00+08:00" pubdate data-updated="true">Feb 19<span>th</span>, 2013</time>
-        
-      </p>
+<time datetime="2013-03-28T13:58:00+08:00" pubdate data-updated="true">Mar 28<span>th</span>, 2013</time>
+      
+
+
+    </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>我的IT字典！</p>
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://tianshuai.github.io/blog/2013/03/28/nokogirizhua-qu-shi-bai-hou-zhong-shi-dai-ma/" data-via="" data-counturl="http://tianshuai.github.io/blog/2013/03/28/nokogirizhua-qu-shi-bai-hou-zhong-shi-dai-ma/" >Tweet</a>
+  
+  
+  
 </div>
-  
-  
 
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/02/19/vimcao-zuo-ji-qiao/" title="Previous Post: vim操作技巧">&laquo; vim操作技巧</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/03/28/rails-feng-ge-zhi-dao/" title="Next Post: Rails 风格指导">Rails 风格指导 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
 
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
 </div>
+
 <aside class="sidebar">
   
     <section>
@@ -476,6 +240,7 @@ ctrl+w+w，光标自动在左右侧窗口切换</p>
 
   
 </aside>
+
 
     </div>
   </div>

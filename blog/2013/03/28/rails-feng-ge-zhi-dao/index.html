@@ -1,0 +1,2064 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Rails 风格指导 - Tianshuai de Blog</title>
+  <meta name="author" content="TianShuai">
+
+  
+  <meta name="description" content="感谢译者。 本页用于介绍 Ruby 社区首推的Rails代码编写风格，翻译来自: https://github.com/JuanitoFatas/rails-style-guide
+序幕 风格是从伟大事物中分离出的美好事物。 Bozhidar Batsov 这份指南目的于演示一整套 Rails 3 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://tianshuai.github.io/blog/2013/03/28/rails-feng-ge-zhi-dao">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Tianshuai de Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Tianshuai de Blog</a></h1>
+  
+    <h2>Nothing...</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:tianshuai.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Rails 风格指导</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-28T14:20:00+08:00" pubdate data-updated="true">Mar 28<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>感谢译者。</p>
+
+<p>本页用于介绍 Ruby 社区首推的Rails代码编写风格，翻译来自: <a href="https://github.com/JuanitoFatas/rails-style-guide">https://github.com/JuanitoFatas/rails-style-guide</a>
+序幕</p>
+
+<pre><code>风格是从伟大事物中分离出的美好事物。 
+ Bozhidar Batsov
+</code></pre>
+
+<p>这份指南目的于演示一整套 Rails 3 开发的风格惯例及最佳实践。这是一份与由现存社群所驱动的Ruby 编码风格指南互补的指南。</p>
+
+<p>而本指南中测试 Rails 应用小节摆在开发 Rails 应用之后，因为我相信行为驱动开发
+(BDD) 是最佳的软体开发之道。铭记在心吧。</p>
+
+<p>Rails 是一个坚持己见的框架，而这也是一份坚持己见的指南。在我的心里，我坚信 RSpec 优于 Test::Unit，Sass 优于 CSS 以及
+Haml，(Slim) 优于 Erb. 所以不要期望在这里找到 Test::Unit, CSS 及 Erb 的忠告。</p>
+
+<p>某些忠告仅适用于 Rails 3.1+ 以上版本。</p>
+
+<!--more-->
+
+
+<p>你可以使用 Transmuter 来产生本指南的一份 PDF 或 HTML 复本。
+开发 Rails 应用程序
+配置</p>
+
+<pre><code>把惯用的初始化代码放在 config/initializers。 在 initializers 内的代码于应用启动时执行。
+跟每一个 gem 相关的初始化代码应当使用同样的名称，放在不同的文件里，如： carrierwave.rb, active_admin.rb, 等等。
+
+相应调整配置开发、测试及生产环境（在 config/environments/ 下对应的文件）
+
+    标记额外的资产给（如有任何）预编译：
+
+    # config/environments/production.rb
+    # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
+    config.assets.precompile += %w( rails_admin/rails_admin.css rails_admin/rails_admin.js )
+
+创立一个与生产环境相似的额外 staging 环境。
+</code></pre>
+
+<p>路由</p>
+
+<pre><code>当你需要加入一个或多个动作至一个 RESTful 资源时（你真的需要吗？），使用 member and collection 路由。
+</code></pre>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># 差</span>
+</span><span class='line'><span class="n">get</span> <span class="s1">&#39;subscriptions/:id/unsubscribe&#39;</span>
+</span><span class='line'><span class="n">resources</span> <span class="ss">:subscriptions</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># 好</span>
+</span><span class='line'><span class="n">resources</span> <span class="ss">:subscriptions</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">get</span> <span class="s1">&#39;unsubscribe&#39;</span><span class="p">,</span> <span class="ss">:on</span> <span class="o">=&gt;</span> <span class="ss">:member</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># 差</span>
+</span><span class='line'><span class="n">get</span> <span class="s1">&#39;photos/search&#39;</span>
+</span><span class='line'><span class="n">resources</span> <span class="ss">:photos</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># 好</span>
+</span><span class='line'><span class="n">resources</span> <span class="ss">:photos</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">get</span> <span class="s1">&#39;search&#39;</span><span class="p">,</span> <span class="ss">:on</span> <span class="o">=&gt;</span> <span class="ss">:collection</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">若你需要定义多个</span> <span class="n">member</span><span class="o">/</span><span class="n">collection</span> <span class="err">路由时，使用替代的区块语法。</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">resources</span> <span class="ss">:subscriptions</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">member</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">get</span> <span class="s1">&#39;unsubscribe&#39;</span>
+</span><span class='line'>    <span class="c1"># 更多路由</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">resources</span> <span class="ss">:photos</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">collection</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">get</span> <span class="s1">&#39;search&#39;</span>
+</span><span class='line'>    <span class="c1"># 更多路由</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<pre><code>使用嵌套路由来更佳地表达与 ActiveRecord 模型的关系。
+</code></pre>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Post</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">has_many</span> <span class="ss">:comments</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Comments</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">belongs_to</span> <span class="ss">:post</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># routes.rb</span>
+</span><span class='line'><span class="n">resources</span> <span class="ss">:posts</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">resources</span> <span class="ss">:comments</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">使用命名空间路由来群组相关的行为。</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">namespace</span> <span class="ss">:admin</span> <span class="k">do</span>
+</span><span class='line'>  <span class="c1"># Directs /admin/products/* to Admin::ProductsController</span>
+</span><span class='line'>  <span class="c1"># (app/controllers/admin/products_controller.rb)</span>
+</span><span class='line'>  <span class="n">resources</span> <span class="ss">:products</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">不要使用合法的疯狂路由。这种路由会让每个控制器的动作透过</span> <span class="no">GET</span> <span class="err">请求存取。</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># very bad</span>
+</span><span class='line'><span class="n">match</span> <span class="s1">&#39;:controller(/:action(/:id(.:format)))&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>控制器</p>
+
+<pre><code>让你的控制器保持苗条 ― 它们应该只替视图层取出数据且不包含任何业务逻辑（所有业务逻辑应理所当然地放在模型里）。
+每个控制器的行动应当（理想上）只调用一个除了初始的 find 或 new 方法
+控制器与视图之间共享不超过两个实例变数
+</code></pre>
+
+<p>模型</p>
+
+<pre><code>自由地引入不是 ActiveRecord 的类别吧。 Introduce non-ActiveRecord model classes freely.
+替模型命名有意义（但简短）且不带缩写的名字。
+
+如果你需要支援 ActiveRecord 像是验证行为的模型对象，使用 ActiveAttr gem.
+</code></pre>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Message</span>
+</span><span class='line'>  <span class="kp">include</span> <span class="ss">ActiveAttr</span><span class="p">:</span><span class="ss">:Model</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">attribute</span> <span class="ss">:name</span>
+</span><span class='line'>  <span class="n">attribute</span> <span class="ss">:email</span>
+</span><span class='line'>  <span class="n">attribute</span> <span class="ss">:content</span>
+</span><span class='line'>  <span class="n">attribute</span> <span class="ss">:priority</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">attr_accessible</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">:content</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">validates_presence_of</span> <span class="ss">:name</span>
+</span><span class='line'>  <span class="n">validates_format_of</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">:with</span> <span class="o">=&gt;</span> <span class="sr">/^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i</span>
+</span><span class='line'>  <span class="n">validates_length_of</span> <span class="ss">:content</span><span class="p">,</span> <span class="ss">:maximum</span> <span class="o">=&gt;</span> <span class="mi">500</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<pre><code>更完整的示例，参考 RailsCast on the subject。
+</code></pre>
+
+<p>ActiveRecord</p>
+
+<pre><code>避免改动缺省的ActiveRecord（表的名字、主键，等等），除非你有一个非常好的理由（像是不受你控制的数据库）。
+把宏风格的方法放在类别定义的前面（has_many, validates, 等等）。
+
+偏好 has_many :through 胜于 has_and_belongs_to_many。 使用 has_many :through 允许在 join 模型有附加的属性及验证
+</code></pre>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># 使用 has_and_belongs_to_many</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">has_and_belongs_to_many</span> <span class="ss">:groups</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Group</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">has_and_belongs_to_many</span> <span class="ss">:users</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># 偏好方式 - using has_many :through</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">has_many</span> <span class="ss">:memberships</span>
+</span><span class='line'>  <span class="n">has_many</span> <span class="ss">:groups</span><span class="p">,</span> <span class="ss">through</span><span class="p">:</span> <span class="ss">:memberships</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Membership</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">belongs_to</span> <span class="ss">:user</span>
+</span><span class='line'>  <span class="n">belongs_to</span> <span class="ss">:group</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Group</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">has_many</span> <span class="ss">:memberships</span>
+</span><span class='line'>  <span class="n">has_many</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">through</span><span class="p">:</span> <span class="ss">:memberships</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<pre><code>使用新的 "sexy" validation。
+
+当一个惯用的验证使用超过一次或验证是某个正则表达映射时，创建一个惯用的 validator 文件。
+</code></pre>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># 差</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">Person</span>
+</span><span class='line'>  <span class="n">validates</span> <span class="ss">:email</span><span class="p">,</span> <span class="nb">format</span><span class="p">:</span> <span class="p">{</span> <span class="ss">with</span><span class="p">:</span> <span class="sr">/^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i</span> <span class="p">}</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># 好</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">EmailValidator</span> <span class="o">&lt;</span> <span class="ss">ActiveModel</span><span class="p">:</span><span class="ss">:EachValidator</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">validate_each</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">attribute</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">record</span><span class="o">.</span><span class="n">errors</span><span class="o">[</span><span class="n">attribute</span><span class="o">]</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">options</span><span class="o">[</span><span class="ss">:message</span><span class="o">]</span> <span class="o">||</span> <span class="s1">&#39;is not a valid email&#39;</span><span class="p">)</span> <span class="k">unless</span> <span class="n">value</span> <span class="o">=~</span> <span class="sr">/^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Person</span>
+</span><span class='line'>  <span class="n">validates</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">email</span><span class="p">:</span> <span class="kp">true</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<pre><code>所有惯用的验证器应放在一个共享的 gem 。
+
+自由地使用命名的作用域。
+
+当一个由 lambda 及参数定义的作用域变得过于复杂时，更好的方式是建一个作为同样用途的类别方法，并返回 ActiveRecord::Relation 对象。
+
+注意 update_attribute 方法的行为。它不运行模型验证（不同于 update_attributes ）并且可能把模型状态给搞砸。
+
+使用用户友好的网址。在网址显示具描述性的模型属性，而不只是 id 。
+有不止一种方法可以达成：
+
+    覆写模型的 to_param 方法。这是 Rails 用来给对象建构网址的方法。缺省的实作会以字串形式返回该 id 的记录。它可被另一个人类可读的属性覆写。
+
+    class Person
+      def to_param
+        "#{id} #{name}".parameterize
+      end
+    end
+
+    为了要转换成对网址友好 (URL-friendly)的数值，字串应当调用 parameterize 。 对象的 id 要放在开头，以便给 ActiveRecord 的 find 方法查找。
+
+    使用此 friendly_id gem。它允许藉由某些具描述性的模型属性，而不是用 id 来创建人类可读的网址。
+
+    class Person
+      extend FriendlyId
+      friendly_id :name, use: :slugged
+    end
+
+    查看 gem 文档 获得更多关于使用的信息。
+</code></pre>
+
+<p>ActiveResource</p>
+
+<pre><code>当 HTTP 响应是一个与存在的格式不同的格式时（XML 和 JSON），需要某些额外的格式解析，创一个你惯用的格式，并在类别中使用它。惯用的格式应当实作下列方法：extension, mime_type,
+encode 以及 decode。
+</code></pre>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">module</span> <span class="nn">ActiveResource</span>
+</span><span class='line'>  <span class="k">module</span> <span class="nn">Formats</span>
+</span><span class='line'>    <span class="k">module</span> <span class="nn">Extend</span>
+</span><span class='line'>      <span class="k">module</span> <span class="nn">CSVFormat</span>
+</span><span class='line'>        <span class="kp">extend</span> <span class="nb">self</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">def</span> <span class="nf">extension</span>
+</span><span class='line'>          <span class="s1">&#39;csv&#39;</span>
+</span><span class='line'>        <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">def</span> <span class="nf">mime_type</span>
+</span><span class='line'>          <span class="s1">&#39;text/csv&#39;</span>
+</span><span class='line'>        <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="nb">hash</span><span class="p">,</span> <span class="n">options</span> <span class="o">=</span> <span class="kp">nil</span><span class="p">)</span>
+</span><span class='line'>          <span class="c1"># 数据以新格式编码并返回</span>
+</span><span class='line'>        <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">def</span> <span class="nf">decode</span><span class="p">(</span><span class="n">csv</span><span class="p">)</span>
+</span><span class='line'>          <span class="c1"># 数据以新格式解码并返回</span>
+</span><span class='line'>        <span class="k">end</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="ss">ActiveResource</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="nb">self</span><span class="o">.</span><span class="n">format</span> <span class="o">=</span> <span class="ss">ActiveResource</span><span class="p">:</span><span class="ss">:Formats</span><span class="o">::</span><span class="ss">Extend</span><span class="p">:</span><span class="ss">:CSVFormat</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<pre><code>若 HTTP 请求应当不扩展发送时，覆写 ActiveResource::Base 的 element_path 及 collection_path 方法，并移除扩展的部份。
+</code></pre>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="ss">ActiveResource</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">collection_path</span><span class="p">(</span><span class="n">prefix_options</span> <span class="o">=</span> <span class="p">{},</span> <span class="n">query_options</span> <span class="o">=</span> <span class="kp">nil</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">prefix_options</span><span class="p">,</span> <span class="n">query_options</span> <span class="o">=</span> <span class="n">split_options</span><span class="p">(</span><span class="n">prefix_options</span><span class="p">)</span> <span class="k">if</span> <span class="n">query_options</span><span class="o">.</span><span class="n">nil?</span>
+</span><span class='line'>    <span class="s2">&quot;</span><span class="si">#{</span><span class="n">prefix</span><span class="p">(</span><span class="n">prefix_options</span><span class="p">)</span><span class="si">}#{</span><span class="n">collection_name</span><span class="si">}#{</span><span class="n">query_string</span><span class="p">(</span><span class="n">query_options</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">element_path</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">prefix_options</span> <span class="o">=</span> <span class="p">{},</span> <span class="n">query_options</span> <span class="o">=</span> <span class="kp">nil</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">prefix_options</span><span class="p">,</span> <span class="n">query_options</span> <span class="o">=</span> <span class="n">split_options</span><span class="p">(</span><span class="n">prefix_options</span><span class="p">)</span> <span class="k">if</span> <span class="n">query_options</span><span class="o">.</span><span class="n">nil?</span>
+</span><span class='line'>    <span class="s2">&quot;</span><span class="si">#{</span><span class="n">prefix</span><span class="p">(</span><span class="n">prefix_options</span><span class="p">)</span><span class="si">}#{</span><span class="n">collection_name</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="no">URI</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">escape</span> <span class="nb">id</span><span class="o">.</span><span class="n">to_s</span><span class="si">}#{</span><span class="n">query_string</span><span class="p">(</span><span class="n">query_options</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<pre><code>如有任何改动网址的需求时，这些方法也可以被覆写。
+</code></pre>
+
+<p>迁移</p>
+
+<pre><code>把 schema.rb 保存在版本管控下。
+使用 rake db:scheme:load 取代 rake db:migrate 来初始化空的数据库。
+使用 rake db:test:prepare 来更新测试数据库的 schema。
+
+避免在表里设置缺省数据。使用模型层来取代。
+</code></pre>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">amount</span>
+</span><span class='line'>  <span class="nb">self</span><span class="o">[</span><span class="ss">:amount</span><span class="o">]</span> <span class="ow">or</span> <span class="mi">0</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<pre><code>然而 self[:attr_name] 的使用被视为相当常见的，你也可以考虑使用更罗嗦的（争议地可读性更高的） read_attribute 来取代：
+</code></pre>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">amount</span>
+</span><span class='line'>  <span class="n">read_attribute</span><span class="p">(</span><span class="ss">:amount</span><span class="p">)</span> <span class="ow">or</span> <span class="mi">0</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<pre><code>当编写建设性的迁移时（加入表或栏位），使用 Rails 3.1 的新方式来迁移 - 使用 change 方法取代 up 与 down 方法。
+</code></pre>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+<span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+<span class='line-number'>99</span>
+<span class='line-number'>100</span>
+<span class='line-number'>101</span>
+<span class='line-number'>102</span>
+<span class='line-number'>103</span>
+<span class='line-number'>104</span>
+<span class='line-number'>105</span>
+<span class='line-number'>106</span>
+<span class='line-number'>107</span>
+<span class='line-number'>108</span>
+<span class='line-number'>109</span>
+<span class='line-number'>110</span>
+<span class='line-number'>111</span>
+<span class='line-number'>112</span>
+<span class='line-number'>113</span>
+<span class='line-number'>114</span>
+<span class='line-number'>115</span>
+<span class='line-number'>116</span>
+<span class='line-number'>117</span>
+<span class='line-number'>118</span>
+<span class='line-number'>119</span>
+<span class='line-number'>120</span>
+<span class='line-number'>121</span>
+<span class='line-number'>122</span>
+<span class='line-number'>123</span>
+<span class='line-number'>124</span>
+<span class='line-number'>125</span>
+<span class='line-number'>126</span>
+<span class='line-number'>127</span>
+<span class='line-number'>128</span>
+<span class='line-number'>129</span>
+<span class='line-number'>130</span>
+<span class='line-number'>131</span>
+<span class='line-number'>132</span>
+<span class='line-number'>133</span>
+<span class='line-number'>134</span>
+<span class='line-number'>135</span>
+<span class='line-number'>136</span>
+<span class='line-number'>137</span>
+<span class='line-number'>138</span>
+<span class='line-number'>139</span>
+<span class='line-number'>140</span>
+<span class='line-number'>141</span>
+<span class='line-number'>142</span>
+<span class='line-number'>143</span>
+<span class='line-number'>144</span>
+<span class='line-number'>145</span>
+<span class='line-number'>146</span>
+<span class='line-number'>147</span>
+<span class='line-number'>148</span>
+<span class='line-number'>149</span>
+<span class='line-number'>150</span>
+<span class='line-number'>151</span>
+<span class='line-number'>152</span>
+<span class='line-number'>153</span>
+<span class='line-number'>154</span>
+<span class='line-number'>155</span>
+<span class='line-number'>156</span>
+<span class='line-number'>157</span>
+<span class='line-number'>158</span>
+<span class='line-number'>159</span>
+<span class='line-number'>160</span>
+<span class='line-number'>161</span>
+<span class='line-number'>162</span>
+<span class='line-number'>163</span>
+<span class='line-number'>164</span>
+<span class='line-number'>165</span>
+<span class='line-number'>166</span>
+<span class='line-number'>167</span>
+<span class='line-number'>168</span>
+<span class='line-number'>169</span>
+<span class='line-number'>170</span>
+<span class='line-number'>171</span>
+<span class='line-number'>172</span>
+<span class='line-number'>173</span>
+<span class='line-number'>174</span>
+<span class='line-number'>175</span>
+<span class='line-number'>176</span>
+<span class='line-number'>177</span>
+<span class='line-number'>178</span>
+<span class='line-number'>179</span>
+<span class='line-number'>180</span>
+<span class='line-number'>181</span>
+<span class='line-number'>182</span>
+<span class='line-number'>183</span>
+<span class='line-number'>184</span>
+<span class='line-number'>185</span>
+<span class='line-number'>186</span>
+<span class='line-number'>187</span>
+<span class='line-number'>188</span>
+<span class='line-number'>189</span>
+<span class='line-number'>190</span>
+<span class='line-number'>191</span>
+<span class='line-number'>192</span>
+<span class='line-number'>193</span>
+<span class='line-number'>194</span>
+<span class='line-number'>195</span>
+<span class='line-number'>196</span>
+<span class='line-number'>197</span>
+<span class='line-number'>198</span>
+<span class='line-number'>199</span>
+<span class='line-number'>200</span>
+<span class='line-number'>201</span>
+<span class='line-number'>202</span>
+<span class='line-number'>203</span>
+<span class='line-number'>204</span>
+<span class='line-number'>205</span>
+<span class='line-number'>206</span>
+<span class='line-number'>207</span>
+<span class='line-number'>208</span>
+<span class='line-number'>209</span>
+<span class='line-number'>210</span>
+<span class='line-number'>211</span>
+<span class='line-number'>212</span>
+<span class='line-number'>213</span>
+<span class='line-number'>214</span>
+<span class='line-number'>215</span>
+<span class='line-number'>216</span>
+<span class='line-number'>217</span>
+<span class='line-number'>218</span>
+<span class='line-number'>219</span>
+<span class='line-number'>220</span>
+<span class='line-number'>221</span>
+<span class='line-number'>222</span>
+<span class='line-number'>223</span>
+<span class='line-number'>224</span>
+<span class='line-number'>225</span>
+<span class='line-number'>226</span>
+<span class='line-number'>227</span>
+<span class='line-number'>228</span>
+<span class='line-number'>229</span>
+<span class='line-number'>230</span>
+<span class='line-number'>231</span>
+<span class='line-number'>232</span>
+<span class='line-number'>233</span>
+<span class='line-number'>234</span>
+<span class='line-number'>235</span>
+<span class='line-number'>236</span>
+<span class='line-number'>237</span>
+<span class='line-number'>238</span>
+<span class='line-number'>239</span>
+<span class='line-number'>240</span>
+<span class='line-number'>241</span>
+<span class='line-number'>242</span>
+<span class='line-number'>243</span>
+<span class='line-number'>244</span>
+<span class='line-number'>245</span>
+<span class='line-number'>246</span>
+<span class='line-number'>247</span>
+<span class='line-number'>248</span>
+<span class='line-number'>249</span>
+<span class='line-number'>250</span>
+<span class='line-number'>251</span>
+<span class='line-number'>252</span>
+<span class='line-number'>253</span>
+<span class='line-number'>254</span>
+<span class='line-number'>255</span>
+<span class='line-number'>256</span>
+<span class='line-number'>257</span>
+<span class='line-number'>258</span>
+<span class='line-number'>259</span>
+<span class='line-number'>260</span>
+<span class='line-number'>261</span>
+<span class='line-number'>262</span>
+<span class='line-number'>263</span>
+<span class='line-number'>264</span>
+<span class='line-number'>265</span>
+<span class='line-number'>266</span>
+<span class='line-number'>267</span>
+<span class='line-number'>268</span>
+<span class='line-number'>269</span>
+<span class='line-number'>270</span>
+<span class='line-number'>271</span>
+<span class='line-number'>272</span>
+<span class='line-number'>273</span>
+<span class='line-number'>274</span>
+<span class='line-number'>275</span>
+<span class='line-number'>276</span>
+<span class='line-number'>277</span>
+<span class='line-number'>278</span>
+<span class='line-number'>279</span>
+<span class='line-number'>280</span>
+<span class='line-number'>281</span>
+<span class='line-number'>282</span>
+<span class='line-number'>283</span>
+<span class='line-number'>284</span>
+<span class='line-number'>285</span>
+<span class='line-number'>286</span>
+<span class='line-number'>287</span>
+<span class='line-number'>288</span>
+<span class='line-number'>289</span>
+<span class='line-number'>290</span>
+<span class='line-number'>291</span>
+<span class='line-number'>292</span>
+<span class='line-number'>293</span>
+<span class='line-number'>294</span>
+<span class='line-number'>295</span>
+<span class='line-number'>296</span>
+<span class='line-number'>297</span>
+<span class='line-number'>298</span>
+<span class='line-number'>299</span>
+<span class='line-number'>300</span>
+<span class='line-number'>301</span>
+<span class='line-number'>302</span>
+<span class='line-number'>303</span>
+<span class='line-number'>304</span>
+<span class='line-number'>305</span>
+<span class='line-number'>306</span>
+<span class='line-number'>307</span>
+<span class='line-number'>308</span>
+<span class='line-number'>309</span>
+<span class='line-number'>310</span>
+<span class='line-number'>311</span>
+<span class='line-number'>312</span>
+<span class='line-number'>313</span>
+<span class='line-number'>314</span>
+<span class='line-number'>315</span>
+<span class='line-number'>316</span>
+<span class='line-number'>317</span>
+<span class='line-number'>318</span>
+<span class='line-number'>319</span>
+<span class='line-number'>320</span>
+<span class='line-number'>321</span>
+<span class='line-number'>322</span>
+<span class='line-number'>323</span>
+<span class='line-number'>324</span>
+<span class='line-number'>325</span>
+<span class='line-number'>326</span>
+<span class='line-number'>327</span>
+<span class='line-number'>328</span>
+<span class='line-number'>329</span>
+<span class='line-number'>330</span>
+<span class='line-number'>331</span>
+<span class='line-number'>332</span>
+<span class='line-number'>333</span>
+<span class='line-number'>334</span>
+<span class='line-number'>335</span>
+<span class='line-number'>336</span>
+<span class='line-number'>337</span>
+<span class='line-number'>338</span>
+<span class='line-number'>339</span>
+<span class='line-number'>340</span>
+<span class='line-number'>341</span>
+<span class='line-number'>342</span>
+<span class='line-number'>343</span>
+<span class='line-number'>344</span>
+<span class='line-number'>345</span>
+<span class='line-number'>346</span>
+<span class='line-number'>347</span>
+<span class='line-number'>348</span>
+<span class='line-number'>349</span>
+<span class='line-number'>350</span>
+<span class='line-number'>351</span>
+<span class='line-number'>352</span>
+<span class='line-number'>353</span>
+<span class='line-number'>354</span>
+<span class='line-number'>355</span>
+<span class='line-number'>356</span>
+<span class='line-number'>357</span>
+<span class='line-number'>358</span>
+<span class='line-number'>359</span>
+<span class='line-number'>360</span>
+<span class='line-number'>361</span>
+<span class='line-number'>362</span>
+<span class='line-number'>363</span>
+<span class='line-number'>364</span>
+<span class='line-number'>365</span>
+<span class='line-number'>366</span>
+<span class='line-number'>367</span>
+<span class='line-number'>368</span>
+<span class='line-number'>369</span>
+<span class='line-number'>370</span>
+<span class='line-number'>371</span>
+<span class='line-number'>372</span>
+<span class='line-number'>373</span>
+<span class='line-number'>374</span>
+<span class='line-number'>375</span>
+<span class='line-number'>376</span>
+<span class='line-number'>377</span>
+<span class='line-number'>378</span>
+<span class='line-number'>379</span>
+<span class='line-number'>380</span>
+<span class='line-number'>381</span>
+<span class='line-number'>382</span>
+<span class='line-number'>383</span>
+<span class='line-number'>384</span>
+<span class='line-number'>385</span>
+<span class='line-number'>386</span>
+<span class='line-number'>387</span>
+<span class='line-number'>388</span>
+<span class='line-number'>389</span>
+<span class='line-number'>390</span>
+<span class='line-number'>391</span>
+<span class='line-number'>392</span>
+<span class='line-number'>393</span>
+<span class='line-number'>394</span>
+<span class='line-number'>395</span>
+<span class='line-number'>396</span>
+<span class='line-number'>397</span>
+<span class='line-number'>398</span>
+<span class='line-number'>399</span>
+<span class='line-number'>400</span>
+<span class='line-number'>401</span>
+<span class='line-number'>402</span>
+<span class='line-number'>403</span>
+<span class='line-number'>404</span>
+<span class='line-number'>405</span>
+<span class='line-number'>406</span>
+<span class='line-number'>407</span>
+<span class='line-number'>408</span>
+<span class='line-number'>409</span>
+<span class='line-number'>410</span>
+<span class='line-number'>411</span>
+<span class='line-number'>412</span>
+<span class='line-number'>413</span>
+<span class='line-number'>414</span>
+<span class='line-number'>415</span>
+<span class='line-number'>416</span>
+<span class='line-number'>417</span>
+<span class='line-number'>418</span>
+<span class='line-number'>419</span>
+<span class='line-number'>420</span>
+<span class='line-number'>421</span>
+<span class='line-number'>422</span>
+<span class='line-number'>423</span>
+<span class='line-number'>424</span>
+<span class='line-number'>425</span>
+<span class='line-number'>426</span>
+<span class='line-number'>427</span>
+<span class='line-number'>428</span>
+<span class='line-number'>429</span>
+<span class='line-number'>430</span>
+<span class='line-number'>431</span>
+<span class='line-number'>432</span>
+<span class='line-number'>433</span>
+<span class='line-number'>434</span>
+<span class='line-number'>435</span>
+<span class='line-number'>436</span>
+<span class='line-number'>437</span>
+<span class='line-number'>438</span>
+<span class='line-number'>439</span>
+<span class='line-number'>440</span>
+<span class='line-number'>441</span>
+<span class='line-number'>442</span>
+<span class='line-number'>443</span>
+<span class='line-number'>444</span>
+<span class='line-number'>445</span>
+<span class='line-number'>446</span>
+<span class='line-number'>447</span>
+<span class='line-number'>448</span>
+<span class='line-number'>449</span>
+<span class='line-number'>450</span>
+<span class='line-number'>451</span>
+<span class='line-number'>452</span>
+<span class='line-number'>453</span>
+<span class='line-number'>454</span>
+<span class='line-number'>455</span>
+<span class='line-number'>456</span>
+<span class='line-number'>457</span>
+<span class='line-number'>458</span>
+<span class='line-number'>459</span>
+<span class='line-number'>460</span>
+<span class='line-number'>461</span>
+<span class='line-number'>462</span>
+<span class='line-number'>463</span>
+<span class='line-number'>464</span>
+<span class='line-number'>465</span>
+<span class='line-number'>466</span>
+<span class='line-number'>467</span>
+<span class='line-number'>468</span>
+<span class='line-number'>469</span>
+<span class='line-number'>470</span>
+<span class='line-number'>471</span>
+<span class='line-number'>472</span>
+<span class='line-number'>473</span>
+<span class='line-number'>474</span>
+<span class='line-number'>475</span>
+<span class='line-number'>476</span>
+<span class='line-number'>477</span>
+<span class='line-number'>478</span>
+<span class='line-number'>479</span>
+<span class='line-number'>480</span>
+<span class='line-number'>481</span>
+<span class='line-number'>482</span>
+<span class='line-number'>483</span>
+<span class='line-number'>484</span>
+<span class='line-number'>485</span>
+<span class='line-number'>486</span>
+<span class='line-number'>487</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># 过去的方式</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">AddNameToPerson</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Migration</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">up</span>
+</span><span class='line'>    <span class="n">add_column</span> <span class="ss">:persons</span><span class="p">,</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:string</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">down</span>
+</span><span class='line'>    <span class="n">remove_column</span> <span class="ss">:person</span><span class="p">,</span> <span class="ss">:name</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># 新的偏好方式</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">AddNameToPerson</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Migration</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">change</span>
+</span><span class='line'>    <span class="n">add_column</span> <span class="ss">:persons</span><span class="p">,</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:string</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">视图</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">不要直接从视图调用模型层。</span>
+</span><span class='line'><span class="err">不要在视图构造复杂的格式，把它们输出到视图</span> <span class="n">helper</span> <span class="err">的一个方法或是模型。</span>
+</span><span class='line'><span class="err">使用</span> <span class="n">partial</span> <span class="err">模版与布局来减少重复的代码。</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">加入</span>
+</span><span class='line'><span class="n">client</span> <span class="n">side</span> <span class="n">validation</span>
+</span><span class='line'><span class="err">至惯用的</span> <span class="n">validators</span><span class="err">。</span> <span class="err">要做的步骤有：</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="err">声明一个由</span> <span class="ss">ClientSideValidations</span><span class="p">:</span><span class="ss">:Middleware</span><span class="o">::</span><span class="no">Base</span> <span class="err">而来的自定</span> <span class="n">validator</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">module</span> <span class="nn">ClientSideValidations::Middleware</span>
+</span><span class='line'>      <span class="k">class</span> <span class="nc">Email</span> <span class="o">&lt;</span> <span class="no">Base</span>
+</span><span class='line'>        <span class="k">def</span> <span class="nf">response</span>
+</span><span class='line'>          <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">params</span><span class="o">[</span><span class="ss">:email</span><span class="o">]</span> <span class="o">=~</span> <span class="sr">/^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i</span>
+</span><span class='line'>            <span class="nb">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="mi">200</span>
+</span><span class='line'>          <span class="k">else</span>
+</span><span class='line'>            <span class="nb">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="mi">404</span>
+</span><span class='line'>          <span class="k">end</span>
+</span><span class='line'>          <span class="k">super</span>
+</span><span class='line'>        <span class="k">end</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="err">建立一个新文件</span>
+</span><span class='line'>    <span class="kp">public</span><span class="o">/</span><span class="n">javascripts</span><span class="o">/</span><span class="n">rails</span><span class="o">.</span><span class="n">validations</span><span class="o">.</span><span class="n">custom</span><span class="o">.</span><span class="n">js</span><span class="o">.</span><span class="n">coffee</span> <span class="err">并在你的</span> <span class="n">application</span><span class="o">.</span><span class="n">js</span><span class="o">.</span><span class="n">coffee</span> <span class="err">文件加入一个它的参照：</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1"># app/assets/javascripts/application.js.coffee</span>
+</span><span class='line'>    <span class="c1">#= require rails.validations.custom</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="err">添加你的用户端</span> <span class="n">validator</span><span class="err">：</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">#public/javascripts/rails.validations.custom.js.coffee</span>
+</span><span class='line'>    <span class="n">clientSideValidations</span><span class="o">.</span><span class="n">validators</span><span class="o">.</span><span class="n">remote</span><span class="o">[</span><span class="s1">&#39;email&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span> <span class="o">-&gt;</span>
+</span><span class='line'>      <span class="k">if</span> <span class="vg">$.</span><span class="n">ajax</span><span class="p">({</span>
+</span><span class='line'>        <span class="ss">url</span><span class="p">:</span> <span class="s1">&#39;/validators/email.json&#39;</span><span class="p">,</span>
+</span><span class='line'>        <span class="ss">data</span><span class="p">:</span> <span class="p">{</span> <span class="ss">email</span><span class="p">:</span> <span class="n">element</span><span class="o">.</span><span class="n">val</span><span class="p">()</span> <span class="p">},</span>
+</span><span class='line'>        <span class="ss">async</span><span class="p">:</span> <span class="kp">false</span>
+</span><span class='line'>      <span class="p">})</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="mi">404</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">options</span><span class="o">.</span><span class="n">message</span> <span class="o">||</span> <span class="s1">&#39;invalid e-mail format&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">国际化</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">视图、模型与控制器里不应使用语言相关设置与字串。这些文字应搬到在</span> <span class="n">config</span><span class="o">/</span><span class="n">locales</span> <span class="err">下的语言文件里。</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">当</span> <span class="no">ActiveRecord</span> <span class="err">模型的标签需要被翻译时，使用</span><span class="n">activerecord</span> <span class="err">作用域</span><span class="p">:</span>
+</span><span class='line'>
+</span><span class='line'><span class="ss">en</span><span class="p">:</span>
+</span><span class='line'>  <span class="ss">activerecord</span><span class="p">:</span>
+</span><span class='line'>    <span class="ss">models</span><span class="p">:</span>
+</span><span class='line'>      <span class="ss">user</span><span class="p">:</span> <span class="no">Member</span>
+</span><span class='line'>    <span class="ss">attributes</span><span class="p">:</span>
+</span><span class='line'>      <span class="ss">user</span><span class="p">:</span>
+</span><span class='line'>        <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Full name&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">然后</span> <span class="no">User</span><span class="o">.</span><span class="n">model_name</span><span class="o">.</span><span class="n">human</span> <span class="err">会返回</span> <span class="s2">&quot;Member&quot;</span> <span class="err">，而</span> <span class="no">User</span><span class="o">.</span><span class="n">human_attribute_name</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span> <span class="err">会返回</span> <span class="s2">&quot;Full name&quot;</span><span class="err">。这些属性的翻译会被视图作为标签使用。</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">把在视图使用的文字与</span> <span class="no">ActiveRecord</span> <span class="err">的属性翻译分开。</span> <span class="err">把给模型使用的语言文件放在名为</span> <span class="n">models</span> <span class="err">的文件夹，给视图使用的文字放在名为</span> <span class="n">views</span> <span class="err">的文件夹。</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="err">当使用额外目录的语言文件组织完成时，为了要载入这些目录，要在</span> <span class="n">application</span><span class="o">.</span><span class="n">rb</span> <span class="err">文件里描述这些目录。</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1"># config/application.rb</span>
+</span><span class='line'>    <span class="n">config</span><span class="o">.</span><span class="n">i18n</span><span class="o">.</span><span class="n">load_path</span> <span class="o">+=</span> <span class="no">Dir</span><span class="o">[</span><span class="no">Rails</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;config&#39;</span><span class="p">,</span> <span class="s1">&#39;locales&#39;</span><span class="p">,</span> <span class="s1">&#39;**&#39;</span><span class="p">,</span> <span class="s1">&#39;*.{rb,yml}&#39;</span><span class="p">)</span><span class="o">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">把共享的本土化选项，像是日期或货币格式，放在</span> <span class="n">locales</span> <span class="err">的根目录下。</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">使用精简形式的</span> <span class="no">I18n</span> <span class="err">方法：</span> <span class="no">I18n</span><span class="o">.</span><span class="n">t</span> <span class="err">来取代</span> <span class="no">I18n</span><span class="o">.</span><span class="n">translate</span> <span class="err">以及使用</span> <span class="no">I18n</span><span class="o">.</span><span class="n">l</span> <span class="err">取代</span> <span class="no">I18n</span><span class="o">.</span><span class="n">localize</span><span class="o">.</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">使用</span> <span class="s2">&quot;懒惰&quot;</span> <span class="err">查询视图中使用的文字。假设我们有以下结构：</span>
+</span><span class='line'>
+</span><span class='line'><span class="ss">en</span><span class="p">:</span>
+</span><span class='line'>  <span class="ss">users</span><span class="p">:</span>
+</span><span class='line'>    <span class="ss">show</span><span class="p">:</span>
+</span><span class='line'>      <span class="ss">title</span><span class="p">:</span> <span class="s2">&quot;User details page&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">users</span><span class="o">.</span><span class="n">show</span><span class="o">.</span><span class="n">title</span> <span class="err">的数值能这样被</span> <span class="n">app</span><span class="o">/</span><span class="n">views</span><span class="o">/</span><span class="n">users</span><span class="o">/</span><span class="n">show</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">haml</span> <span class="err">查询：</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">=</span> <span class="n">t</span> <span class="s1">&#39;.title&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">在控制器与模型使用点分隔的键，来取代指定</span> <span class="ss">:scope</span> <span class="err">选项。点分隔的调用更容易阅读及追踪层级。</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># 这样子调用使用</span>
+</span><span class='line'><span class="no">I18n</span><span class="o">.</span><span class="n">t</span> <span class="s1">&#39;activerecord.errors.messages.record_invalid&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># 而不是这样</span>
+</span><span class='line'><span class="no">I18n</span><span class="o">.</span><span class="n">t</span> <span class="ss">:record_invalid</span><span class="p">,</span> <span class="ss">:scope</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="ss">:activerecord</span><span class="p">,</span> <span class="ss">:errors</span><span class="p">,</span> <span class="ss">:messages</span><span class="o">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">关于</span> <span class="no">Rails</span> <span class="n">i18n</span> <span class="err">更详细的信息可以在这里找到</span> <span class="no">Rails</span> <span class="no">Guides</span><span class="err">。</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">Assets</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">利用这个</span> <span class="n">assets</span> <span class="n">pipeline</span> <span class="err">来管理应用的结构。</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">保留</span> <span class="n">app</span><span class="o">/</span><span class="n">assets</span> <span class="err">给自定的样式表</span><span class="p">,</span> <span class="n">javascripts</span><span class="p">,</span> <span class="ow">or</span> <span class="err">图片</span><span class="o">.</span>
+</span><span class='line'><span class="err">第三方代码如：</span> <span class="n">jQuery</span> <span class="err">或</span> <span class="n">bootstrap</span> <span class="err">应放置在</span> <span class="n">vendor</span><span class="o">/</span><span class="n">assets</span><span class="err">。</span>
+</span><span class='line'><span class="err">当可能的时候，使用</span> <span class="n">gem</span> <span class="err">化的</span> <span class="n">assets</span> <span class="err">版本。</span><span class="p">(</span><span class="err">如：</span> <span class="n">jquery</span><span class="o">-</span><span class="n">rails</span><span class="p">)</span><span class="o">.</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">Mailers</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">把</span> <span class="n">mails</span> <span class="err">命名为</span> <span class="no">SomethingMailer</span><span class="err">。</span> <span class="err">没有</span> <span class="no">Mailer</span> <span class="err">字根，不能立即显现哪个是一个</span> <span class="n">mailer</span><span class="err">，以及哪个视图与它有关。</span>
+</span><span class='line'><span class="err">提供</span> <span class="no">HTML</span> <span class="err">与纯文本视图模版。</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">在你的开发环境启用信件失败发送错误。这些错误缺省是被停用的。</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># config/environments/development.rb</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">action_mailer</span><span class="o">.</span><span class="n">raise_delivery_errors</span> <span class="o">=</span> <span class="kp">true</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">在开发模式使用</span> <span class="n">smtp</span><span class="o">.</span><span class="n">gmail</span><span class="o">.</span><span class="n">com</span> <span class="err">设置</span> <span class="no">SMTP</span> <span class="err">服务器（当然了，除非你自己有本地</span> <span class="no">SMTP</span> <span class="err">服务器）。</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># config/environments/development.rb</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">action_mailer</span><span class="o">.</span><span class="n">smtp_settings</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>  <span class="ss">address</span><span class="p">:</span> <span class="s1">&#39;smtp.gmail.com&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="c1"># 更多设置</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">提供缺省的配置给主机名。</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># config/environments/development.rb</span>
+</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">action_mailer</span><span class="o">.</span><span class="n">default_url_options</span> <span class="o">=</span> <span class="p">{</span><span class="ss">host</span><span class="p">:</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">local_ip</span><span class="si">}</span><span class="s2">:3000&quot;</span><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># config/environments/production.rb</span>
+</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">action_mailer</span><span class="o">.</span><span class="n">default_url_options</span> <span class="o">=</span> <span class="p">{</span><span class="ss">host</span><span class="p">:</span> <span class="s1">&#39;your_site.com&#39;</span><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># 在你的 mailer 类</span>
+</span><span class='line'><span class="n">default_url_options</span><span class="o">[</span><span class="ss">:host</span><span class="o">]</span> <span class="o">=</span> <span class="s1">&#39;your_site.com&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">如果你需要在你的网站使用一个</span> <span class="n">email</span> <span class="err">链结，总是使用</span> <span class="n">_url</span> <span class="err">方法，而不是</span> <span class="n">_path</span> <span class="err">方法。</span> <span class="n">_url</span> <span class="err">方法包含了主机名，而</span> <span class="n">_path</span> <span class="err">方法没有。</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># 错误</span>
+</span><span class='line'><span class="no">You</span> <span class="n">can</span> <span class="n">always</span> <span class="n">find</span> <span class="n">more</span> <span class="n">info</span> <span class="n">about</span> <span class="n">this</span> <span class="n">course</span>
+</span><span class='line'><span class="o">=</span> <span class="n">link_to</span> <span class="s1">&#39;here&#39;</span><span class="p">,</span> <span class="n">url_for</span><span class="p">(</span><span class="n">course_path</span><span class="p">(</span><span class="vi">@course</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># 正确</span>
+</span><span class='line'><span class="no">You</span> <span class="n">can</span> <span class="n">always</span> <span class="n">find</span> <span class="n">more</span> <span class="n">info</span> <span class="n">about</span> <span class="n">this</span> <span class="n">course</span>
+</span><span class='line'><span class="o">=</span> <span class="n">link_to</span> <span class="s1">&#39;here&#39;</span><span class="p">,</span> <span class="n">url_for</span><span class="p">(</span><span class="n">course_url</span><span class="p">(</span><span class="vi">@course</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">正确地显示寄与收件人地址的格式。使用下列格式：</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># 在你的 mailer 类别</span>
+</span><span class='line'><span class="n">default</span> <span class="ss">from</span><span class="p">:</span> <span class="s1">&#39;Your Name &lt;info@your_site.com&gt;&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">确定测试环境的</span> <span class="n">email</span> <span class="err">发送方法设置为</span> <span class="nb">test</span> <span class="err">：</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># config/environments/test.rb</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">action_mailer</span><span class="o">.</span><span class="n">delivery_method</span> <span class="o">=</span> <span class="ss">:test</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">开发与生产环境的发送方法应为</span> <span class="n">smtp</span> <span class="err">：</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># config/environments/development.rb, config/environments/production.rb</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">action_mailer</span><span class="o">.</span><span class="n">delivery_method</span> <span class="o">=</span> <span class="ss">:smtp</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">当发送</span> <span class="no">HTML</span> <span class="n">email</span> <span class="err">时，所有样式应为行内样式，由于某些用户有关于外部样式的问题。某种程度上这使得更难管理及造成代码重用。有两个相似的</span> <span class="n">gem</span> <span class="err">可以转换样式，以及将它们放在对应的</span> <span class="n">html</span> <span class="err">标签里：</span> <span class="n">premailer</span><span class="o">-</span><span class="n">rails3</span> <span class="err">和</span> <span class="n">roadie</span><span class="err">。</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">应避免页面产生响应时寄送</span> <span class="n">email</span><span class="err">。若多个</span> <span class="n">email</span> <span class="err">寄送时，造成了页面载入延迟，以及请求可能逾时。使用</span> <span class="n">delayed_job</span> <span class="n">gem</span> <span class="err">的帮助来克服在背景处理寄送</span> <span class="n">email</span> <span class="err">的问题。</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">Bundler</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">把只给开发环境或测试环境的</span> <span class="n">gem</span> <span class="err">适当地分组放在</span> <span class="no">Gemfile</span> <span class="err">文件中。</span>
+</span><span class='line'><span class="err">在你的项目中只使用公认的</span> <span class="n">gem</span><span class="err">。</span> <span class="err">如果你考虑引入某些显为人所知的</span> <span class="n">gem</span> <span class="err">，你应该先仔细复查一下它的源代码。</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">关于多个开发者使用不同操作系统的项目，操作系统相关的</span> <span class="n">gem</span> <span class="err">缺省会产生一个经常变动的</span> <span class="no">Gemfile</span><span class="o">.</span><span class="n">lock</span> <span class="err">。</span> <span class="err">在</span> <span class="no">Gemfile</span> <span class="err">文件里，所有与</span> <span class="no">OS</span> <span class="n">X</span> <span class="err">相关的</span> <span class="n">gem</span> <span class="err">放在</span> <span class="n">darwin</span> <span class="err">群组，而所有</span> <span class="no">Linux</span> <span class="err">相关的</span> <span class="n">gem</span> <span class="err">放在</span> <span class="n">linux</span> <span class="err">群组：</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Gemfile</span>
+</span><span class='line'><span class="n">group</span> <span class="ss">:darwin</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;rb-fsevent&#39;</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;growl&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">group</span> <span class="ss">:linux</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;rb-inotify&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">要在对的环境获得合适的</span> <span class="n">gem</span> <span class="err">，</span> <span class="err">添加以下代码至</span> <span class="n">config</span><span class="o">/</span><span class="n">application</span><span class="o">.</span><span class="n">rb</span> <span class="err">：</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">platform</span> <span class="o">=</span> <span class="no">RUBY_PLATFORM</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sr">/(linux|darwin)/</span><span class="p">)</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">to_sym</span>
+</span><span class='line'><span class="no">Bundler</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="n">platform</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">不要把</span> <span class="no">Gemfile</span><span class="o">.</span><span class="n">lock</span> <span class="err">文件从版本控制里移除。这不是随机产生的文件</span> <span class="o">-</span> <span class="err">它确保你所有的组员执行</span> <span class="n">bundle</span> <span class="n">install</span> <span class="err">时，获得相同版本的</span> <span class="n">gem</span> <span class="err">。</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">无价的</span> <span class="no">Gems</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">一个最重要的编程理念是</span> <span class="s2">&quot;不要重造轮子！&quot;</span> <span class="err">。若你遇到一个特定问题，你应该要在你开始前，看一下是否有存在的解决方案。下面是一些在很多</span> <span class="no">Rails</span> <span class="err">项目中</span> <span class="s2">&quot;无价的&quot;</span> <span class="n">gem</span> <span class="err">列表（全部兼容</span> <span class="no">Rails</span> <span class="mi">3</span><span class="o">.</span><span class="mi">1</span><span class="err">）：</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">active_admin</span> <span class="o">-</span> <span class="err">有了</span> <span class="no">ActiveAdmin</span><span class="err">，创建</span> <span class="no">Rails</span> <span class="err">应用的管理介面就像儿戏。你会有一个很好的仪表盘，图形化</span> <span class="no">CRUD</span> <span class="err">介面以及更多东西。非常灵活且可客制。</span>
+</span><span class='line'><span class="n">capybara</span> <span class="o">-</span> <span class="no">Capybara</span> <span class="err">指在简化整合测试</span> <span class="no">Rack</span> <span class="err">应用的过程，像是</span> <span class="no">Rails</span><span class="err">、</span><span class="no">Sinatra</span> <span class="err">或</span> <span class="no">Merb</span><span class="err">。</span><span class="no">Capybara</span> <span class="err">模拟了真实用户使用</span> <span class="n">web</span> <span class="err">应用的互动。</span> <span class="err">它与你测试在运行的驱动无关，并原生搭载</span> <span class="ss">Rack</span><span class="p">:</span><span class="ss">:Test</span> <span class="err">及</span> <span class="no">Selenium</span> <span class="err">支持。透过外部</span> <span class="n">gem</span> <span class="err">支持</span> <span class="no">HtmlUnit</span><span class="err">、</span><span class="no">WebKit</span> <span class="err">及</span> <span class="n">env</span><span class="o">.</span><span class="n">js</span> <span class="err">。与</span> <span class="no">RSpec</span> <span class="o">&amp;</span> <span class="no">Cucumber</span> <span class="err">一起使用工作良好。</span>
+</span><span class='line'><span class="n">carrierwave</span> <span class="o">-</span> <span class="no">Rails</span> <span class="err">最后一个文件上传解决方案。支持上传档案（及很多其它的酷玩意儿的）的本地储存与云储存。图片后处理与</span> <span class="no">ImageMagick</span> <span class="err">整合得非常好。</span>
+</span><span class='line'><span class="n">client_side_validations</span> <span class="o">-</span> <span class="err">一个美妙的</span> <span class="n">gem</span> <span class="err">，替你从现有的服务器端模型验证自动产生</span> <span class="no">Javascript</span> <span class="err">用户端验证。高度推荐！</span>
+</span><span class='line'><span class="n">compass</span><span class="o">-</span><span class="n">rails</span> <span class="o">-</span> <span class="err">一个优秀的</span> <span class="n">gem</span><span class="err">，添加了某些</span> <span class="n">css</span> <span class="err">框架的支持。包括了</span> <span class="n">sass</span> <span class="n">mixin</span> <span class="err">的蒐集，让你减少</span> <span class="n">css</span> <span class="err">文件的代码并帮你解决浏览器兼容问题。</span>
+</span><span class='line'><span class="n">cucumber</span><span class="o">-</span><span class="n">rails</span> <span class="o">-</span> <span class="no">Cucumber</span> <span class="err">是一个由</span> <span class="no">Ruby</span> <span class="err">所写，开发功能测试的顶级工具。</span> <span class="n">cucumber</span><span class="o">-</span><span class="n">rails</span> <span class="err">提供了</span> <span class="no">Cucumber</span> <span class="err">的</span> <span class="no">Rails</span> <span class="err">整合。</span>
+</span><span class='line'><span class="n">devise</span> <span class="o">-</span> <span class="no">Devise</span> <span class="err">是</span> <span class="no">Rails</span> <span class="err">应用的一个完整解决方案。多数情况偏好使用</span> <span class="n">devise</span> <span class="err">来开始你的客制验证方案。</span>
+</span><span class='line'><span class="n">fabrication</span> <span class="o">-</span> <span class="err">一个很好的假数据产生器（编辑者的选择）。</span>
+</span><span class='line'><span class="n">factory_girl</span> <span class="o">-</span> <span class="err">另一个</span> <span class="n">fabrication</span> <span class="err">的选择。一个成熟的假数据产生器。</span> <span class="no">Fabrication</span> <span class="err">的精神领袖先驱。</span>
+</span><span class='line'><span class="n">faker</span> <span class="o">-</span> <span class="err">实用的</span> <span class="n">gem</span> <span class="err">来产生仿造的数据（名字、地址，等等）。</span>
+</span><span class='line'><span class="n">feedzirra</span> <span class="o">-</span> <span class="err">非常快速及灵活的</span> <span class="no">RSS</span><span class="o">/</span><span class="no">Atom</span> <span class="err">种子解析器。</span>
+</span><span class='line'><span class="n">friendly_id</span> <span class="o">-</span> <span class="err">透过使用某些具描述性的模型属性，而不是使用</span> <span class="nb">id</span><span class="err">，允许你创建人类可读的网址。</span>
+</span><span class='line'><span class="n">guard</span> <span class="o">-</span> <span class="err">极佳的</span> <span class="n">gem</span> <span class="err">监控文件变化及任务的调用。搭载了很多实用的扩充。远优于</span> <span class="n">autotest</span> <span class="err">与</span> <span class="n">watchr</span><span class="err">。</span>
+</span><span class='line'><span class="n">haml</span><span class="o">-</span><span class="n">rails</span> <span class="o">-</span> <span class="n">haml</span><span class="o">-</span><span class="n">rails</span> <span class="err">提供了</span> <span class="no">Haml</span> <span class="err">的</span> <span class="no">Rails</span> <span class="err">整合。</span>
+</span><span class='line'><span class="n">haml</span> <span class="o">-</span> <span class="no">Haml</span> <span class="err">是一个简洁的模型语言，被很多人认为（包括我）远优于</span> <span class="no">Erb</span><span class="err">。</span>
+</span><span class='line'><span class="n">kaminari</span> <span class="o">-</span> <span class="err">很棒的分页解决方案。</span>
+</span><span class='line'><span class="n">machinist</span> <span class="o">-</span> <span class="err">假数据不好玩，</span><span class="no">Machinist</span> <span class="err">才好玩。</span>
+</span><span class='line'><span class="n">rspec</span><span class="o">-</span><span class="n">rails</span> <span class="o">-</span> <span class="no">RSpec</span> <span class="err">是</span> <span class="ss">Test</span><span class="p">:</span><span class="ss">:MiniTest</span> <span class="err">的取代者。我不高度推荐</span> <span class="no">RSpec</span><span class="err">。</span> <span class="n">rspec</span><span class="o">-</span><span class="n">rails</span> <span class="err">提供了</span> <span class="no">RSpec</span> <span class="err">的</span> <span class="no">Rails</span> <span class="err">整合。</span>
+</span><span class='line'><span class="n">simple_form</span> <span class="o">-</span> <span class="err">一旦用过</span> <span class="n">simple_form</span><span class="err">（或</span> <span class="n">formatastic</span><span class="err">），你就不想听到关于</span> <span class="no">Rails</span> <span class="err">缺省的表单。它是一个创造表单很棒的</span><span class="no">DSL</span><span class="err">。</span>
+</span><span class='line'><span class="n">simplecov</span><span class="o">-</span><span class="n">rcov</span> <span class="o">-</span> <span class="err">为了</span> <span class="no">SimpleCov</span> <span class="err">打造的</span> <span class="no">RCov</span> <span class="n">formatter</span><span class="err">。若你想使用</span> <span class="no">SimpleCov</span> <span class="err">搭配</span> <span class="no">Hudson</span> <span class="err">持续整合服务器，很有用。</span>
+</span><span class='line'><span class="n">simplecov</span> <span class="o">-</span> <span class="err">代码覆盖率工具。不像</span> <span class="no">RCov</span><span class="err">，完全兼容</span> <span class="no">Ruby</span> <span class="mi">1</span><span class="o">.</span><span class="mi">9</span><span class="err">。产生精美的报告。必须用！</span>
+</span><span class='line'><span class="n">slim</span> <span class="o">-</span> <span class="no">Slim</span> <span class="err">是一个简洁的模版语言，被视为是远远优于</span> <span class="no">HAML</span><span class="p">(</span><span class="no">Erb</span> <span class="err">就更不用说了</span><span class="p">)</span><span class="err">的语言。唯一会阻止我大规模地使用它的是，主流</span><span class="no">IDE</span><span class="err">及编辑器的支持不好。它的效能是非凡的。</span>
+</span><span class='line'><span class="n">spork</span> <span class="o">-</span> <span class="err">一个给测试框架（</span><span class="no">RSpec</span> <span class="err">或</span> <span class="err">现今</span> <span class="no">Cucumber</span><span class="err">）用的</span> <span class="no">DRb</span> <span class="err">服务器，每次运行前确保分支出一个乾净的测试状态。</span> <span class="err">简单的说，预载很多测试环境的结果是大幅降低你的测试启动时间，绝对必须用！</span>
+</span><span class='line'><span class="n">sunspot</span> <span class="o">-</span> <span class="err">基于</span> <span class="no">SOLR</span> <span class="err">的全文检索引擎。</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">这不是完整的清单，以及其它的</span> <span class="n">gem</span> <span class="err">也可以在之后加进来。以上清单上的所有</span> <span class="n">gems</span> <span class="err">皆经测试，处于活跃开发阶段，有社群以及代码的质量很高。</span>
+</span><span class='line'><span class="err">缺陷的</span> <span class="no">Gems</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">这是一个有问题的或被别的</span> <span class="n">gem</span> <span class="err">取代的</span> <span class="n">gem</span> <span class="err">清单。你应该在你的项目里避免使用它们。</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">rmagick</span> <span class="o">-</span> <span class="err">这个</span> <span class="n">gem</span> <span class="err">因大量消耗内存而声名狼藉。使用</span> <span class="n">minimagick</span> <span class="err">来取代。</span>
+</span><span class='line'><span class="n">autotest</span> <span class="o">-</span> <span class="err">自动测试的老解决方案。远不如</span> <span class="n">guard</span> <span class="err">及</span> <span class="n">watchr</span><span class="err">。</span>
+</span><span class='line'><span class="n">rcov</span> <span class="o">-</span> <span class="err">代码覆盖率工具，不兼容</span> <span class="no">Ruby</span> <span class="mi">1</span><span class="o">.</span><span class="mi">9</span><span class="err">。使用</span> <span class="no">SimpleCov</span> <span class="err">来取代。</span>
+</span><span class='line'><span class="n">therubyracer</span> <span class="o">-</span> <span class="err">极度不鼓励在生产模式使用这个</span> <span class="n">gem</span><span class="err">，它消耗大量的内存。我会推荐使用</span> <span class="no">Mustang</span> <span class="err">来取代。</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">这仍是一个完善中的清单。请告诉我受人欢迎但有缺陷的</span> <span class="n">gems</span> <span class="err">。</span>
+</span><span class='line'><span class="err">管理进程</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">若你的项目依赖各种外部的进程使用</span> <span class="n">foreman</span> <span class="err">来管理它们。</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">测试</span> <span class="no">Rails</span> <span class="err">应用</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">也许</span> <span class="no">BDD</span> <span class="err">方法是实作一个新功能最好的方法。你从开始写一些高阶的测试（通常使用</span> <span class="no">Cucumber</span><span class="err">），然后使用这些测试来驱使你实作功能。一开始你给功能的视图写测试，并使用这些测试来创建相关的视图。之后，你创建丢给视图数据的控制器测试来实现控制器。最后你实作模型的测试以及模型自身。</span>
+</span><span class='line'><span class="no">Cucumber</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">用</span> <span class="vi">@wip</span> <span class="err">（工作进行中）标签标记你未完成的场景。这些场景不纳入考虑，且不标记为测试失败。当完成一个未完成场景且功能测试通过时，为了把此场景加至测试套件里，应该移除</span> <span class="vi">@wip</span> <span class="err">标签。</span>
+</span><span class='line'><span class="err">配置你的缺省配置文件，排除掉标记为</span> <span class="vi">@javascript</span> <span class="err">的场景。它们使用浏览器来测试，推荐停用它们来增加一般场景的执行速度。</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">替标记著</span> <span class="vi">@javascript</span> <span class="err">的场景配置另一个配置文件。</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="err">配置文件可在</span> <span class="n">cucumber</span><span class="o">.</span><span class="n">yml</span> <span class="err">文件里配置。</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1"># 配置文件的定义：</span>
+</span><span class='line'>    <span class="n">profile_name</span><span class="p">:</span> <span class="o">--</span><span class="n">tags</span> <span class="vi">@tag_name</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="err">带指令运行一个配置文件：</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">cucumber</span> <span class="o">-</span><span class="nb">p</span> <span class="n">profile_name</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">若使用</span> <span class="n">fabrication</span> <span class="err">来替换假数据</span> <span class="p">(</span><span class="n">fixtures</span><span class="p">)</span><span class="err">，使用预定义的</span> <span class="n">fabrication</span> <span class="n">steps</span><span class="err">。</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">不要使用旧版的</span> <span class="n">web_steps</span><span class="o">.</span><span class="n">rb</span> <span class="err">步骤定义！</span> <span class="err">最新版</span> <span class="no">Cucumber</span> <span class="err">已移除</span> <span class="n">web</span> <span class="n">steps</span> <span class="err">，使用它们导致冗赘的场景，而且它并没有正确地反映出应用的领域。</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">当检查一元素的可视文字时，检查元素的文字而不是检查</span> <span class="nb">id</span><span class="err">。这样可以查出</span> <span class="n">i18n</span> <span class="err">的问题。</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">给同种类对象创建不同的功能特色：</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># 差</span>
+</span><span class='line'><span class="ss">Feature</span><span class="p">:</span> <span class="no">Articles</span>
+</span><span class='line'><span class="c1"># ... 特色实作 ...</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># 好</span>
+</span><span class='line'><span class="ss">Feature</span><span class="p">:</span> <span class="no">Article</span> <span class="no">Editing</span>
+</span><span class='line'><span class="c1"># ... 特色实作 ...</span>
+</span><span class='line'>
+</span><span class='line'><span class="ss">Feature</span><span class="p">:</span> <span class="no">Article</span> <span class="no">Publishing</span>
+</span><span class='line'><span class="c1"># ... 特色实作 ...</span>
+</span><span class='line'>
+</span><span class='line'><span class="ss">Feature</span><span class="p">:</span> <span class="no">Article</span> <span class="no">Search</span>
+</span><span class='line'><span class="c1"># ... 特色实作 ...</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">每一个特色有三个主要成分：</span>
+</span><span class='line'>    <span class="no">Title</span>
+</span><span class='line'>    <span class="no">Narrative</span> <span class="o">-</span> <span class="err">简短说明这个特色关于什么。</span>
+</span><span class='line'>    <span class="no">Acceptance</span> <span class="n">criteria</span> <span class="o">-</span> <span class="err">每个由独立步骤组成的一套场景。</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">最常见的格式称为</span> <span class="no">Connextra</span> <span class="err">格式。</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">In</span> <span class="n">order</span> <span class="n">to</span> <span class="o">[</span><span class="n">benefit</span><span class="o">]</span> <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'><span class="n">A</span> <span class="o">[</span><span class="n">stakeholder</span><span class="o">].</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'><span class="no">Wants</span> <span class="n">to</span> <span class="o">[</span><span class="n">feature</span><span class="o">]</span> <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">这是最常见但不是要求的格式，叙述可以是依赖功能复杂度的任何文字。</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">自由地使用场景概述使你的场景备作它用</span> <span class="p">(</span><span class="n">keep</span> <span class="n">your</span> <span class="n">scenarios</span> <span class="no">DRY</span><span class="p">)</span><span class="err">。</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">Scenario</span> <span class="ss">Outline</span><span class="p">:</span> <span class="no">User</span> <span class="n">cannot</span> <span class="n">register</span> <span class="n">with</span> <span class="n">invalid</span> <span class="n">e</span><span class="o">-</span><span class="n">mail</span>
+</span><span class='line'>  <span class="no">When</span> <span class="n">I</span> <span class="n">try</span> <span class="n">to</span> <span class="n">register</span> <span class="n">with</span> <span class="n">an</span> <span class="n">email</span> <span class="s2">&quot;&lt;email&gt;&quot;</span>
+</span><span class='line'>  <span class="no">Then</span> <span class="n">I</span> <span class="n">should</span> <span class="n">see</span> <span class="n">the</span> <span class="n">error</span> <span class="n">message</span> <span class="s2">&quot;&lt;error&gt;&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="ss">Examples</span><span class="p">:</span>
+</span><span class='line'>  <span class="o">|</span><span class="n">email</span>         <span class="o">|</span><span class="n">error</span>                 <span class="o">|</span>
+</span><span class='line'>  <span class="o">|</span>              <span class="o">|</span><span class="no">The</span> <span class="n">e</span><span class="o">-</span><span class="n">mail</span> <span class="n">is</span> <span class="n">required</span><span class="o">|</span>
+</span><span class='line'>  <span class="o">|</span><span class="n">invalid</span> <span class="n">email</span> <span class="o">|</span><span class="n">is</span> <span class="ow">not</span> <span class="n">a</span> <span class="n">valid</span> <span class="n">e</span><span class="o">-</span><span class="n">mail</span> <span class="o">|</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">场景的步骤放在</span> <span class="n">step_definitions</span> <span class="err">目录下的</span> <span class="o">.</span><span class="n">rb</span> <span class="err">文件。步骤文件命名惯例为</span> <span class="o">[</span><span class="n">description</span><span class="o">]</span><span class="n">_steps</span><span class="o">.</span><span class="n">rb</span><span class="err">。步骤根据不同的标准放在不同的文件里。每一个功能可能有一个步骤文件</span> <span class="p">(</span><span class="n">home_page_steps</span><span class="o">.</span><span class="n">rb</span><span class="p">)</span>
+</span><span class='line'><span class="err">。也可能给每个特定对象的功能，建一个步骤文件</span> <span class="p">(</span><span class="n">articles_steps</span><span class="o">.</span><span class="n">rb</span><span class="p">)</span><span class="err">。</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">使用多行步骤参数来避免重复</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">场景</span><span class="p">:</span> <span class="no">User</span> <span class="n">profile</span>
+</span><span class='line'>  <span class="no">Given</span> <span class="n">I</span> <span class="n">am</span> <span class="n">logged</span> <span class="k">in</span> <span class="n">as</span> <span class="n">a</span> <span class="n">user</span> <span class="s2">&quot;John Doe&quot;</span> <span class="n">with</span> <span class="n">an</span> <span class="n">e</span><span class="o">-</span><span class="n">mail</span> <span class="s2">&quot;user@test.com&quot;</span>
+</span><span class='line'>  <span class="no">When</span> <span class="n">I</span> <span class="n">go</span> <span class="n">to</span> <span class="n">my</span> <span class="n">profile</span>
+</span><span class='line'>  <span class="no">Then</span> <span class="n">I</span> <span class="n">should</span> <span class="n">see</span> <span class="n">the</span> <span class="n">following</span> <span class="ss">information</span><span class="p">:</span>
+</span><span class='line'>    <span class="o">|</span><span class="no">First</span> <span class="nb">name</span><span class="o">|</span><span class="no">John</span>         <span class="o">|</span>
+</span><span class='line'>    <span class="o">|</span><span class="no">Last</span> <span class="nb">name</span> <span class="o">|</span><span class="no">Doe</span>          <span class="o">|</span>
+</span><span class='line'>    <span class="o">|</span><span class="n">E</span><span class="o">-</span><span class="n">mail</span>    <span class="o">|</span><span class="n">user</span><span class="vi">@test</span><span class="o">.</span><span class="n">com</span><span class="o">|</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># 步骤:</span>
+</span><span class='line'><span class="no">Then</span> <span class="sr">/^I should see the following information:$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">table</span><span class="o">|</span>
+</span><span class='line'>  <span class="n">table</span><span class="o">.</span><span class="n">raw</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">field</span><span class="p">,</span> <span class="n">value</span><span class="o">|</span>
+</span><span class='line'>    <span class="n">find_field</span><span class="p">(</span><span class="n">field</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">should</span> <span class="o">=~</span> <span class="sr">/</span><span class="si">#{</span><span class="n">value</span><span class="si">}</span><span class="sr">/</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">使用复合步骤使场景备作它用</span> <span class="p">(</span><span class="no">Keep</span> <span class="n">your</span> <span class="n">scenarios</span> <span class="no">DRY</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># ...</span>
+</span><span class='line'><span class="no">When</span> <span class="n">I</span> <span class="n">subscribe</span> <span class="k">for</span> <span class="n">news</span> <span class="n">from</span> <span class="n">the</span> <span class="n">category</span> <span class="s2">&quot;Technical News&quot;</span>
+</span><span class='line'><span class="c1"># ...</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># the step:</span>
+</span><span class='line'><span class="no">When</span> <span class="sr">/^I subscribe for news from the category &quot;([^&quot;]*)&quot;$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">category</span><span class="o">|</span>
+</span><span class='line'>  <span class="n">steps</span> <span class="sx">%Q{</span>
+</span><span class='line'><span class="sx">    When I go to the news categories page</span>
+</span><span class='line'><span class="sx">    And I select the category </span><span class="si">#{</span><span class="n">category</span><span class="si">}</span><span class="sx"></span>
+</span><span class='line'><span class="sx">    And I click the button &quot;Subscribe for this category&quot;</span>
+</span><span class='line'><span class="sx">    And I confirm the subscription</span>
+</span><span class='line'><span class="sx">  }</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">总是使用</span> <span class="no">Capybara</span> <span class="err">否定匹配来取代正面情况搭配</span> <span class="n">should_not</span><span class="err">，它们会在给定的超时时重试匹配，允许你测试</span> <span class="n">ajax</span> <span class="err">动作。</span> <span class="err">见</span> <span class="no">Capybara</span> <span class="err">的</span> <span class="err">读我文件</span> <span class="err">获得更多说明。</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">RSpec</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">一个例子仅用一个期望值。</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># 差</span>
+</span><span class='line'><span class="n">describe</span> <span class="no">ArticlesController</span> <span class="k">do</span>
+</span><span class='line'>  <span class="c1">#...</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">describe</span> <span class="s1">&#39;GET new&#39;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">it</span> <span class="s1">&#39;assigns new article and renders the new article template&#39;</span> <span class="k">do</span>
+</span><span class='line'>      <span class="n">get</span> <span class="ss">:new</span>
+</span><span class='line'>      <span class="n">assigns</span><span class="o">[</span><span class="ss">:article</span><span class="o">].</span><span class="n">should</span> <span class="n">be_a_new</span> <span class="no">Article</span>
+</span><span class='line'>      <span class="n">response</span><span class="o">.</span><span class="n">should</span> <span class="n">render_template</span> <span class="ss">:new</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># ...</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># 好</span>
+</span><span class='line'><span class="n">describe</span> <span class="no">ArticlesController</span> <span class="k">do</span>
+</span><span class='line'>  <span class="c1">#...</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">describe</span> <span class="s1">&#39;GET new&#39;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">it</span> <span class="s1">&#39;assigns a new article&#39;</span> <span class="k">do</span>
+</span><span class='line'>      <span class="n">get</span> <span class="ss">:new</span>
+</span><span class='line'>      <span class="n">assigns</span><span class="o">[</span><span class="ss">:article</span><span class="o">].</span><span class="n">should</span> <span class="n">be_a_new</span> <span class="no">Article</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">it</span> <span class="s1">&#39;renders the new article template&#39;</span> <span class="k">do</span>
+</span><span class='line'>      <span class="n">get</span> <span class="ss">:new</span>
+</span><span class='line'>      <span class="n">response</span><span class="o">.</span><span class="n">should</span> <span class="n">render_template</span> <span class="ss">:new</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">大量使用</span> <span class="n">descibe</span> <span class="err">及</span> <span class="n">context</span> <span class="err">。</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">如下地替</span> <span class="n">describe</span> <span class="err">区块命名：</span>
+</span><span class='line'>    <span class="err">非方法使用</span> <span class="s2">&quot;description&quot;</span>
+</span><span class='line'>    <span class="err">实例方法使用井字号</span> <span class="s2">&quot;#method&quot;</span>
+</span><span class='line'>    <span class="err">类别方法使用点</span> <span class="s2">&quot;.method&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Article</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">summary</span>
+</span><span class='line'>    <span class="c1">#...</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">latest</span>
+</span><span class='line'>    <span class="c1">#...</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># the spec...</span>
+</span><span class='line'><span class="n">describe</span> <span class="no">Article</span>
+</span><span class='line'>  <span class="n">describe</span> <span class="s1">&#39;#summary&#39;</span>
+</span><span class='line'>    <span class="c1">#...</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">describe</span> <span class="s1">&#39;.latest&#39;</span>
+</span><span class='line'>    <span class="c1">#...</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">使用</span> <span class="n">fabricators</span> <span class="err">来创建测试对象。</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">大量使用</span> <span class="n">mocks</span> <span class="err">与</span> <span class="n">stubs</span><span class="err">。</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># mocking 一个模型</span>
+</span><span class='line'><span class="n">article</span> <span class="o">=</span> <span class="n">mock_model</span><span class="p">(</span><span class="no">Article</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># stubbing a method</span>
+</span><span class='line'><span class="no">Article</span><span class="o">.</span><span class="n">stub</span><span class="p">(</span><span class="ss">:find</span><span class="p">)</span><span class="o">.</span><span class="n">with</span><span class="p">(</span><span class="n">article</span><span class="o">.</span><span class="n">id</span><span class="p">)</span><span class="o">.</span><span class="n">and_return</span><span class="p">(</span><span class="n">article</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">当</span> <span class="n">mocking</span> <span class="err">一个模型时，使用</span> <span class="n">as_null_object</span> <span class="err">方法。它告诉输出仅监听我们预期的讯息，并忽略其它的讯息。</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">article</span> <span class="o">=</span> <span class="n">mock_model</span><span class="p">(</span><span class="no">Article</span><span class="p">)</span><span class="o">.</span><span class="n">as_null_object</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">使用</span> <span class="n">let</span> <span class="err">区块而不是</span> <span class="n">before</span><span class="p">(</span><span class="ss">:all</span><span class="p">)</span> <span class="err">区块替</span> <span class="n">spec</span> <span class="err">例子创建数据。</span><span class="n">let</span> <span class="err">区块会被懒惰求值。</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># 使用这个：</span>
+</span><span class='line'><span class="n">let</span><span class="p">(</span><span class="ss">:article</span><span class="p">)</span> <span class="p">{</span> <span class="no">Fabricate</span><span class="p">(</span><span class="ss">:article</span><span class="p">)</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># ... 而不是这个：</span>
+</span><span class='line'><span class="n">before</span><span class="p">(</span><span class="ss">:each</span><span class="p">)</span> <span class="p">{</span> <span class="vi">@article</span> <span class="o">=</span> <span class="no">Fabricate</span><span class="p">(</span><span class="ss">:article</span><span class="p">)</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">当可能时，使用</span> <span class="n">subject</span> <span class="err">。</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">describe</span> <span class="no">Article</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">subject</span> <span class="p">{</span> <span class="no">Fabricate</span><span class="p">(</span><span class="ss">:article</span><span class="p">)</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">it</span> <span class="s1">&#39;is not published on creation&#39;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">subject</span><span class="o">.</span><span class="n">should_not</span> <span class="n">be_published</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">如果可能的话，使用</span> <span class="n">specify</span> <span class="err">。它是</span> <span class="n">it</span> <span class="err">的同义词，但在没</span> <span class="n">docstring</span> <span class="err">的情况下可读性更高。</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># 差</span>
+</span><span class='line'><span class="n">describe</span> <span class="no">Article</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">before</span> <span class="p">{</span> <span class="vi">@article</span> <span class="o">=</span> <span class="no">Fabricate</span><span class="p">(</span><span class="ss">:article</span><span class="p">)</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">it</span> <span class="s1">&#39;is not published on creation&#39;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="vi">@article</span><span class="o">.</span><span class="n">should_not</span> <span class="n">be_published</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># 好</span>
+</span><span class='line'><span class="n">describe</span> <span class="no">Article</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">let</span><span class="p">(</span><span class="ss">:article</span><span class="p">)</span> <span class="p">{</span> <span class="no">Fabricate</span><span class="p">(</span><span class="ss">:article</span><span class="p">)</span> <span class="p">}</span>
+</span><span class='line'>  <span class="n">specify</span> <span class="p">{</span> <span class="n">article</span><span class="o">.</span><span class="n">should_not</span> <span class="n">be_published</span> <span class="p">}</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">当可能时，使用</span> <span class="n">its</span> <span class="err">。</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># 差</span>
+</span><span class='line'><span class="n">describe</span> <span class="no">Article</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">subject</span> <span class="p">{</span> <span class="no">Fabricate</span><span class="p">(</span><span class="ss">:article</span><span class="p">)</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">it</span> <span class="s1">&#39;has the current date as creation date&#39;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">subject</span><span class="o">.</span><span class="n">creation_date</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="no">Date</span><span class="o">.</span><span class="n">today</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># 好</span>
+</span><span class='line'><span class="n">describe</span> <span class="no">Article</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">subject</span> <span class="p">{</span> <span class="no">Fabricate</span><span class="p">(</span><span class="ss">:article</span><span class="p">)</span> <span class="p">}</span>
+</span><span class='line'>  <span class="n">its</span><span class="p">(</span><span class="ss">:creation_date</span><span class="p">)</span> <span class="p">{</span> <span class="n">should</span> <span class="o">==</span> <span class="no">Date</span><span class="o">.</span><span class="n">today</span> <span class="p">}</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">视图</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">视图测试的目录结构要与</span> <span class="n">app</span><span class="o">/</span><span class="n">views</span> <span class="err">之中的相符。</span> <span class="err">举例来说，在</span> <span class="n">app</span><span class="o">/</span><span class="n">views</span><span class="o">/</span><span class="n">users</span> <span class="err">视图被放在</span> <span class="n">spec</span><span class="o">/</span><span class="n">views</span><span class="o">/</span><span class="n">users</span><span class="err">。</span>
+</span><span class='line'><span class="err">视图测试的命名惯例是添加</span> <span class="n">_spec</span><span class="o">.</span><span class="n">rb</span> <span class="err">至视图名字之后，举例来说，视图</span> <span class="n">_form</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">haml</span> <span class="err">有一个对应的测试叫做</span> <span class="n">_form</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">haml_spec</span><span class="o">.</span><span class="n">rb</span> <span class="err">。</span>
+</span><span class='line'><span class="err">每个视图测试文件都需要</span> <span class="n">spec_helper</span><span class="o">.</span><span class="n">rb</span> <span class="err">。</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">外部描述区块使用不含</span> <span class="n">app</span><span class="o">/</span><span class="n">views</span> <span class="err">部分的视图路径。</span> <span class="n">render</span> <span class="err">方法没有传入参数时，是这么使用的。</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ruby</p>
+
+<pre><code># spec/views/articles/new.html.haml_spec.rb
+require 'spec_helper'
+
+describe 'articles/new.html.haml' do
+  # ...
+end
+</code></pre>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="err">永远在视图测试来</span> <span class="n">mock</span> <span class="err">模型。视图的目的只是显示信息。</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">assign</span> <span class="err">方法提供由控制器提供视图使用的实例变数。</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ruby</p>
+
+<pre><code># spec/views/articles/edit.html.haml_spec.rb
+describe 'articles/edit.html.haml' do
+it 'renders the form for a new article creation' do
+  assign(
+    :article,
+    mock_model(Article).as_new_record.as_null_object
+  )
+  render
+  rendered.should have_selector('form',
+    method: 'post',
+    action: articles_path
+  ) do |form|
+    form.should have_selector('input', type: 'submit')
+  end
+end
+</code></pre>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="err">偏好</span> <span class="n">capybara</span> <span class="err">否定情况选择器，胜于搭配正面情况的</span> <span class="n">should_not</span> <span class="err">。</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ruby</p>
+
+<pre><code># 差
+page.should_not have_selector('input', type: 'submit')
+page.should_not have_xpath('tr')
+
+# 好
+page.should have_no_selector('input', type: 'submit')
+page.should have_no_xpath('tr')
+</code></pre>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="err">当一个视图使用</span> <span class="n">helper</span> <span class="err">方法时，这些方法需要被</span> <span class="n">stubbed</span><span class="err">。</span><span class="no">Stubbing</span> <span class="err">这些</span> <span class="n">helper</span> <span class="err">方法是在</span> <span class="n">template</span> <span class="err">完成的：</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ruby</p>
+
+<pre><code># app/helpers/articles_helper.rb
+class ArticlesHelper
+  def formatted_date(date)
+    # ...
+  end
+end
+
+# app/views/articles/show.html.haml
+= "Published at: #{formatted_date(@article.published_at)}"
+
+# spec/views/articles/show.html.haml_spec.rb
+describe 'articles/show.html.html' do
+  it 'displays the formatted date of article publishing'
+    article = mock_model(Article, published_at: Date.new(2012, 01, 01))
+    assign(:article, article)
+
+    template.stub(:formatted_date).with(article.published_at).and_return '01.01.2012'
+
+    render
+    rendered.should have_content('Published at: 01.01.2012')
+  end
+end
+</code></pre>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="err">在</span> <span class="n">spec</span><span class="o">/</span><span class="n">helpers</span> <span class="err">目录的</span> <span class="n">helper</span> <span class="n">specs</span> <span class="err">是与视图</span> <span class="n">specs</span> <span class="err">分开的。</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">控制器</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">Mock</span> <span class="err">模型及</span> <span class="n">stub</span> <span class="err">他们的方法。测试控制器时不应依赖建模。</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">仅测试控制器需负责的行为：</span>
+</span><span class='line'>    <span class="err">执行特定的方法</span>
+</span><span class='line'>    <span class="err">从动作返回的数据</span> <span class="o">-</span> <span class="n">assigns</span><span class="p">,</span> <span class="err">等等。</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="err">从动作返回的结果</span> <span class="o">-</span> <span class="n">template</span> <span class="n">render</span><span class="p">,</span> <span class="n">redirect</span><span class="p">,</span> <span class="err">等等。</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ruby</p>
+
+<pre><code>    # 常用的控制器 spec 示例
+    # spec/controllers/articles_controller_spec.rb
+    # 我们只对控制器应执行的动作感兴趣
+    # 所以我们 mock 模型及 stub 它的方法
+    # 并且专注在控制器该做的事情上
+
+    describe ArticlesController do
+      # The model will be used in the specs for all methods of the controller
+      let(:article) { mock_model(Article) }
+
+      describe 'POST create' do
+        before { Article.stub(:new).and_return(article) }
+
+        it 'creates a new article with the given attributes' do
+          Article.should_receive(:new).with(title: 'The New Article Title').and_return(article)
+          post :create, message: { title: 'The New Article Title' }
+        end
+
+        it 'saves the article' do
+          article.should_receive(:save)
+          post :create
+        end
+
+        it 'redirects to the Articles index' do
+          article.stub(:save)
+          post :create
+          response.should redirect_to(action: 'index')
+        end
+      end
+    end
+</code></pre>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="err">当控制器根据不同参数有不同行为时，使用</span> <span class="n">context</span><span class="err">。</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># 一个在控制器中使用 context 的典型例子是，对象正确保存时，使用创建，保存失败时更新。</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ruby</p>
+
+<pre><code>describe ArticlesController do
+  let(:article) { mock_model(Article) }
+
+  describe 'POST create' do
+    before { Article.stub(:new).and_return(article) }
+
+    it 'creates a new article with the given attributes' do
+      Article.should_receive(:new).with(title: 'The New Article Title').and_return(article)
+      post :create, article: { title: 'The New Article Title' }
+    end
+
+    it 'saves the article' do
+      article.should_receive(:save)
+      post :create
+    end
+
+    context 'when the article saves successfully' do
+      before { article.stub(:save).and_return(true) }
+
+      it 'sets a flash[:notice] message' do
+        post :create
+        flash[:notice].should eq('The article was saved successfully.')
+      end
+
+      it 'redirects to the Articles index' do
+        post :create
+        response.should redirect_to(action: 'index')
+      end
+    end
+
+    context 'when the article fails to save' do
+      before { article.stub(:save).and_return(false) }
+
+      it 'assigns @article' do
+        post :create
+        assigns[:article].should be_eql(article)
+      end
+
+      it 're-renders the "new" template' do
+        post :create
+        response.should render_template('new')
+      end
+    end
+  end
+end
+</code></pre>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="err">模型</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="err">不要在自己的测试里</span> <span class="n">mock</span> <span class="err">模型。</span>
+</span><span class='line'>    <span class="err">使用捏造的东西来创建真的对象</span>
+</span><span class='line'>    <span class="no">Mock</span> <span class="err">别的模型或子对象是可接受的。</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="err">在测试里建立所有例子的模型来避免重复。</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ruby</p>
+
+<pre><code>describe Article
+  let(:article) { Fabricate(:article) }
+end
+
+加入一个例子确保捏造的模型是可行的。 Add an example ensuring that the fabricated model is valid.
+
+describe Article
+  it 'is valid with valid attributes' do
+    article.should be_valid
+  end
+end
+</code></pre>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="err">当测试验证时，使用</span> <span class="n">have</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">errors_on</span> <span class="err">来指定要被验证的属性。使用</span> <span class="n">be_valid</span> <span class="err">不保证问题在目的的属性。</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ruby</p>
+
+<pre><code># 差
+describe '#title'
+  it 'is required' do
+    article.title = nil
+    article.should_not be_valid
+  end
+end
+
+# 偏好
+describe '#title'
+  it 'is required' do
+    article.title = nil
+    article.should have(1).error_on(:title)
+  end
+end
+</code></pre>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="err">替每个有验证的属性加另一个</span> <span class="n">describe</span><span class="err">。</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">describe</span> <span class="no">Article</span>
+</span><span class='line'>  <span class="n">describe</span> <span class="s1">&#39;#title&#39;</span>
+</span><span class='line'>    <span class="n">it</span> <span class="s1">&#39;is required&#39;</span> <span class="k">do</span>
+</span><span class='line'>      <span class="n">article</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="kp">nil</span>
+</span><span class='line'>      <span class="n">article</span><span class="o">.</span><span class="n">should</span> <span class="n">have</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">error_on</span><span class="p">(</span><span class="ss">:title</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">当测试模型属性的独立性时，把其它对象命名为</span> <span class="n">another_object</span><span class="err">。</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ruby</p>
+
+<pre><code>describe Article
+  describe '#title'
+    it 'is unique' do
+      another_article = Fabricate.build(:article, title: article.title)
+      article.should have(1).error_on(:title)
+    end
+  end
+end
+</code></pre>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Mailers</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="err">在</span> <span class="n">mailer</span> <span class="err">测试的模型应该要被</span> <span class="n">mock</span><span class="err">。</span> <span class="n">mailer</span> <span class="err">不应依赖建模。</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">mailer</span> <span class="err">的测试应该确认如下：</span>
+</span><span class='line'>        <span class="err">这个</span> <span class="n">subject</span> <span class="err">是正确的</span>
+</span><span class='line'>        <span class="err">这个</span> <span class="n">receiver</span> <span class="n">e</span><span class="o">-</span><span class="n">mail</span> <span class="err">是正确的</span>
+</span><span class='line'>        <span class="err">这个</span> <span class="n">e</span><span class="o">-</span><span class="n">mail</span> <span class="err">寄送至对的邮件地址</span>
+</span><span class='line'>        <span class="err">这个</span> <span class="n">e</span><span class="o">-</span><span class="n">mail</span> <span class="err">包含了需要的信息</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ruby</p>
+
+<pre><code> describe SubscriberMailer
+   let(:subscriber) { mock_model(Subscription, email: 'johndoe@test.com', name: 'John Doe') }
+
+   describe 'successful registration email'
+     subject { SubscriptionMailer.successful_registration_email(subscriber) }
+
+     its(:subject) { should == 'Successful Registration!' }
+     its(:from) { should == ['info@your_site.com'] }
+     its(:to) { should == [subscriber.email] }
+
+     it 'contains the subscriber name' do
+       subject.body.encoded.should match(subscriber.name)
+     end
+   end
+ end
+</code></pre>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Uploaders</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="err">我们如何测试上传器是否正确地调整大小。这里是一个</span> <span class="n">carrierwave</span> <span class="err">图片上传器的示例</span> <span class="n">spec</span><span class="err">：</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ruby</p>
+
+<pre><code># rspec/uploaders/person_avatar_uploader_spec.rb
+require 'spec_helper'
+require 'carrierwave/test/matchers'
+
+describe PersonAvatarUploader do
+  include CarrierWave::Test::Matchers
+
+  # 在执行例子前启用图片处理
+  before(:all) do
+    UserAvatarUploader.enable_processing = true
+  end
+
+  # 创建一个新的 uploader。模型被模仿为不依赖建模时的上传及调整图片。
+  before(:each) do
+    @uploader = PersonAvatarUploader.new(mock_model(Person).as_null_object)
+    @uploader.store!(File.open(path_to_file))
+  end
+
+  # 执行完例子时停用图片处理
+  after(:all) do
+    UserAvatarUploader.enable_processing = false
+  end
+
+  # 测试图片是否不比给定的维度长
+  context 'the default version' do
+    it 'scales down an image to be no larger than 256 by 256 pixels' do
+      @uploader.should be_no_larger_than(256, 256)
+    end
+  end
+
+  # 测试图片是否有确切的维度
+  context 'the thumb version' do
+    it 'scales down an image to be exactly 64 by 64 pixels' do
+      @uploader.thumb.should have_dimensions(64, 64)
+    end
+  end
+end
+```
+原文转自： http://www.cnblogs.com/hedgehog-ZDH/archive/2012/11/16/2773749.html
+</code></pre>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">TianShuai</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-28T14:20:00+08:00" pubdate data-updated="true">Mar 28<span>th</span>, 2013</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://tianshuai.github.io/blog/2013/03/28/rails-feng-ge-zhi-dao/" data-via="" data-counturl="http://tianshuai.github.io/blog/2013/03/28/rails-feng-ge-zhi-dao/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/03/28/nokogirizhua-qu-shi-bai-hou-zhong-shi-dai-ma/" title="Previous Post: Nokogiri抓取失败后重试代码">&laquo; Nokogiri抓取失败后重试代码</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/03/28/ruby-bian-cheng-feng-ge-jie-shao/" title="Next Post: Ruby 编程风格介绍">Ruby 编程风格介绍 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/03/28/ruby-jin-jie/">Ruby 进阶</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/28/ruby-bian-cheng-feng-ge-jie-shao/">Ruby 编程风格介绍</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/28/rails-feng-ge-zhi-dao/">Rails 风格指导</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/28/nokogirizhua-qu-shi-bai-hou-zhong-shi-dai-ma/">Nokogiri抓取失败后重试代码</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/02/19/vimcao-zuo-ji-qiao/">Vim操作技巧</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - TianShuai -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
