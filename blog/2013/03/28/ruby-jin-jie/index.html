@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>ruby 进阶 - Tianshuai de Blog</title>
+  <title>ruby 进阶 - TianShuai &prime;s Blog</title>
   <meta name="author" content="TianShuai">
 
   
@@ -30,7 +30,7 @@ Net::HTTP.start(&quot;www.google.com.hk&quot;) { |http| resp = http.get(&quot;/i
   <link rel="canonical" href="http://tianshuai.github.io/blog/2013/03/28/ruby-jin-jie">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="Tianshuai de Blog" type="application/atom+xml">
+  <link href="/atom.xml" rel="alternate" title="TianShuai &prime;s Blog" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
@@ -45,9 +45,9 @@ Net::HTTP.start(&quot;www.google.com.hk&quot;) { |http| resp = http.get(&quot;/i
 
 <body   >
   <header role="banner"><hgroup>
-  <h1><a href="/">Tianshuai de Blog</a></h1>
+  <h1><a href="/">TianShuai &prime;s Blog</a></h1>
   
-    <h2>Nothing...</h2>
+    <h2>Record my bit by bit...</h2>
   
 </hgroup>
 
@@ -94,6 +94,8 @@ Net::HTTP.start(&quot;www.google.com.hk&quot;) { |http| resp = http.get(&quot;/i
 
 
 <time datetime="2013-03-28T14:48:00+08:00" pubdate data-updated="true">Mar 28<span>th</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
         
       </p>
     
@@ -335,8 +337,6 @@ test.sort_by {|t| t[:x]}.inject([]) {|r,h| r&lt;&lt;h if !r.last||r.last[:x]!=h[
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://tianshuai.github.io/blog/2013/03/28/ruby-jin-jie/" data-via="" data-counturl="http://tianshuai.github.io/blog/2013/03/28/ruby-jin-jie/" >Tweet</a>
-  
   
   
 </div>
@@ -351,12 +351,25 @@ test.sort_by {|t| t[:x]}.inject([]) {|r,h| r&lt;&lt;h if !r.last||r.last[:x]!=h[
   </footer>
 </article>
 
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
 </div>
 
 <aside class="sidebar">
   
     <section>
-  <h1>Recent Posts</h1>
+  <h1>关于作者</h1>
+  <p><img src="/images/180x180.jpg"></p>
+  <p>Ruby PHP 程序猿</p>
+  <p>喜欢的标签：sinatra gvim git</p>
+  <p>喜欢开源的东西, 爱折腾</p>
+</section>
+<section>
+  <h1>最近内容</h1>
   <ul id="recent_posts">
     
       <li class="post">
@@ -400,21 +413,27 @@ test.sort_by {|t| t[:x]}.inject([]) {|r,h| r&lt;&lt;h if !r.last||r.last[:x]!=h[
 </footer>
   
 
+<script type="text/javascript">
+      var disqus_shortname = 'tianshuai';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://tianshuai.github.io/blog/2013/03/28/ruby-jin-jie/';
+        var disqus_url = 'http://tianshuai.github.io/blog/2013/03/28/ruby-jin-jie/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
 
 
 
 
 
 
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
 
 
 
