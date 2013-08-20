@@ -2,33 +2,47 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://tianshuai.github.io/blog/2013/02/19/a-great-starting-point/</loc>
-        <lastmod>2013-08-19T17:10:30+08:00</lastmod>
+        <lastmod>2013-08-20T17:40:53+08:00</lastmod>
     </url>
     <url>
         <loc>http://tianshuai.github.io/blog/2013/02/19/vimcao-zuo-ji-qiao/</loc>
-        <lastmod>2013-08-19T17:10:30+08:00</lastmod>
+        <lastmod>2013-08-20T19:00:20+08:00</lastmod>
     </url>
     <url>
         <loc>
             http://tianshuai.github.io/blog/2013/03/28/nokogirizhua-qu-shi-bai-hou-zhong-shi-dai-ma/
         </loc>
-        <lastmod>2013-08-19T17:10:30+08:00</lastmod>
+        <lastmod>2013-08-20T17:43:21+08:00</lastmod>
     </url>
     <url>
         <loc>http://tianshuai.github.io/blog/2013/03/28/rails-feng-ge-zhi-dao/</loc>
-        <lastmod>2013-08-19T17:10:30+08:00</lastmod>
+        <lastmod>2013-08-20T17:44:00+08:00</lastmod>
     </url>
     <url>
         <loc>http://tianshuai.github.io/blog/2013/03/28/ruby-bian-cheng-feng-ge-jie-shao/</loc>
-        <lastmod>2013-08-19T17:10:30+08:00</lastmod>
+        <lastmod>2013-08-20T17:44:20+08:00</lastmod>
     </url>
     <url>
         <loc>http://tianshuai.github.io/blog/2013/03/28/ruby-jin-jie/</loc>
-        <lastmod>2013-08-19T17:10:30+08:00</lastmod>
+        <lastmod>2013-08-20T17:44:41+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://tianshuai.github.io/blog/2013/08/20/linux-xi-tong-ming-ling-da-quan/</loc>
+        <lastmod>2013-08-20T19:13:59+08:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://tianshuai.github.io/blog/2013/08/20/rails3-zai-xian-wen-dang-%5Bnil%5D%5Bnil%5Dshi-shi-geng-xin/
+        </loc>
+        <lastmod>2013-08-20T19:52:46+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://tianshuai.github.io/blog/2013/08/20/zong-he/</loc>
+        <lastmod>2013-08-20T20:01:52+08:00</lastmod>
     </url>
     <url>
         <loc>http://tianshuai.github.io/blog/archives/</loc>
-        <lastmod>2013-08-19T17:10:30+08:00</lastmod>
+        <lastmod>2013-08-20T20:01:52+08:00</lastmod>
     </url>
     <url>
         <loc>http://tianshuai.github.io/robots.txt</loc>
@@ -36,6 +50,6 @@
     </url>
     <url>
         <loc>http://tianshuai.github.io/</loc>
-        <lastmod>2013-08-19T17:10:30+08:00</lastmod>
+        <lastmod>2013-08-20T20:01:52+08:00</lastmod>
     </url>
 </urlset>

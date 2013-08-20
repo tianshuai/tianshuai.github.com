@@ -9,16 +9,10 @@
   <meta name="author" content="TianShuai">
 
   
-  <meta name="description" content="1.下载网页中图片 1
-2
-3
-4
-5
-6
-7
-8
-require &#39;net/http&#39;
-Net::HTTP.start(&quot;www.google.com.hk&quot;) { |http| resp = http.get(&quot;/images/srpr/ &hellip;">
+  <meta name="description" content="在线js测试:
+http://www.ostools.net/jsbin#source 在线Markdown测试:
+http://johnmacfarlane.net/pandoc/try/ rails插件集合:
+http://blog.163.com/prevBlogPerma.do?host= &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -74,6 +68,266 @@ Net::HTTP.start(&quot;www.google.com.hk&quot;) { |http| resp = http.get(&quot;/i
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/08/20/zong-he/">我收藏的网址－－－实时更新</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-20T19:56:00+08:00" pubdate data-updated="true">Aug 20<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/08/20/zong-he/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>在线js测试:
+<a href="http://www.ostools.net/jsbin#source">http://www.ostools.net/jsbin#source</a></p>
+
+<p>在线Markdown测试:
+<a href="http://johnmacfarlane.net/pandoc/try/">http://johnmacfarlane.net/pandoc/try/</a></p>
+
+<p>rails插件集合:
+<a href="http://blog.163.com/prevBlogPerma.do?host=ebenz&amp;srl=14492363520114145023611&amp;mode=prev">http://blog.163.com/prevBlogPerma.do?host=ebenz&amp;srl=14492363520114145023611&amp;mode=prev</a></p>
+
+<p>blogs.ejb.cc
+<a href="http://blogs.ejb.cc">http://blogs.ejb.cc</a></p>
+
+<p>候西阳的博客:
+<a href="http://houxiyang.com/archives/68/">http://houxiyang.com/archives/68/</a></p>
+
+<p>李骥平技术博客:
+<a href="http://fsjoy.blog.51cto.com/318484/d-3">http://fsjoy.blog.51cto.com/318484/d-3</a></p>
+
+<p>剑诩的学习笔记:
+<a href="http://phsblog.sinaapp.com/index.php/Index/index">http://phsblog.sinaapp.com/index.php/Index/index</a></p>
+
+<p>用Sinatra编写博客应用:
+<a href="http://kb.cnblogs.com/page/89619/">http://kb.cnblogs.com/page/89619/</a></p>
+
+<p>sinatra中文站:
+<a href="http://www.sinatrarb.com/intro-zh.html">http://www.sinatrarb.com/intro-zh.html</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/08/20/rails3-zai-xian-wen-dang-%5Bnil%5D%5Bnil%5Dshi-shi-geng-xin/">Rails3 在线文档－－实时更新</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-20T19:21:00+08:00" pubdate data-updated="true">Aug 20<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/08/20/rails3-zai-xian-wen-dang-%5Bnil%5D%5Bnil%5Dshi-shi-geng-xin/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ul>
+<li>是否是开发环境?</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">if</span> <span class="no">Rails</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">development?</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>智能判断单复数</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">pluralize</span><span class="p">(</span><span class="n">count</span><span class="p">,</span> <span class="s2">&quot;error&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><p>上传文件名的话，用 userid + fileid + timestamp 取 sha1 就能解决唯一性了</p></li>
+<li><p>把数字转换为字节(用于精确判断文件或图片大小)</p></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="mi">1</span><span class="o">.</span><span class="n">kilobyte</span> <span class="c1">#千字节</span>
+</span><span class='line'><span class="c1">#=&gt;1024</span>
+</span><span class='line'><span class="mi">5</span><span class="o">.</span><span class="n">megabytes</span>  <span class="c1">#上传文件限制字节数５Ｍ</span>
+</span><span class='line'><span class="c1">#=&gt; 5242880</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>判断表单是新建还是修改的</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">User</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">new_record?</span>
+</span><span class='line'><span class="c1">#=&gt;true</span>
+</span><span class='line'><span class="no">User</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">new_record?</span>
+</span><span class='line'><span class="c1">#=&gt;false</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/08/20/rails3-zai-xian-wen-dang-%5Bnil%5D%5Bnil%5Dshi-shi-geng-xin/">阅读全文 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/08/20/linux-xi-tong-ming-ling-da-quan/">Linux 系统命令大全</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-20T19:04:00+08:00" pubdate data-updated="true">Aug 20<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/08/20/linux-xi-tong-ming-ling-da-quan/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h4>系统信息</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>arch 显示机器的处理器架构(1) 
+</span><span class='line'>uname -m 显示机器的处理器架构(2) 
+</span><span class='line'>uname -r 显示正在使用的内核版本 
+</span><span class='line'>dmidecode -q 显示硬件系统部件 - (SMBIOS / DMI) 
+</span><span class='line'>hdparm -i /dev/hda 罗列一个磁盘的架构特性 
+</span><span class='line'>hdparm -tT /dev/sda 在磁盘上执行测试性读取操作 
+</span><span class='line'>cat /proc/cpuinfo 显示CPU info的信息 
+</span><span class='line'>cat /proc/interrupts 显示中断 
+</span><span class='line'>cat /proc/meminfo 校验内存使用 
+</span><span class='line'>cat /proc/swaps 显示哪些swap被使用 
+</span><span class='line'>cat /proc/version 显示内核的版本 
+</span><span class='line'>cat /proc/net/dev 显示网络适配器及统计 
+</span><span class='line'>cat /proc/mounts 显示已加载的文件系统 
+</span><span class='line'>lspci -tv 罗列 PCI 设备 
+</span><span class='line'>lsusb -tv 显示 USB 设备 
+</span><span class='line'>date 显示系统日期 
+</span><span class='line'>cal 2007 显示2007年的日历表 
+</span><span class='line'>date 041217002007.00 设置日期和时间 - 月日时分年.秒 
+</span><span class='line'>clock -w 将时间修改保存到 BIOS </span></code></pre></td></tr></table></div></figure>
+
+
+<h4>关机 (系统的关机、重启以及登出 )</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>shutdown -h now 关闭系统(1) 
+</span><span class='line'>init 0 关闭系统(2) 
+</span><span class='line'>telinit 0 关闭系统(3) 
+</span><span class='line'>shutdown -h hours:minutes & 按预定时间关闭系统 
+</span><span class='line'>shutdown -c 取消按预定时间关闭系统 
+</span><span class='line'>shutdown -r now 重启(1) 
+</span><span class='line'>reboot 重启(2) 
+</span><span class='line'>logout 注销 </span></code></pre></td></tr></table></div></figure>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/08/20/linux-xi-tong-ming-ling-da-quan/">阅读全文 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -393,12 +647,7 @@ Haml，(Slim) 优于 Erb. 所以不要期望在这里找到 Test::Unit, CSS 及 
   </header>
 
 
-  <div class="entry-content"><p>[Linux]Vim的NERDTree快捷键
-切换工作台和目录
-ctr+w+h  光标focus左侧树形目录，ctrl+w+l 光标focus右侧文件显示窗口。
-ctrl+w+w，光标自动在左右侧窗口切换</p>
-
-</div>
+  <div class="entry-content"></div>
   
   
     <footer>
@@ -463,8 +712,24 @@ ctrl+w+w，光标自动在左右侧窗口切换</p>
   <p>喜欢开源的东西, 爱折腾</p>
 </section>
 <section>
+  <h1>标签云</h1>
+    <span id="tag-cloud"><a href='/blog/categories/life' style='font-size: 120.0%'>life(1)</a> <a href='/blog/categories/linux' style='font-size: 120.0%'>linux(1)</a> <a href='/blog/categories/rails' style='font-size: 140.0%'>rails(2)</a> <a href='/blog/categories/ruby' style='font-size: 160.0%'>ruby(3)</a> <a href='/blog/categories/vim' style='font-size: 120.0%'>vim(1)</a> <a href='/blog/categories/zong-he' style='font-size: 120.0%'>综合(1)</a> </span>
+</section>
+<section>
   <h1>最近内容</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/08/20/zong-he/">我收藏的网址－－－实时更新</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/08/20/rails3-zai-xian-wen-dang-%5Bnil%5D%5Bnil%5Dshi-shi-geng-xin/">Rails3 在线文档－－实时更新</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/08/20/linux-xi-tong-ming-ling-da-quan/">Linux 系统命令大全</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2013/03/28/ruby-jin-jie/">Ruby 进阶</a>
@@ -472,18 +737,6 @@ ctrl+w+w，光标自动在左右侧窗口切换</p>
     
       <li class="post">
         <a href="/blog/2013/03/28/ruby-bian-cheng-feng-ge-jie-shao/">Ruby 编程风格介绍</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/03/28/rails-feng-ge-zhi-dao/">Rails 风格指导</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/03/28/nokogirizhua-qu-shi-bai-hou-zhong-shi-dai-ma/">Nokogiri抓取失败后重试代码</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/02/19/vimcao-zuo-ji-qiao/">Vim操作技巧</a>
       </li>
     
   </ul>

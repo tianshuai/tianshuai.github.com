@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 综合 | TianShuai &prime;s Blog]]></title>
+  <link href="http://tianshuai.github.io/blog/categories/zong-he/atom.xml" rel="self"/>
+  <link href="http://tianshuai.github.io/"/>
+  <updated>2013-08-20T20:02:11+08:00</updated>
+  <id>http://tianshuai.github.io/</id>
+  <author>
+    <name><![CDATA[TianShuai]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[我收藏的网址－－－实时更新]]></title>
+    <link href="http://tianshuai.github.io/blog/2013/08/20/zong-he/"/>
+    <updated>2013-08-20T19:56:00+08:00</updated>
+    <id>http://tianshuai.github.io/blog/2013/08/20/zong-he</id>
+    <content type="html"><![CDATA[<p>在线js测试:
+<a href="http://www.ostools.net/jsbin#source">http://www.ostools.net/jsbin#source</a></p>
+
+<p>在线Markdown测试:
+<a href="http://johnmacfarlane.net/pandoc/try/">http://johnmacfarlane.net/pandoc/try/</a></p>
+
+<p>rails插件集合:
+<a href="http://blog.163.com/prevBlogPerma.do?host=ebenz&amp;srl=14492363520114145023611&amp;mode=prev">http://blog.163.com/prevBlogPerma.do?host=ebenz&amp;srl=14492363520114145023611&amp;mode=prev</a></p>
+
+<p>blogs.ejb.cc
+<a href="http://blogs.ejb.cc">http://blogs.ejb.cc</a></p>
+
+<p>候西阳的博客:
+<a href="http://houxiyang.com/archives/68/">http://houxiyang.com/archives/68/</a></p>
+
+<p>李骥平技术博客:
+<a href="http://fsjoy.blog.51cto.com/318484/d-3">http://fsjoy.blog.51cto.com/318484/d-3</a></p>
+
+<p>剑诩的学习笔记:
+<a href="http://phsblog.sinaapp.com/index.php/Index/index">http://phsblog.sinaapp.com/index.php/Index/index</a></p>
+
+<p>用Sinatra编写博客应用:
+<a href="http://kb.cnblogs.com/page/89619/">http://kb.cnblogs.com/page/89619/</a></p>
+
+<p>sinatra中文站:
+<a href="http://www.sinatrarb.com/intro-zh.html">http://www.sinatrarb.com/intro-zh.html</a></p>
+]]></content>
+  </entry>
+  
+</feed>

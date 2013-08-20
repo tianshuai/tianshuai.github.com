@@ -4,7 +4,7 @@
   <title><![CDATA[TianShuai &prime;s Blog]]></title>
   <link href="http://tianshuai.github.io/atom.xml" rel="self"/>
   <link href="http://tianshuai.github.io/"/>
-  <updated>2013-08-19T18:49:24+08:00</updated>
+  <updated>2013-08-20T20:02:11+08:00</updated>
   <id>http://tianshuai.github.io/</id>
   <author>
     <name><![CDATA[TianShuai]]></name>
@@ -12,6 +12,933 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[我收藏的网址－－－实时更新]]></title>
+    <link href="http://tianshuai.github.io/blog/2013/08/20/zong-he/"/>
+    <updated>2013-08-20T19:56:00+08:00</updated>
+    <id>http://tianshuai.github.io/blog/2013/08/20/zong-he</id>
+    <content type="html"><![CDATA[<p>在线js测试:
+<a href="http://www.ostools.net/jsbin#source">http://www.ostools.net/jsbin#source</a></p>
+
+<p>在线Markdown测试:
+<a href="http://johnmacfarlane.net/pandoc/try/">http://johnmacfarlane.net/pandoc/try/</a></p>
+
+<p>rails插件集合:
+<a href="http://blog.163.com/prevBlogPerma.do?host=ebenz&amp;srl=14492363520114145023611&amp;mode=prev">http://blog.163.com/prevBlogPerma.do?host=ebenz&amp;srl=14492363520114145023611&amp;mode=prev</a></p>
+
+<p>blogs.ejb.cc
+<a href="http://blogs.ejb.cc">http://blogs.ejb.cc</a></p>
+
+<p>候西阳的博客:
+<a href="http://houxiyang.com/archives/68/">http://houxiyang.com/archives/68/</a></p>
+
+<p>李骥平技术博客:
+<a href="http://fsjoy.blog.51cto.com/318484/d-3">http://fsjoy.blog.51cto.com/318484/d-3</a></p>
+
+<p>剑诩的学习笔记:
+<a href="http://phsblog.sinaapp.com/index.php/Index/index">http://phsblog.sinaapp.com/index.php/Index/index</a></p>
+
+<p>用Sinatra编写博客应用:
+<a href="http://kb.cnblogs.com/page/89619/">http://kb.cnblogs.com/page/89619/</a></p>
+
+<p>sinatra中文站:
+<a href="http://www.sinatrarb.com/intro-zh.html">http://www.sinatrarb.com/intro-zh.html</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[rails3 在线文档－－实时更新]]></title>
+    <link href="http://tianshuai.github.io/blog/2013/08/20/rails3-zai-xian-wen-dang-%5Bnil%5D%5Bnil%5Dshi-shi-geng-xin/"/>
+    <updated>2013-08-20T19:21:00+08:00</updated>
+    <id>http://tianshuai.github.io/blog/2013/08/20/rails3-zai-xian-wen-dang-[nil][nil]shi-shi-geng-xin</id>
+    <content type="html"><![CDATA[<ul>
+<li>是否是开发环境?</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">if</span> <span class="no">Rails</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">development?</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>智能判断单复数</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">pluralize</span><span class="p">(</span><span class="n">count</span><span class="p">,</span> <span class="s2">&quot;error&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><p>上传文件名的话，用 userid + fileid + timestamp 取 sha1 就能解决唯一性了</p></li>
+<li><p>把数字转换为字节(用于精确判断文件或图片大小)</p></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="mi">1</span><span class="o">.</span><span class="n">kilobyte</span> <span class="c1">#千字节</span>
+</span><span class='line'><span class="c1">#=&gt;1024</span>
+</span><span class='line'><span class="mi">5</span><span class="o">.</span><span class="n">megabytes</span>  <span class="c1">#上传文件限制字节数５Ｍ</span>
+</span><span class='line'><span class="c1">#=&gt; 5242880</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>判断表单是新建还是修改的</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">User</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">new_record?</span>
+</span><span class='line'><span class="c1">#=&gt;true</span>
+</span><span class='line'><span class="no">User</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">new_record?</span>
+</span><span class='line'><span class="c1">#=&gt;false</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<!--more-->
+
+
+<ul>
+<li>友好显示时间</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">time_ago_in_words</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">created_at</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>在GET方法中使用stale?语句</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">show</span>
+</span><span class='line'>  <span class="vi">@list_item</span> <span class="o">=</span> <span class="vi">@list</span><span class="o">.</span><span class="n">list_items</span><span class="o">.</span><span class="n">find</span><span class="p">(</span> <span class="n">params</span><span class="o">[</span> <span class="ss">:id</span> <span class="o">]</span> <span class="p">)</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">stale?</span><span class="p">(</span> <span class="ss">:etag</span> <span class="o">=&gt;</span> <span class="vi">@list_item</span><span class="p">,</span> <span class="ss">:last_modified</span> <span class="o">=&gt;</span> <span class="vi">@list_item</span><span class="o">.</span><span class="n">updated_at</span><span class="o">.</span><span class="n">utc</span><span class="p">,</span> <span class="ss">:public</span> <span class="o">=&gt;</span> <span class="kp">true</span> <span class="p">)</span>
+</span><span class='line'>    <span class="n">respond_with</span><span class="p">(</span> <span class="vi">@list_item</span> <span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="cm">=begin</span>
+</span><span class='line'><span class="cm">stale?语句会通过响应发送回一个etag与一个last_modified日期。如果下一个请求是相同的URL，</span>
+</span><span class='line'><span class="cm">那么浏览器会把这个etag和last_modified日期发送给服务器。然后stale?方法会对这两个参数进行分析，</span>
+</span><span class='line'><span class="cm">如果内容相同，则返回304，如果出现参数值不同，那么说明有新的内容，这样返回200。</span>
+</span><span class='line'><span class="cm">=end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>成生项目时如果用mongoid则：</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">rails</span> <span class="kp">new</span> <span class="n">app_name</span> <span class="o">--</span><span class="n">skip</span><span class="o">-</span><span class="n">active</span><span class="o">-</span><span class="n">record</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>解析html</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">raw</span> <span class="p">(</span><span class="s1">&#39;string&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="s1">&#39;string&#39;</span><span class="o">.</span><span class="n">html_safe</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>rails3日期选择框:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;</span><span class="sx">%= date_select :variable, :attribute, options %&gt;</span>
+</span><span class='line'><span class="sx">&lt;%=</span> <span class="n">datetime_select</span> <span class="ss">:variable</span><span class="p">,</span> <span class="ss">:attribute</span><span class="p">,</span> <span class="n">options</span> <span class="o">%&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>格式化字符串</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="s2">&quot;Person&quot;</span><span class="o">.</span><span class="n">tableize</span>      <span class="c1"># =&gt; &quot;people&quot;</span>
+</span><span class='line'><span class="s2">&quot;Invoice&quot;</span><span class="o">.</span><span class="n">tableize</span>     <span class="c1"># =&gt; &quot;invoices&quot;</span>
+</span><span class='line'><span class="s2">&quot;InvoiceLine&quot;</span><span class="o">.</span><span class="n">tableize</span> <span class="c1"># =&gt; &quot;invoice_lines&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[linux 系统命令大全]]></title>
+    <link href="http://tianshuai.github.io/blog/2013/08/20/linux-xi-tong-ming-ling-da-quan/"/>
+    <updated>2013-08-20T19:04:00+08:00</updated>
+    <id>http://tianshuai.github.io/blog/2013/08/20/linux-xi-tong-ming-ling-da-quan</id>
+    <content type="html"><![CDATA[<h4>系统信息</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>arch 显示机器的处理器架构(1) 
+</span><span class='line'>uname -m 显示机器的处理器架构(2) 
+</span><span class='line'>uname -r 显示正在使用的内核版本 
+</span><span class='line'>dmidecode -q 显示硬件系统部件 - (SMBIOS / DMI) 
+</span><span class='line'>hdparm -i /dev/hda 罗列一个磁盘的架构特性 
+</span><span class='line'>hdparm -tT /dev/sda 在磁盘上执行测试性读取操作 
+</span><span class='line'>cat /proc/cpuinfo 显示CPU info的信息 
+</span><span class='line'>cat /proc/interrupts 显示中断 
+</span><span class='line'>cat /proc/meminfo 校验内存使用 
+</span><span class='line'>cat /proc/swaps 显示哪些swap被使用 
+</span><span class='line'>cat /proc/version 显示内核的版本 
+</span><span class='line'>cat /proc/net/dev 显示网络适配器及统计 
+</span><span class='line'>cat /proc/mounts 显示已加载的文件系统 
+</span><span class='line'>lspci -tv 罗列 PCI 设备 
+</span><span class='line'>lsusb -tv 显示 USB 设备 
+</span><span class='line'>date 显示系统日期 
+</span><span class='line'>cal 2007 显示2007年的日历表 
+</span><span class='line'>date 041217002007.00 设置日期和时间 - 月日时分年.秒 
+</span><span class='line'>clock -w 将时间修改保存到 BIOS </span></code></pre></td></tr></table></div></figure>
+
+
+<h4>关机 (系统的关机、重启以及登出 )</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>shutdown -h now 关闭系统(1) 
+</span><span class='line'>init 0 关闭系统(2) 
+</span><span class='line'>telinit 0 关闭系统(3) 
+</span><span class='line'>shutdown -h hours:minutes & 按预定时间关闭系统 
+</span><span class='line'>shutdown -c 取消按预定时间关闭系统 
+</span><span class='line'>shutdown -r now 重启(1) 
+</span><span class='line'>reboot 重启(2) 
+</span><span class='line'>logout 注销 </span></code></pre></td></tr></table></div></figure>
+
+
+<!--more-->
+
+
+<h4>文件和目录</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd /home 进入 '/ home' 目录' 
+</span><span class='line'>cd .. 返回上一级目录 
+</span><span class='line'>cd ../.. 返回上两级目录 
+</span><span class='line'>cd 进入个人的主目录 
+</span><span class='line'>cd ~user1 进入个人的主目录 
+</span><span class='line'>cd - 返回上次所在的目录 
+</span><span class='line'>pwd 显示工作路径 
+</span><span class='line'>ls 查看目录中的文件 
+</span><span class='line'>ls -F 查看目录中的文件 
+</span><span class='line'>ls -l 显示文件和目录的详细资料 
+</span><span class='line'>ls -a 显示隐藏文件 
+</span><span class='line'>ls *[0-9]* 显示包含数字的文件名和目录名 
+</span><span class='line'>tree 显示文件和目录由根目录开始的树形结构(1) 
+</span><span class='line'>lstree 显示文件和目录由根目录开始的树形结构(2) 
+</span><span class='line'>mkdir dir1 创建一个叫做 'dir1' 的目录' 
+</span><span class='line'>mkdir dir1 dir2 同时创建两个目录 
+</span><span class='line'>mkdir -p /tmp/dir1/dir2 创建一个目录树 
+</span><span class='line'>rm -f file1 删除一个叫做 'file1' 的文件' 
+</span><span class='line'>rmdir dir1 删除一个叫做 'dir1' 的目录' 
+</span><span class='line'>rm -rf dir1 删除一个叫做 'dir1' 的目录并同时删除其内容 
+</span><span class='line'>rm -rf dir1 dir2 同时删除两个目录及它们的内容 
+</span><span class='line'>mv dir1 new_dir 重命名/移动 一个目录 
+</span><span class='line'>cp file1 file2 复制一个文件 
+</span><span class='line'>cp dir/* . 复制一个目录下的所有文件到当前工作目录 
+</span><span class='line'>cp -a /tmp/dir1 . 复制一个目录到当前工作目录 
+</span><span class='line'>cp -a dir1 dir2 复制一个目录 
+</span><span class='line'>ln -s file1 lnk1 创建一个指向文件或目录的软链接 
+</span><span class='line'>ln file1 lnk1 创建一个指向文件或目录的物理链接 
+</span><span class='line'>touch -t 0712250000 file1 修改一个文件或目录的时间戳 - (YYMMDDhhmm) 
+</span><span class='line'>file file1 outputs the mime type of the file as text 
+</span><span class='line'>iconv -l 列出已知的编码 
+</span><span class='line'>iconv -f fromEncoding -t toEncoding inputFile &gt; outputFile creates anew from the given input file by assuming it is encoded in fromEncodingand converting it to toEncoding. 
+</span><span class='line'>find . -maxdepth 1 -name *.jpg -print -exec convert "{}" -resize 80x60"thumbs/{}" \; batch resize files in the current directory and send themto a thumbnails directory (requires convert from Imagemagick) </span></code></pre></td></tr></table></div></figure>
+
+
+<h4>文件搜索</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>find / -name file1 从 '/' 开始进入根文件系统搜索文件和目录 
+</span><span class='line'>find / -user user1 搜索属于用户 'user1' 的文件和目录 
+</span><span class='line'>find /home/user1 -name \*.bin 在目录 '/ home/user1' 中搜索带有'.bin' 结尾的文件 
+</span><span class='line'>find /usr/bin -type f -atime  100 搜索在过去100天内未被使用过的执行文件 
+</span><span class='line'>find /usr/bin -type f -mtime -10 搜索在10天内被创建或者修改过的文件 
+</span><span class='line'>find / -name \*.rpm -exec chmod 755 '{}' \; 搜索以 '.rpm' 结尾的文件并定义其权限 
+</span><span class='line'>find / -xdev -name \*.rpm 搜索以 '.rpm' 结尾的文件，忽略光驱、捷盘等可移动设备 
+</span><span class='line'>locate \*.ps 寻找以 '.ps' 结尾的文件 - 先运行 'updatedb' 命令 
+</span><span class='line'>whereis halt 显示一个二进制文件、源码或man的位置 
+</span><span class='line'>which halt 显示一个二进制文件或可执行文件的完整路径 </span></code></pre></td></tr></table></div></figure>
+
+
+<h4>挂载一个文件系统</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>mount /dev/hda2 /mnt/hda2 挂载一个叫做hda2的盘 - 确定目录 '/ mnt/hda2' 已经存在 
+</span><span class='line'>umount /dev/hda2 卸载一个叫做hda2的盘 - 先从挂载点 '/ mnt/hda2' 退出 
+</span><span class='line'>fuser -km /mnt/hda2 当设备繁忙时强制卸载 
+</span><span class='line'>umount -n /mnt/hda2 运行卸载操作而不写入 /etc/mtab 文件- 当文件为只读或当磁盘写满时非常有用 
+</span><span class='line'>mount /dev/fd0 /mnt/floppy 挂载一个软盘 
+</span><span class='line'>mount /dev/cdrom /mnt/cdrom 挂载一个cdrom或dvdrom 
+</span><span class='line'>mount /dev/hdc /mnt/cdrecorder 挂载一个cdrw或dvdrom 
+</span><span class='line'>mount /dev/hdb /mnt/cdrecorder 挂载一个cdrw或dvdrom 
+</span><span class='line'>mount -o loop file.iso /mnt/cdrom 挂载一个文件或ISO镜像文件 
+</span><span class='line'>mount -t vfat /dev/hda5 /mnt/hda5 挂载一个Windows FAT32文件系统 
+</span><span class='line'>mount /dev/sda1 /mnt/usbdisk 挂载一个usb 捷盘或闪存设备 
+</span><span class='line'>mount -t smbfs -o username=user,password=pass //WinClient/share /mnt/share 挂载一个windows网络共享 </span></code></pre></td></tr></table></div></figure>
+
+
+<h4>磁盘空间</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>df -h 显示已经挂载的分区列表 
+</span><span class='line'>ls -lSr |more 以尺寸大小排列文件和目录 
+</span><span class='line'>du -sh dir1 估算目录 'dir1' 已经使用的磁盘空间' 
+</span><span class='line'>du -sk * | sort -rn 以容量大小为依据依次显示文件和目录的大小 
+</span><span class='line'>rpm -q -a --qf '{SIZE}t%{NAME}n' | sort -k1,1n 以大小为依据依次显示已安装的rpm包所使用的空间 (fedora, redhat类系统) 
+</span><span class='line'>dpkg-query -W -f='${Installed-Size;10}t${Package}n' | sort -k1,1n 以大小为依据显示已安装的deb包所使用的空间 (ubuntu, debian类系统) </span></code></pre></td></tr></table></div></figure>
+
+
+<h4>用户和群组</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>groupadd group_name 创建一个新用户组 
+</span><span class='line'>groupdel group_name 删除一个用户组 
+</span><span class='line'>groupmod -n new_group_name old_group_name 重命名一个用户组 
+</span><span class='line'>useradd -c "Name Surname " -g admin -d /home/user1 -s /bin/bash user1 创建一个属于 "admin" 用户组的用户 
+</span><span class='line'>useradd user1 创建一个新用户 
+</span><span class='line'>userdel -r user1 删除一个用户 ( '-r' 排除主目录) 
+</span><span class='line'>usermod -c "User FTP" -g system -d /ftp/user1 -s /bin/nologin user1 修改用户属性 
+</span><span class='line'>passwd 修改口令 
+</span><span class='line'>passwd user1 修改一个用户的口令 (只允许root执行) 
+</span><span class='line'>chage -E 2005-12-31 user1 设置用户口令的失效期限 
+</span><span class='line'>pwck 检查 '/etc/passwd' 的文件格式和语法修正以及存在的用户 
+</span><span class='line'>grpck 检查 '/etc/passwd' 的文件格式和语法修正以及存在的群组 
+</span><span class='line'>newgrp group_name 登陆进一个新的群组以改变新创建文件的预设群组 </span></code></pre></td></tr></table></div></figure>
+
+
+<h4>文件的权限 &ndash; 使用 &ldquo; &rdquo; 设置权限，使用 &ldquo;&ndash;&rdquo; 用于取消</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ls -lh 显示权限 
+</span><span class='line'>ls /tmp | pr -T5 -W$COLUMNS 将终端划分成5栏显示 
+</span><span class='line'>chmod ugo rwx directory1 设置目录的所有人(u)、群组(g)以及其他人(o)以读（r ）、写(w)和执行(x)的权限 
+</span><span class='line'>chmod go-rwx directory1 删除群组(g)与其他人(o)对目录的读写执行权限 
+</span><span class='line'>chown user1 file1 改变一个文件的所有人属性 
+</span><span class='line'>chown -R user1 directory1 改变一个目录的所有人属性并同时改变改目录下所有文件的属性 
+</span><span class='line'>chgrp group1 file1 改变文件的群组 
+</span><span class='line'>chown user1:group1 file1 改变一个文件的所有人和群组属性 
+</span><span class='line'>find / -perm -u s 罗列一个系统中所有使用了SUID控制的文件 
+</span><span class='line'>chmod u s /bin/file1 设置一个二进制文件的 SUID 位 - 运行该文件的用户也被赋予和所有者同样的权限 
+</span><span class='line'>chmod u-s /bin/file1 禁用一个二进制文件的 SUID位 
+</span><span class='line'>chmod g s /home/public 设置一个目录的SGID 位 - 类似SUID ，不过这是针对目录的 
+</span><span class='line'>chmod g-s /home/public 禁用一个目录的 SGID 位 
+</span><span class='line'>chmod o t /home/public 设置一个文件的 STIKY 位 - 只允许合法所有人删除文件 
+</span><span class='line'>chmod o-t /home/public 禁用一个目录的 STIKY 位 </span></code></pre></td></tr></table></div></figure>
+
+
+<h4>文件的特殊属性 &ndash; 使用 &ldquo; &rdquo; 设置权限，使用 &ldquo;&ndash;&rdquo; 用于取消</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>chattr  a file1 只允许以追加方式读写文件 
+</span><span class='line'>chattr  c file1 允许这个文件能被内核自动压缩/解压 
+</span><span class='line'>chattr  d file1 在进行文件系统备份时，dump程序将忽略这个文件 
+</span><span class='line'>chattr  i file1 设置成不可变的文件，不能被删除、修改、重命名或者链接 
+</span><span class='line'>chattr  s file1 允许一个文件被安全地删除 
+</span><span class='line'>chattr  S file1 一旦应用程序对这个文件执行了写操作，使系统立刻把修改的结果写到磁盘 
+</span><span class='line'>chattr  u file1 若文件被删除，系统会允许你在以后恢复这个被删除的文件 
+</span><span class='line'>lsattr 显示特殊的属性 </span></code></pre></td></tr></table></div></figure>
+
+
+<h4>打包和压缩文件</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>bunzip2 file1.bz2 解压一个叫做 'file1.bz2'的文件 
+</span><span class='line'>bzip2 file1 压缩一个叫做 'file1' 的文件 
+</span><span class='line'>gunzip file1.gz 解压一个叫做 'file1.gz'的文件 
+</span><span class='line'>gzip file1 压缩一个叫做 'file1'的文件 
+</span><span class='line'>gzip -9 file1 最大程度压缩 
+</span><span class='line'>rar a file1.rar test_file 创建一个叫做 'file1.rar' 的包 
+</span><span class='line'>rar a file1.rar file1 file2 dir1 同时压缩 'file1', 'file2' 以及目录 'dir1' 
+</span><span class='line'>rar x file1.rar 解压rar包 
+</span><span class='line'>unrar x file1.rar 解压rar包 
+</span><span class='line'>tar -cvf archive.tar file1 创建一个非压缩的 tarball 
+</span><span class='line'>tar -cvf archive.tar file1 file2 dir1 创建一个包含了 'file1', 'file2' 以及 'dir1'的档案文件 
+</span><span class='line'>tar -tf archive.tar 显示一个包中的内容 
+</span><span class='line'>tar -xvf archive.tar 释放一个包 
+</span><span class='line'>tar -xvf archive.tar -C /tmp 将压缩包释放到 /tmp目录下 
+</span><span class='line'>tar -cvfj archive.tar.bz2 dir1 创建一个bzip2格式的压缩包 
+</span><span class='line'>tar -xvfj archive.tar.bz2 解压一个bzip2格式的压缩包 
+</span><span class='line'>tar -cvfz archive.tar.gz dir1 创建一个gzip格式的压缩包 
+</span><span class='line'>tar -xvfz archive.tar.gz 解压一个gzip格式的压缩包 
+</span><span class='line'>zip file1.zip file1 创建一个zip格式的压缩包 
+</span><span class='line'>zip -r file1.zip file1 file2 dir1 将几个文件和目录同时压缩成一个zip格式的压缩包 
+</span><span class='line'>unzip file1.zip 解压一个zip格式压缩包 </span></code></pre></td></tr></table></div></figure>
+
+
+<h4>RPM 包 &ndash; （Fedora, Redhat及类似系统）</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rpm -ivh package.rpm 安装一个rpm包 
+</span><span class='line'>rpm -ivh --nodeeps package.rpm 安装一个rpm包而忽略依赖关系警告 
+</span><span class='line'>rpm -U package.rpm 更新一个rpm包但不改变其配置文件 
+</span><span class='line'>rpm -F package.rpm 更新一个确定已经安装的rpm包 
+</span><span class='line'>rpm -e package_name.rpm 删除一个rpm包 
+</span><span class='line'>rpm -qa 显示系统中所有已经安装的rpm包 
+</span><span class='line'>rpm -qa | grep httpd 显示所有名称中包含 "httpd" 字样的rpm包 
+</span><span class='line'>rpm -qi package_name 获取一个已安装包的特殊信息 
+</span><span class='line'>rpm -qg "System Environment/Daemons" 显示一个组件的rpm包 
+</span><span class='line'>rpm -ql package_name 显示一个已经安装的rpm包提供的文件列表 
+</span><span class='line'>rpm -qc package_name 显示一个已经安装的rpm包提供的配置文件列表 
+</span><span class='line'>rpm -q package_name --whatrequires 显示与一个rpm包存在依赖关系的列表 
+</span><span class='line'>rpm -q package_name --whatprovides 显示一个rpm包所占的体积 
+</span><span class='line'>rpm -q package_name --scripts 显示在安装/删除期间所执行的脚本l 
+</span><span class='line'>rpm -q package_name --changelog 显示一个rpm包的修改历史 
+</span><span class='line'>rpm -qf /etc/httpd/conf/httpd.conf 确认所给的文件由哪个rpm包所提供 
+</span><span class='line'>rpm -qp package.rpm -l 显示由一个尚未安装的rpm包提供的文件列表 
+</span><span class='line'>rpm --import /media/cdrom/RPM-GPG-KEY 导入公钥数字证书 
+</span><span class='line'>rpm --checksig package.rpm 确认一个rpm包的完整性 
+</span><span class='line'>rpm -qa gpg-pubkey 确认已安装的所有rpm包的完整性 
+</span><span class='line'>rpm -V package_name 检查文件尺寸、 许可、类型、所有者、群组、MD5检查以及最后修改时间 
+</span><span class='line'>rpm -Va 检查系统中所有已安装的rpm包- 小心使用 
+</span><span class='line'>rpm -Vp package.rpm 确认一个rpm包还未安装 
+</span><span class='line'>rpm2cpio package.rpm | cpio --extract --make-directories *bin* 从一个rpm包运行可执行文件 
+</span><span class='line'>rpm -ivh /usr/src/redhat/RPMS/`arch`/package.rpm 从一个rpm源码安装一个构建好的包 
+</span><span class='line'>rpmbuild --rebuild package_name.src.rpm 从一个rpm源码构建一个 rpm 包 </span></code></pre></td></tr></table></div></figure>
+
+
+<h4>YUM 软件包升级器 &ndash; （Fedora, RedHat及类似系统）</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>yum install package_name 下载并安装一个rpm包 
+</span><span class='line'>yum localinstall package_name.rpm 将安装一个rpm包，使用你自己的软件仓库为你解决所有依赖关系 
+</span><span class='line'>yum update package_name.rpm 更新当前系统中所有安装的rpm包 
+</span><span class='line'>yum update package_name 更新一个rpm包 
+</span><span class='line'>yum remove package_name 删除一个rpm包 
+</span><span class='line'>yum list 列出当前系统中安装的所有包 
+</span><span class='line'>yum search package_name 在rpm仓库中搜寻软件包 
+</span><span class='line'>yum clean packages 清理rpm缓存删除下载的包 
+</span><span class='line'>yum clean headers 删除所有头文件 
+</span><span class='line'>yum clean all 删除所有缓存的包和头文件 </span></code></pre></td></tr></table></div></figure>
+
+
+<h4>DEB 包 (Debian, Ubuntu 以及类似系统)</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>dpkg -i package.deb 安装/更新一个 deb 包 
+</span><span class='line'>dpkg -r package_name 从系统删除一个 deb 包 
+</span><span class='line'>dpkg -l 显示系统中所有已经安装的 deb 包 
+</span><span class='line'>dpkg -l | grep httpd 显示所有名称中包含 "httpd" 字样的deb包 
+</span><span class='line'>dpkg -s package_name 获得已经安装在系统中一个特殊包的信息 
+</span><span class='line'>dpkg -L package_name 显示系统中已经安装的一个deb包所提供的文件列表 
+</span><span class='line'>dpkg --contents package.deb 显示尚未安装的一个包所提供的文件列表 
+</span><span class='line'>dpkg -S /bin/ping 确认所给的文件由哪个deb包提供 </span></code></pre></td></tr></table></div></figure>
+
+
+<h4>APT 软件工具 (Debian, Ubuntu 以及类似系统)</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>apt-get install package_name 安装/更新一个 deb 包 
+</span><span class='line'>apt-cdrom install package_name 从光盘安装/更新一个 deb 包 
+</span><span class='line'>apt-get update 升级列表中的软件包 
+</span><span class='line'>apt-get upgrade 升级所有已安装的软件 
+</span><span class='line'>apt-get remove package_name 从系统删除一个deb包 
+</span><span class='line'>apt-get check 确认依赖的软件仓库正确 
+</span><span class='line'>apt-get clean 从下载的软件包中清理缓存 
+</span><span class='line'>apt-cache search searched-package 返回包含所要搜索字符串的软件包名称 </span></code></pre></td></tr></table></div></figure>
+
+
+<h4>查看文件内容</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cat file1 从第一个字节开始正向查看文件的内容 
+</span><span class='line'>tac file1 从最后一行开始反向查看一个文件的内容 
+</span><span class='line'>more file1 查看一个长文件的内容 
+</span><span class='line'>less file1 类似于 'more' 命令，但是它允许在文件中和正向操作一样的反向操作 
+</span><span class='line'>head -2 file1 查看一个文件的前两行 
+</span><span class='line'>tail -2 file1 查看一个文件的最后两行 
+</span><span class='line'>tail -f /var/log/messages 实时查看被添加到一个文件中的内容 </span></code></pre></td></tr></table></div></figure>
+
+
+<h4>文本处理</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cat file1 file2 ... | command &lt;&gt; file1_in.txt_or_file1_out.txtgeneral syntax for text manipulation using PIPE, STDIN and STDOUT 
+</span><span class='line'>cat file1 | command( sed, grep, awk, grep, etc...) &gt; result.txt 合并一个文件的详细说明文本，并将简介写入一个新文件中 
+</span><span class='line'>cat file1 | command( sed, grep, awk, grep, etc...) &gt;&gt; result.txt 合并一个文件的详细说明文本，并将简介写入一个已有的文件中 
+</span><span class='line'>grep Aug /var/log/messages 在文件 '/var/log/messages'中查找关键词"Aug" 
+</span><span class='line'>grep ^Aug /var/log/messages 在文件 '/var/log/messages'中查找以"Aug"开始的词汇 
+</span><span class='line'>grep [0-9] /var/log/messages 选择 '/var/log/messages' 文件中所有包含数字的行 
+</span><span class='line'>grep Aug -R /var/log/* 在目录 '/var/log' 及随后的目录中搜索字符串"Aug" 
+</span><span class='line'>sed 's/stringa1/stringa2/g' example.txt 将example.txt文件中的 "string1" 替换成 "string2" 
+</span><span class='line'>sed '/^$/d' example.txt 从example.txt文件中删除所有空白行 
+</span><span class='line'>sed '/ *#/d; /^$/d' example.txt 从example.txt文件中删除所有注释和空白行 
+</span><span class='line'>echo 'esempio' | tr '[:lower:]' '[:upper:]' 合并上下单元格内容 
+</span><span class='line'>sed -e '1d' result.txt 从文件example.txt 中排除第一行 
+</span><span class='line'>sed -n '/stringa1/p' 查看只包含词汇 "string1"的行 
+</span><span class='line'>sed -e 's/ *$//' example.txt 删除每一行最后的空白字符 
+</span><span class='line'>sed -e 's/stringa1//g' example.txt 从文档中只删除词汇 "string1" 并保留剩余全部 
+</span><span class='line'>sed -n '1,5p;5q' example.txt 查看从第一行到第5行内容 
+</span><span class='line'>sed -n '5p;5q' example.txt 查看第5行 
+</span><span class='line'>sed -e 's/00*/0/g' example.txt 用单个零替换多个零 
+</span><span class='line'>cat -n file1 标示文件的行数 
+</span><span class='line'>cat example.txt | awk 'NR%2==1' 删除example.txt文件中的所有偶数行 
+</span><span class='line'>echo a b c | awk '{print $1}' 查看一行第一栏 
+</span><span class='line'>echo a b c | awk '{print $1,$3}' 查看一行的第一和第三栏 
+</span><span class='line'>paste file1 file2 合并两个文件或两栏的内容 
+</span><span class='line'>paste -d ' ' file1 file2 合并两个文件或两栏的内容，中间用" "区分 
+</span><span class='line'>sort file1 file2 排序两个文件的内容 
+</span><span class='line'>sort file1 file2 | uniq 取出两个文件的并集(重复的行只保留一份) 
+</span><span class='line'>sort file1 file2 | uniq -u 删除交集，留下其他的行 
+</span><span class='line'>sort file1 file2 | uniq -d 取出两个文件的交集(只留下同时存在于两个文件中的文件) 
+</span><span class='line'>comm -1 file1 file2 比较两个文件的内容只删除 'file1' 所包含的内容 
+</span><span class='line'>comm -2 file1 file2 比较两个文件的内容只删除 'file2' 所包含的内容 
+</span><span class='line'>comm -3 file1 file2 比较两个文件的内容只删除两个文件共有的部分 </span></code></pre></td></tr></table></div></figure>
+
+
+<h4>字符设置和文件格式转换</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>dos2unix filedos.txt fileunix.txt 将一个文本文件的格式从MSDOS转换成UNIX 
+</span><span class='line'>unix2dos fileunix.txt filedos.txt 将一个文本文件的格式从UNIX转换成MSDOS 
+</span><span class='line'>recode ..HTML &lt; page.txt &gt; page.html 将一个文本文件转换成html 
+</span><span class='line'>recode -l | more 显示所有允许的转换格式 </span></code></pre></td></tr></table></div></figure>
+
+
+<h4>文件系统分析</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>badblocks -v /dev/hda1 检查磁盘hda1上的坏磁块 
+</span><span class='line'>fsck /dev/hda1 修复/检查hda1磁盘上linux文件系统的完整性 
+</span><span class='line'>fsck.ext2 /dev/hda1 修复/检查hda1磁盘上ext2文件系统的完整性 
+</span><span class='line'>e2fsck /dev/hda1 修复/检查hda1磁盘上ext2文件系统的完整性 
+</span><span class='line'>e2fsck -j /dev/hda1 修复/检查hda1磁盘上ext3文件系统的完整性 
+</span><span class='line'>fsck.ext3 /dev/hda1 修复/检查hda1磁盘上ext3文件系统的完整性 
+</span><span class='line'>fsck.vfat /dev/hda1 修复/检查hda1磁盘上fat文件系统的完整性 
+</span><span class='line'>fsck.msdos /dev/hda1 修复/检查hda1磁盘上dos文件系统的完整性 
+</span><span class='line'>dosfsck /dev/hda1 修复/检查hda1磁盘上dos文件系统的完整性 </span></code></pre></td></tr></table></div></figure>
+
+
+<h4>初始化一个文件系统</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>mkfs /dev/hda1 在hda1分区创建一个文件系统 
+</span><span class='line'>mke2fs /dev/hda1 在hda1分区创建一个linux ext2的文件系统 
+</span><span class='line'>mke2fs -j /dev/hda1 在hda1分区创建一个linux ext3(日志型)的文件系统 
+</span><span class='line'>mkfs -t vfat 32 -F /dev/hda1 创建一个 FAT32 文件系统 
+</span><span class='line'>fdformat -n /dev/fd0 格式化一个软盘 
+</span><span class='line'>mkswap /dev/hda3 创建一个swap文件系统 </span></code></pre></td></tr></table></div></figure>
+
+
+<h4>SWAP文件系统</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>mkswap /dev/hda3 创建一个swap文件系统 
+</span><span class='line'>swapon /dev/hda3 启用一个新的swap文件系统 
+</span><span class='line'>swapon /dev/hda2 /dev/hdb3 启用两个swap分区 </span></code></pre></td></tr></table></div></figure>
+
+
+<h4>备份</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>dump -0aj -f /tmp/home0.bak /home 制作一个 '/home' 目录的完整备份 
+</span><span class='line'>dump -1aj -f /tmp/home0.bak /home 制作一个 '/home' 目录的交互式备份 
+</span><span class='line'>restore -if /tmp/home0.bak 还原一个交互式备份 
+</span><span class='line'>rsync -rogpav --delete /home /tmp 同步两边的目录 
+</span><span class='line'>rsync -rogpav -e ssh --delete /home ip_address:/tmp 通过SSH通道rsync 
+</span><span class='line'>rsync -az -e ssh --delete ip_addr:/home/public /home/local 通过ssh和压缩将一个远程目录同步到本地目录 
+</span><span class='line'>rsync -az -e ssh --delete /home/local ip_addr:/home/public 通过ssh和压缩将本地目录同步到远程目录 
+</span><span class='line'>dd bs=1M if=/dev/hda | gzip | ssh user@ip_addr 'dd of=hda.gz' 通过ssh在远程主机上执行一次备份本地磁盘的操作 
+</span><span class='line'>dd if=/dev/sda of=/tmp/file1 备份磁盘内容到一个文件 
+</span><span class='line'>tar -Puf backup.tar /home/user 执行一次对 '/home/user' 目录的交互式备份操作 
+</span><span class='line'>( cd /tmp/local/ && tar c . ) | ssh -C user@ip_addr 'cd /home/share/ && tar x -p' 通过ssh在远程目录中复制一个目录内容 
+</span><span class='line'>( tar c /home ) | ssh -C user@ip_addr 'cd /home/backup-home && tar x -p' 通过ssh在远程目录中复制一个本地目录 
+</span><span class='line'>tar cf - . | (cd /tmp/backup ; tar xf - ) 本地将一个目录复制到另一个地方，保留原有权限及链接 
+</span><span class='line'>find /home/user1 -name '*.txt' | xargs cp -av --target-directory=/home/backup/ --parents 从一个目录查找并复制所有以 '.txt' 结尾的文件到另一个目录 
+</span><span class='line'>find /var/log -name '*.log' | tar cv --files-from=- | bzip2 &gt; log.tar.bz2 查找所有以 '.log' 结尾的文件并做成一个bzip包 
+</span><span class='line'>dd if=/dev/hda of=/dev/fd0 bs=512 count=1 做一个将 MBR (Master Boot Record)内容复制到软盘的动作 
+</span><span class='line'>dd if=/dev/fd0 of=/dev/hda bs=512 count=1 从已经保存到软盘的备份中恢复MBR内容 </span></code></pre></td></tr></table></div></figure>
+
+
+<h4>光盘</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cdrecord -v gracetime=2 dev=/dev/cdrom -eject blank=fast -force 清空一个可复写的光盘内容 
+</span><span class='line'>mkisofs /dev/cdrom &gt; cd.iso 在磁盘上创建一个光盘的iso镜像文件 
+</span><span class='line'>mkisofs /dev/cdrom | gzip &gt; cd_iso.gz 在磁盘上创建一个压缩了的光盘iso镜像文件 
+</span><span class='line'>mkisofs -J -allow-leading-dots -R -V "Label CD" -iso-level 4 -o ./cd.iso data_cd 创建一个目录的iso镜像文件 
+</span><span class='line'>cdrecord -v dev=/dev/cdrom cd.iso 刻录一个ISO镜像文件 
+</span><span class='line'>gzip -dc cd_iso.gz | cdrecord dev=/dev/cdrom - 刻录一个压缩了的ISO镜像文件 
+</span><span class='line'>mount -o loop cd.iso /mnt/iso 挂载一个ISO镜像文件 
+</span><span class='line'>cd-paranoia -B 从一个CD光盘转录音轨到 wav 文件中 
+</span><span class='line'>cd-paranoia -- "-3" 从一个CD光盘转录音轨到 wav 文件中（参数-3） 
+</span><span class='line'>cdrecord --scanbus 扫描总线以识别scsi通道 
+</span><span class='line'>dd if=/dev/hdc | md5sum 校验一个设备的md5sum编码，例如一张 CD </span></code></pre></td></tr></table></div></figure>
+
+
+<h4>网络 &ndash; （以太网和WIFI无线）</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ifconfig eth0 显示一个以太网卡的配置 
+</span><span class='line'>ifup eth0 启用一个 'eth0' 网络设备 
+</span><span class='line'>ifdown eth0 禁用一个 'eth0' 网络设备 
+</span><span class='line'>ifconfig eth0 192.168.1.1 netmask 255.255.255.0 控制IP地址 
+</span><span class='line'>ifconfig eth0 promisc 设置 'eth0' 成混杂模式以嗅探数据包 (sniffing) 
+</span><span class='line'>dhclient eth0 以dhcp模式启用 'eth0' 
+</span><span class='line'>route -n show routing table 
+</span><span class='line'>route add -net 0/0 gw IP_Gateway configura default gateway 
+</span><span class='line'>route add -net 192.168.0.0 netmask 255.255.0.0 gw 192.168.1.1 configure static route to reach network '192.168.0.0/16' 
+</span><span class='line'>route del 0/0 gw IP_gateway remove static route 
+</span><span class='line'>echo "1" &gt; /proc/sys/net/ipv4/ip_forward activate ip routing 
+</span><span class='line'>hostname show hostname of system 
+</span><span class='line'>host www.example.com lookup hostname to resolve name to ip address and viceversa(1) 
+</span><span class='line'>nslookup www.example.com lookup hostname to resolve name to ip address and viceversa(2) 
+</span><span class='line'>ip link show show link status of all interfaces 
+</span><span class='line'>mii-tool eth0 show link status of 'eth0' 
+</span><span class='line'>ethtool eth0 show statistics of network card 'eth0' 
+</span><span class='line'>netstat -tup show all active network connections and their PID 
+</span><span class='line'>netstat -tupl show all network services listening on the system and their PID 
+</span><span class='line'>tcpdump tcp port 80 show all HTTP traffic 
+</span><span class='line'>iwlist scan show wireless networks 
+</span><span class='line'>iwconfig eth1 show configuration of a wireless network card 
+</span><span class='line'>hostname show hostname 
+</span><span class='line'>host www.example.com lookup hostname to resolve name to ip address and viceversa 
+</span><span class='line'>nslookup www.example.com lookup hostname to resolve name to ip address and viceversa 
+</span><span class='line'>whois www.example.com lookup on Whois database 
+</span><span class='line'>
+</span><span class='line'>GO TOP INDEX ^ 
+</span><span class='line'>Microsoft Windows networks (SAMBA) 
+</span><span class='line'>nbtscan ip_addr netbios name resolution 
+</span><span class='line'>nmblookup -A ip_addr netbios name resolution 
+</span><span class='line'>smbclient -L ip_addr/hostname show remote shares of a windows host 
+</span><span class='line'>smbget -Rr smb://ip_addr/share like wget can download files from a host windows via smb 
+</span><span class='line'>mount -t smbfs -o username=user,password=pass //WinClient/share /mnt/share mount a windows network share</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[ruby 进阶]]></title>
@@ -3799,208 +4726,401 @@ end
     <link href="http://tianshuai.github.io/blog/2013/02/19/vimcao-zuo-ji-qiao/"/>
     <updated>2013-02-19T20:22:00+08:00</updated>
     <id>http://tianshuai.github.io/blog/2013/02/19/vimcao-zuo-ji-qiao</id>
-    <content type="html"><![CDATA[<p>[Linux]Vim的NERDTree快捷键
-切换工作台和目录
-ctr+w+h  光标focus左侧树形目录，ctrl+w+l 光标focus右侧文件显示窗口。
-ctrl+w+w，光标自动在左右侧窗口切换</p>
-
-<!--more-->
+    <content type="html"><![CDATA[<!--more-->
 
 
-<p>111   o&hellip;&hellip;.在已有窗口中打开文件、目录
-130   P&hellip;&hellip;.跳到根结点
-131   p&hellip;&hellip;. 跳到父结点
-132   K&hellip;&hellip;.跳到当前目录下同级的第一个结点
-133   J&hellip;&hellip;.跳到当前目录下同级的最后一个结点
-134   &hellip;跳到当前目录下同级的前一个结点
-135   &hellip;跳到当前目录下同级的后一个
-130   P&hellip;&hellip;.跳到根结点
-131   p&hellip;&hellip;. 跳到父结点
-132   K&hellip;&hellip;.跳到当前目录下同级的第一个结点
-133   J&hellip;&hellip;.跳到当前目录下同级的最后一个结点
-134   &hellip;跳到当前目录下同级的前一个结点
-135   &hellip;跳到当前目录下同级的后一个
-130   P&hellip;&hellip;.跳到根结点
-131   p&hellip;&hellip;. 跳到父结点
-132   K&hellip;&hellip;.跳到当前目录下同级的第一个结点
-133   J&hellip;&hellip;.跳到当前目录下同级的最后一个结点
-134   &hellip;跳到当前目录下同级的前一个结点
-135   &hellip;跳到当前目录下同级的后一个
-130   P&hellip;&hellip;.跳到根结点
-131   p&hellip;&hellip;. 跳到父结点
-132   K&hellip;&hellip;.跳到当前目录下同级的第一个结点
-133   J&hellip;&hellip;.跳到当前目录下同级的最后一个结点
-134   &hellip;跳到当前目录下同级的前一个结点
-135   &hellip;跳到当前目录下同级的后一个
-130   P&hellip;&hellip;.跳到根结点
-131   p&hellip;&hellip;. 跳到父结点
-132   K&hellip;&hellip;.跳到当前目录下同级的第一个结点
-133   J&hellip;&hellip;.跳到当前目录下同级的最后一个结点
-134   &hellip;跳到当前目录下同级的前一个结点
-135   &hellip;跳到当前目录下同级的后一个
-130   P&hellip;&hellip;.跳到根结点
-131   p&hellip;&hellip;. 跳到父结点
-132   K&hellip;&hellip;.跳到当前目录下同级的第一个结点
-133   J&hellip;&hellip;.跳到当前目录下同级的最后一个结点
-134   &hellip;跳到当前目录下同级的前一个结点
-135   &hellip;跳到当前目录下同级的后一个
-130   P&hellip;&hellip;.跳到根结点
-131   p&hellip;&hellip;. 跳到父结点
-132   K&hellip;&hellip;.跳到当前目录下同级的第一个结点
-133   J&hellip;&hellip;.跳到当前目录下同级的最后一个结点
-134   &hellip;跳到当前目录下同级的前一个结点
-135   &hellip;跳到当前目录下同级的后一个
-130   P&hellip;&hellip;.跳到根结点
-131   p&hellip;&hellip;. 跳到父结点
-132   K&hellip;&hellip;.跳到当前目录下同级的第一个结点
-133   J&hellip;&hellip;.跳到当前目录下同级的最后一个结点
-134   &hellip;跳到当前目录下同级的前一个结点
-135   &hellip;跳到当前目录下同级的后一个
-130   P&hellip;&hellip;.跳到根结点
-131   p&hellip;&hellip;. 跳到父结点
-132   K&hellip;&hellip;.跳到当前目录下同级的第一个结点
-133   J&hellip;&hellip;.跳到当前目录下同级的最后一个结点
-134   &hellip;跳到当前目录下同级的前一个结点
-135   &hellip;跳到当前目录下同级的后一个
-130   P&hellip;&hellip;.跳到根结点
-131   p&hellip;&hellip;. 跳到父结点
-132   K&hellip;&hellip;.跳到当前目录下同级的第一个结点
-133   J&hellip;&hellip;.跳到当前目录下同级的最后一个结点
-134   &hellip;跳到当前目录下同级的前一个结点
-135   &hellip;跳到当前目录下同级的后一个
-130   P&hellip;&hellip;.跳到根结点
-131   p&hellip;&hellip;. 跳到父结点
-132   K&hellip;&hellip;.跳到当前目录下同级的第一个结点
-133   J&hellip;&hellip;.跳到当前目录下同级的最后一个结点
-134   &hellip;跳到当前目录下同级的前一个结点
-135   &hellip;跳到当前目录下同级的后一个
-130   P&hellip;&hellip;.跳到根结点
-131   p&hellip;&hellip;. 跳到父结点
-132   K&hellip;&hellip;.跳到当前目录下同级的第一个结点
-133   J&hellip;&hellip;.跳到当前目录下同级的最后一个结点
-134   &hellip;跳到当前目录下同级的前一个结点
-135   &hellip;跳到当前目录下同级的后一个
-130   P&hellip;&hellip;.跳到根结点
-131   p&hellip;&hellip;. 跳到父结点
-132   K&hellip;&hellip;.跳到当前目录下同级的第一个结点
-133   J&hellip;&hellip;.跳到当前目录下同级的最后一个结点
-134   &hellip;跳到当前目录下同级的前一个结点
-135   &hellip;跳到当前目录下同级的后一个
-130   P&hellip;&hellip;.跳到根结点
-131   p&hellip;&hellip;. 跳到父结点
-132   K&hellip;&hellip;.跳到当前目录下同级的第一个结点
-133   J&hellip;&hellip;.跳到当前目录下同级的最后一个结点
-134   &hellip;跳到当前目录下同级的前一个结点
-135   &hellip;跳到当前目录下同级的后一个
-130   P&hellip;&hellip;.跳到根结点
-131   p&hellip;&hellip;. 跳到父结点
-132   K&hellip;&hellip;.跳到当前目录下同级的第一个结点
-133   J&hellip;&hellip;.跳到当前目录下同级的最后一个结点
-134   &hellip;跳到当前目录下同级的前一个结点
-135   &hellip;跳到当前目录下同级的后一个
-130   P&hellip;&hellip;.跳到根结点
-131   p&hellip;&hellip;. 跳到父结点
-132   K&hellip;&hellip;.跳到当前目录下同级的第一个结点
-133   J&hellip;&hellip;.跳到当前目录下同级的最后一个结点
-134   &hellip;跳到当前目录下同级的前一个结点
-135   &hellip;跳到当前目录下同级的后一个或书签，并跳到该窗口   &hellip;..|NERDTree-o|</p>
+<h3>Vim的NERDTree快捷键</h3>
 
-<p>112   go&hellip;&hellip;在已有窗口 中打开文件、目录或书签，但不跳到该窗口 &hellip;..|NERDTree-go|
-113   t&hellip;&hellip;. 在新Tab中打开选中文件/书签，并跳到新Tab          &hellip;..|NERDTree-t|<br/>
-114   T&hellip;&hellip;.在新Tab中打开选中文件/书签，但不跳到新Tab        &hellip;..|NERDTree-T|<br/>
-115   i&hellip;&hellip;.split 一个新窗口打开选中文件，并跳到该窗口        &hellip;..|NERDTree-i|<br/>
-116   gi&hellip;&hellip;split一个新窗口打开选中文件，但不跳到该窗口      &hellip;..|NERDTree-gi|
-117   s&hellip;&hellip;.vsp一个新窗口打开选中文件，并跳到该窗口          &hellip;..|NERDTree-s|<br/>
-118   gs&hellip;&hellip;vsp一个新 窗口打开选中文件，但不跳到该窗口        &hellip;..|NERDTree-gs|
-119   !&hellip;&hellip;.执行当前文件                                     &hellip;..|NERDTree-!|<br/>
-120   O&hellip;&hellip;.递归打开选中 结点下的所有目录                     &hellip;..|NERDTree-O|<br/>
-121   x&hellip;&hellip;.合拢选中结点的父目录                             &hellip;..|NERDTree-x|<br/>
-122   X&hellip;&hellip;.递归 合拢选中结点下的所有目录                     &hellip;..|NERDTree-X|<br/>
-123   e&hellip;&hellip;.Edit the current dif                             &hellip;..|NERDTree-e|<br/>
-124
-125   双击&hellip;&hellip;相当于NERDTree-o
-126   中键&hellip;&hellip;对文件相当于NERDTree-i，对目录相当于NERDTree-e
-127
-128   D&hellip;&hellip;. 删除当前书签
-129         <br/>
-130   P&hellip;&hellip;.跳到根结点
-131   p&hellip;&hellip;. 跳到父结点
-132   K&hellip;&hellip;.跳到当前目录下同级的第一个结点
-133   J&hellip;&hellip;.跳到当前目录下同级的最后一个结点
-134   &hellip;跳到当前目录下同级的前一个结点
-135   &hellip;跳到当前目录下同级的后一个结点
-136         <br/>
-137   C&hellip;&hellip;.将选中目录或选中文件的父目录设为根结点
-138   u&hellip;&hellip;.将当前根结点的父目录设为根目录，并变成合拢原根结点
-139   U&hellip;&hellip;.将当前根结点的父目录设为根目录，但保持展开原根结点
-140   r&hellip;&hellip;.递归刷新选中目录
-141   R&hellip;&hellip;.递归刷新根结点
-142   m&hellip;&hellip;. 显示文件系统菜单
-143   cd&hellip;&hellip;将CWD设为选中目录
-144         <br/>
-145   I&hellip;&hellip;. 切换是否显示隐藏文件
-146   f&hellip;&hellip;.切换是否使用文件过滤器
-147   F&hellip;&hellip;.切换是否显示文件
-148   B&hellip;&hellip;.切换是否显示书签
-149         <br/>
-150   q&hellip;&hellip;.关闭NerdTree窗口
-151   ?&hellip;&hellip;.切换是否显示Quick Help</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+<span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+<span class='line-number'>99</span>
+<span class='line-number'>100</span>
+<span class='line-number'>101</span>
+<span class='line-number'>102</span>
+<span class='line-number'>103</span>
+<span class='line-number'>104</span>
+<span class='line-number'>105</span>
+<span class='line-number'>106</span>
+<span class='line-number'>107</span>
+<span class='line-number'>108</span>
+<span class='line-number'>109</span>
+<span class='line-number'>110</span>
+<span class='line-number'>111</span>
+<span class='line-number'>112</span>
+<span class='line-number'>113</span>
+<span class='line-number'>114</span>
+<span class='line-number'>115</span>
+<span class='line-number'>116</span>
+<span class='line-number'>117</span>
+<span class='line-number'>118</span>
+<span class='line-number'>119</span>
+<span class='line-number'>120</span>
+<span class='line-number'>121</span>
+<span class='line-number'>122</span>
+<span class='line-number'>123</span>
+<span class='line-number'>124</span>
+<span class='line-number'>125</span>
+<span class='line-number'>126</span>
+<span class='line-number'>127</span>
+<span class='line-number'>128</span>
+<span class='line-number'>129</span>
+<span class='line-number'>130</span>
+<span class='line-number'>131</span>
+<span class='line-number'>132</span>
+<span class='line-number'>133</span>
+<span class='line-number'>134</span>
+<span class='line-number'>135</span>
+<span class='line-number'>136</span>
+<span class='line-number'>137</span>
+<span class='line-number'>138</span>
+<span class='line-number'>139</span>
+<span class='line-number'>140</span>
+<span class='line-number'>141</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>*    切换工作台和目录
+</span><span class='line'>ctr+w+h  光标focus左侧树形目录，ctrl+w+l 光标focus右侧文件显示窗口。 
+</span><span class='line'>ctrl+w+w，光标自动在左右侧窗口切换 
+</span><span class='line'>111   o.......在已有窗口中打开文件、目录
+</span><span class='line'>130   P.......跳到根结点
+</span><span class='line'>131   p....... 跳到父结点
+</span><span class='line'>132   K.......跳到当前目录下同级的第一个结点
+</span><span class='line'>133   J.......跳到当前目录下同级的最后一个结点
+</span><span class='line'>134   ...跳到当前目录下同级的前一个结点
+</span><span class='line'>135   ...跳到当前目录下同级的后一个
+</span><span class='line'>130   P.......跳到根结点
+</span><span class='line'>131   p....... 跳到父结点
+</span><span class='line'>132   K.......跳到当前目录下同级的第一个结点
+</span><span class='line'>133   J.......跳到当前目录下同级的最后一个结点
+</span><span class='line'>134   ...跳到当前目录下同级的前一个结点
+</span><span class='line'>135   ...跳到当前目录下同级的后一个
+</span><span class='line'>130   P.......跳到根结点
+</span><span class='line'>131   p....... 跳到父结点
+</span><span class='line'>132   K.......跳到当前目录下同级的第一个结点
+</span><span class='line'>133   J.......跳到当前目录下同级的最后一个结点
+</span><span class='line'>134   ...跳到当前目录下同级的前一个结点
+</span><span class='line'>135   ...跳到当前目录下同级的后一个
+</span><span class='line'>130   P.......跳到根结点
+</span><span class='line'>131   p....... 跳到父结点
+</span><span class='line'>132   K.......跳到当前目录下同级的第一个结点
+</span><span class='line'>133   J.......跳到当前目录下同级的最后一个结点
+</span><span class='line'>134   ...跳到当前目录下同级的前一个结点
+</span><span class='line'>135   ...跳到当前目录下同级的后一个
+</span><span class='line'>130   P.......跳到根结点
+</span><span class='line'>131   p....... 跳到父结点
+</span><span class='line'>132   K.......跳到当前目录下同级的第一个结点
+</span><span class='line'>133   J.......跳到当前目录下同级的最后一个结点
+</span><span class='line'>134   ...跳到当前目录下同级的前一个结点
+</span><span class='line'>135   ...跳到当前目录下同级的后一个
+</span><span class='line'>130   P.......跳到根结点
+</span><span class='line'>131   p....... 跳到父结点
+</span><span class='line'>132   K.......跳到当前目录下同级的第一个结点
+</span><span class='line'>133   J.......跳到当前目录下同级的最后一个结点
+</span><span class='line'>134   ...跳到当前目录下同级的前一个结点
+</span><span class='line'>135   ...跳到当前目录下同级的后一个
+</span><span class='line'>130   P.......跳到根结点
+</span><span class='line'>131   p....... 跳到父结点
+</span><span class='line'>132   K.......跳到当前目录下同级的第一个结点
+</span><span class='line'>133   J.......跳到当前目录下同级的最后一个结点
+</span><span class='line'>134   ...跳到当前目录下同级的前一个结点
+</span><span class='line'>135   ...跳到当前目录下同级的后一个
+</span><span class='line'>130   P.......跳到根结点
+</span><span class='line'>131   p....... 跳到父结点
+</span><span class='line'>132   K.......跳到当前目录下同级的第一个结点
+</span><span class='line'>133   J.......跳到当前目录下同级的最后一个结点
+</span><span class='line'>134   ...跳到当前目录下同级的前一个结点
+</span><span class='line'>135   ...跳到当前目录下同级的后一个
+</span><span class='line'>130   P.......跳到根结点
+</span><span class='line'>131   p....... 跳到父结点
+</span><span class='line'>132   K.......跳到当前目录下同级的第一个结点
+</span><span class='line'>133   J.......跳到当前目录下同级的最后一个结点
+</span><span class='line'>134   ...跳到当前目录下同级的前一个结点
+</span><span class='line'>135   ...跳到当前目录下同级的后一个
+</span><span class='line'>130   P.......跳到根结点
+</span><span class='line'>131   p....... 跳到父结点
+</span><span class='line'>132   K.......跳到当前目录下同级的第一个结点
+</span><span class='line'>133   J.......跳到当前目录下同级的最后一个结点
+</span><span class='line'>134   ...跳到当前目录下同级的前一个结点
+</span><span class='line'>135   ...跳到当前目录下同级的后一个
+</span><span class='line'>130   P.......跳到根结点
+</span><span class='line'>131   p....... 跳到父结点
+</span><span class='line'>132   K.......跳到当前目录下同级的第一个结点
+</span><span class='line'>133   J.......跳到当前目录下同级的最后一个结点
+</span><span class='line'>134   ...跳到当前目录下同级的前一个结点
+</span><span class='line'>135   ...跳到当前目录下同级的后一个
+</span><span class='line'>130   P.......跳到根结点
+</span><span class='line'>131   p....... 跳到父结点
+</span><span class='line'>132   K.......跳到当前目录下同级的第一个结点
+</span><span class='line'>133   J.......跳到当前目录下同级的最后一个结点
+</span><span class='line'>134   ...跳到当前目录下同级的前一个结点
+</span><span class='line'>135   ...跳到当前目录下同级的后一个
+</span><span class='line'>130   P.......跳到根结点
+</span><span class='line'>131   p....... 跳到父结点
+</span><span class='line'>132   K.......跳到当前目录下同级的第一个结点
+</span><span class='line'>133   J.......跳到当前目录下同级的最后一个结点
+</span><span class='line'>134   ...跳到当前目录下同级的前一个结点
+</span><span class='line'>135   ...跳到当前目录下同级的后一个
+</span><span class='line'>130   P.......跳到根结点
+</span><span class='line'>131   p....... 跳到父结点
+</span><span class='line'>132   K.......跳到当前目录下同级的第一个结点
+</span><span class='line'>133   J.......跳到当前目录下同级的最后一个结点
+</span><span class='line'>134   ...跳到当前目录下同级的前一个结点
+</span><span class='line'>135   ...跳到当前目录下同级的后一个
+</span><span class='line'>130   P.......跳到根结点
+</span><span class='line'>131   p....... 跳到父结点
+</span><span class='line'>132   K.......跳到当前目录下同级的第一个结点
+</span><span class='line'>133   J.......跳到当前目录下同级的最后一个结点
+</span><span class='line'>134   ...跳到当前目录下同级的前一个结点
+</span><span class='line'>135   ...跳到当前目录下同级的后一个
+</span><span class='line'>130   P.......跳到根结点
+</span><span class='line'>131   p....... 跳到父结点
+</span><span class='line'>132   K.......跳到当前目录下同级的第一个结点
+</span><span class='line'>133   J.......跳到当前目录下同级的最后一个结点
+</span><span class='line'>134   ...跳到当前目录下同级的前一个结点
+</span><span class='line'>135   ...跳到当前目录下同级的后一个或书签，并跳到该窗口   .....|NERDTree-o|  
+</span><span class='line'>
+</span><span class='line'>112   go......在已有窗口 中打开文件、目录或书签，但不跳到该窗口 .....|NERDTree-go| 
+</span><span class='line'>113   t....... 在新Tab中打开选中文件/书签，并跳到新Tab          .....|NERDTree-t|  
+</span><span class='line'>114   T.......在新Tab中打开选中文件/书签，但不跳到新Tab        .....|NERDTree-T|  
+</span><span class='line'>115   i.......split 一个新窗口打开选中文件，并跳到该窗口        .....|NERDTree-i|  
+</span><span class='line'>116   gi......split一个新窗口打开选中文件，但不跳到该窗口      .....|NERDTree-gi| 
+</span><span class='line'>117   s.......vsp一个新窗口打开选中文件，并跳到该窗口          .....|NERDTree-s|  
+</span><span class='line'>118   gs......vsp一个新 窗口打开选中文件，但不跳到该窗口        .....|NERDTree-gs| 
+</span><span class='line'>119   !.......执行当前文件                                     .....|NERDTree-!|  
+</span><span class='line'>120   O.......递归打开选中 结点下的所有目录                     .....|NERDTree-O|  
+</span><span class='line'>121   x.......合拢选中结点的父目录                             .....|NERDTree-x|  
+</span><span class='line'>122   X.......递归 合拢选中结点下的所有目录                     .....|NERDTree-X|  
+</span><span class='line'>123   e.......Edit the current dif                             .....|NERDTree-e|  
+</span><span class='line'>124 
+</span><span class='line'>125   双击......相当于NERDTree-o
+</span><span class='line'>126   中键......对文件相当于NERDTree-i，对目录相当于NERDTree-e
+</span><span class='line'>127 
+</span><span class='line'>128   D....... 删除当前书签
+</span><span class='line'>129           
+</span><span class='line'>130   P.......跳到根结点
+</span><span class='line'>131   p....... 跳到父结点
+</span><span class='line'>132   K.......跳到当前目录下同级的第一个结点
+</span><span class='line'>133   J.......跳到当前目录下同级的最后一个结点
+</span><span class='line'>134   ...跳到当前目录下同级的前一个结点
+</span><span class='line'>135   ...跳到当前目录下同级的后一个结点
+</span><span class='line'>136           
+</span><span class='line'>137   C.......将选中目录或选中文件的父目录设为根结点
+</span><span class='line'>138   u.......将当前根结点的父目录设为根目录，并变成合拢原根结点
+</span><span class='line'>139   U.......将当前根结点的父目录设为根目录，但保持展开原根结点
+</span><span class='line'>140   r.......递归刷新选中目录
+</span><span class='line'>141   R.......递归刷新根结点
+</span><span class='line'>142   m....... 显示文件系统菜单
+</span><span class='line'>143   cd......将CWD设为选中目录
+</span><span class='line'>144           
+</span><span class='line'>145   I....... 切换是否显示隐藏文件
+</span><span class='line'>146   f.......切换是否使用文件过滤器
+</span><span class='line'>147   F.......切换是否显示文件
+</span><span class='line'>148   B.......切换是否显示书签
+</span><span class='line'>149           
+</span><span class='line'>150   q.......关闭NerdTree窗口
+</span><span class='line'>151   ?.......切换是否显示Quick Help
+</span></code></pre></td></tr></table></div></figure>
 
-<p>VIM的tab切换</p>
 
-<p>:tabnew [++opt选项] ［＋cmd］ 文件            建立对指定文件新的tab
-:tabc       关闭当前的tab
-:tabo       关闭所有其他的tab
-:tabs       查看所有打开的tab
-:tabp      前一个
-:tabn      后一个
-标准模式下：
-gt , gT 可以直接在tab之间切换。</p>
+<h3>VIM的tab切换</h3>
 
-<p>2008-07-12 14:29
-vim 替换操作大全
-vi/vim 中可以使用 :s 命令来替换字符串。以前只会使用一种格式来全文替换，今天发现该命令有很多种写法（vi 真是强大啊，还有很多需要学习），记录几种在此，方便以后查询。
-:s/vivian/sky/ 替换当前行第一个 vivian 为 sky
-:s/vivian/sky/g 替换当前行所有 vivian 为 sky
-:n,$s/vivian/sky/ 替换第 n 行开始到最后一行中每一行的第一个 vivian 为 sky
-:2,$s/vivian/sky/g 替换第 2 行开始到最后一行中每一行所有 vivian 为 sky
-n 为数字，若 n 为 .，表示从当前行开始到最后一行
-:%s/vivian/sky/（等同于 :g/vivian/s//sky/） 替换每一行的第一个 vivian 为 sky
-:%s/vivian/sky/g（等同于 :g/vivian/s//sky/g） 替换每一行中所有 vivian 为 sky
-可以使用 # 作为分隔符，此时中间出现的 / 不会作为分隔符
-:s#vivian/#sky/# 替换当前行第一个 vivian/ 为 sky/
-:%s+/oradata/apras/+/user01/apras1+ （使用+ 来 替换 / ）： /oradata/apras/替换成/user01/apras1/
-1.:s/vivian/sky/ 替换当前行第一个 vivian 为 sky
-:s/vivian/sky/g 替换当前行所有 vivian 为 sky
-2. :n,$s/vivian/sky/ 替换第 n 行开始到最后一行中每一行的第一个 vivian 为 sky
-:n,$s/vivian/sky/g 替换第 n 行开始到最后一行中每一行所有 vivian 为 sky
-(n 为数字，若 n 为 .，表示从当前行开始到最后一行)
-3. :%s/vivian/sky/（等同于 :g/vivian/s//sky/） 替换每一行的第一个 vivian 为 sky
-:%s/vivian/sky/g（等同于 :g/vivian/s//sky/g） 替换每一行中所有 vivian 为 sky
-4. 可以使用 # 作为分隔符，此时中间出现的 / 不会作为分隔符
-:s#vivian/#sky/# 替换当前行第一个 vivian/ 为 sky/
-5. 删除文本中的<sup>M</sup>
-问题描述：对于换行,window下用回车换行(0A0D)来表示，Linux下是回车(0A)来表示。这样，将window上的文件拷到Unix上用时，总会有个<sup>M</sup>.请写个用在unix下的过滤windows文件的换行符(0D)的shell或c程序。
-· 使用命令：cat filename1 | tr -d &ldquo;^V<sup>M</sup>&rdquo; > newfile；
-· 使用命令：sed -e &ldquo;s/^V<sup>M</sup>//&rdquo; filename > outputfilename。需要注意的是在1、2两种方法中，<sup>V</sup>和<sup>M</sup>指的是Ctrl+V和Ctrl+M。你必须要手工进行输入，而不是粘贴。
-· 在vi中处理：首先使用vi打开文件，然后按ESC键，接着输入命令：%s/^V<sup>M</sup>//。
-· :%s/^M$//g
-如果上述方法无用，则正确的解决办法是：
-· tr -d &ldquo;\r&rdquo; &lt; src >dest
-· tr -d &ldquo;\015&rdquo; dest
-· strings A>B</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>:tabnew [++opt选项] ［＋cmd］ 文件            建立对指定文件新的tab
+</span><span class='line'>:tabc       关闭当前的tab
+</span><span class='line'>:tabo       关闭所有其他的tab
+</span><span class='line'>:tabs       查看所有打开的tab
+</span><span class='line'>:tabp      前一个
+</span><span class='line'>:tabn      后一个
+</span><span class='line'>标准模式下：
+</span><span class='line'>gt , gT 可以直接在tab之间切换。</span></code></pre></td></tr></table></div></figure>
 
-<ol>
-<li>其它
-利用 :s 命令可以实现字符串的替换。具体的用法包括：
-:s/str1/str2/ 用字符串 str2 替换行中首次出现的字符串 str1
-:s/str1/str2/g 用字符串 str2 替换行中所有出现的字符串 str1
-:.,$ s/str1/str2/g 用字符串 str2 替换正文当前行到末尾所有出现的字符串 str1
-:1,$ s/str1/str2/g 用字符串 str2 替换正文中所有出现的字符串 str1
-:g/str1/s//str2/g 功能同上
-从上述替换命令可以看到：g 放在命令末尾，表示对搜索字符串的每次出现进行替换；不加 g，表示只对搜索
-字符串的首次出现进行替换；g 放在命令开头，表示对正文中所有包含搜索字符串的行进行替换操作。</li>
-</ol>
+
+<h3>vim 替换操作大全</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>
+</span><span class='line'>* vi/vim 中可以使用 :s 命令来替换字符串。以前只会使用一种格式来全文替换，今天发现该命令有很多种写法（vi 真是强大啊，还有很多需要学习），记录几种在此，方便以后查询。
+</span><span class='line'>:s/vivian/sky/ 替换当前行第一个 vivian 为 sky
+</span><span class='line'>:s/vivian/sky/g 替换当前行所有 vivian 为 sky
+</span><span class='line'>:n,$s/vivian/sky/ 替换第 n 行开始到最后一行中每一行的第一个 vivian 为 sky
+</span><span class='line'>:2,$s/vivian/sky/g 替换第 2 行开始到最后一行中每一行所有 vivian 为 sky
+</span><span class='line'>n 为数字，若 n 为 .，表示从当前行开始到最后一行
+</span><span class='line'>:%s/vivian/sky/（等同于 :g/vivian/s//sky/） 替换每一行的第一个 vivian 为 sky
+</span><span class='line'>:%s/vivian/sky/g（等同于 :g/vivian/s//sky/g） 替换每一行中所有 vivian 为 sky
+</span><span class='line'>可以使用 # 作为分隔符，此时中间出现的 / 不会作为分隔符
+</span><span class='line'>:s#vivian/#sky/# 替换当前行第一个 vivian/ 为 sky/
+</span><span class='line'>:%s+/oradata/apras/+/user01/apras1+ （使用+ 来 替换 / ）： /oradata/apras/替换成/user01/apras1/
+</span><span class='line'>1.:s/vivian/sky/ 替换当前行第一个 vivian 为 sky
+</span><span class='line'>:s/vivian/sky/g 替换当前行所有 vivian 为 sky
+</span><span class='line'>2. :n,$s/vivian/sky/ 替换第 n 行开始到最后一行中每一行的第一个 vivian 为 sky
+</span><span class='line'>:n,$s/vivian/sky/g 替换第 n 行开始到最后一行中每一行所有 vivian 为 sky
+</span><span class='line'>(n 为数字，若 n 为 .，表示从当前行开始到最后一行)
+</span><span class='line'>3. :%s/vivian/sky/（等同于 :g/vivian/s//sky/） 替换每一行的第一个 vivian 为 sky
+</span><span class='line'>:%s/vivian/sky/g（等同于 :g/vivian/s//sky/g） 替换每一行中所有 vivian 为 sky
+</span><span class='line'>4. 可以使用 # 作为分隔符，此时中间出现的 / 不会作为分隔符
+</span><span class='line'>:s#vivian/#sky/# 替换当前行第一个 vivian/ 为 sky/
+</span><span class='line'>5. 删除文本中的^M
+</span><span class='line'>问题描述：对于换行,window下用回车换行(0A0D)来表示，Linux下是回车(0A)来表示。这样，将window上的文件拷到Unix上用时，总会有个^M.请写个用在unix下的过滤windows文件的换行符(0D)的shell或c程序。
+</span><span class='line'>· 使用命令：cat filename1 | tr -d "^V^M" &gt; newfile；
+</span><span class='line'>· 使用命令：sed -e "s/^V^M//" filename &gt; outputfilename。需要注意的是在1、2两种方法中，^V和^M指的是Ctrl+V和Ctrl+M。你必须要手工进行输入，而不是粘贴。
+</span><span class='line'>· 在vi中处理：首先使用vi打开文件，然后按ESC键，接着输入命令：%s/^V^M//。
+</span><span class='line'>· :%s/^M$//g
+</span><span class='line'>如果上述方法无用，则正确的解决办法是：
+</span><span class='line'>· tr -d "\r" &lt; src &gt;dest
+</span><span class='line'>· tr -d "\015" dest
+</span><span class='line'>· strings A&gt;B
+</span><span class='line'>
+</span><span class='line'>6. 其它
+</span><span class='line'>利用 :s 命令可以实现字符串的替换。具体的用法包括：
+</span><span class='line'>:s/str1/str2/ 用字符串 str2 替换行中首次出现的字符串 str1
+</span><span class='line'>:s/str1/str2/g 用字符串 str2 替换行中所有出现的字符串 str1
+</span><span class='line'>:.,$ s/str1/str2/g 用字符串 str2 替换正文当前行到末尾所有出现的字符串 str1
+</span><span class='line'>:1,$ s/str1/str2/g 用字符串 str2 替换正文中所有出现的字符串 str1
+</span><span class='line'>:g/str1/s//str2/g 功能同上
+</span><span class='line'>从上述替换命令可以看到：g 放在命令末尾，表示对搜索字符串的每次出现进行替换；不加 g，表示只对搜索
+</span><span class='line'>字符串的首次出现进行替换；g 放在命令开头，表示对正文中所有包含搜索字符串的行进行替换操作。
+</span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
   </entry>

@@ -1,0 +1,389 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>rails3 在线文档－－实时更新 - TianShuai &prime;s Blog</title>
+  <meta name="author" content="TianShuai">
+
+  
+  <meta name="description" content="是否是开发环境? 1
+if Rails.env.development? 智能判断单复数 1
+pluralize(count, &quot;error&quot;) 上传文件名的话，用 userid + fileid + timestamp 取 sha1 就能解决唯一性了
+把数字转换为字节( &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://tianshuai.github.io/blog/2013/08/20/rails3-zai-xian-wen-dang-%5Bnil%5D%5Bnil%5Dshi-shi-geng-xin">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="TianShuai &prime;s Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">TianShuai &prime;s Blog</a></h1>
+  
+    <h2>Record my bit by bit...</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:tianshuai.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Rails3 在线文档－－实时更新</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-20T19:21:00+08:00" pubdate data-updated="true">Aug 20<span>th</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><ul>
+<li>是否是开发环境?</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">if</span> <span class="no">Rails</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">development?</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>智能判断单复数</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">pluralize</span><span class="p">(</span><span class="n">count</span><span class="p">,</span> <span class="s2">&quot;error&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><p>上传文件名的话，用 userid + fileid + timestamp 取 sha1 就能解决唯一性了</p></li>
+<li><p>把数字转换为字节(用于精确判断文件或图片大小)</p></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="mi">1</span><span class="o">.</span><span class="n">kilobyte</span> <span class="c1">#千字节</span>
+</span><span class='line'><span class="c1">#=&gt;1024</span>
+</span><span class='line'><span class="mi">5</span><span class="o">.</span><span class="n">megabytes</span>  <span class="c1">#上传文件限制字节数５Ｍ</span>
+</span><span class='line'><span class="c1">#=&gt; 5242880</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>判断表单是新建还是修改的</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">User</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">new_record?</span>
+</span><span class='line'><span class="c1">#=&gt;true</span>
+</span><span class='line'><span class="no">User</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">new_record?</span>
+</span><span class='line'><span class="c1">#=&gt;false</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<!--more-->
+
+
+<ul>
+<li>友好显示时间</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">time_ago_in_words</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">created_at</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>在GET方法中使用stale?语句</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">show</span>
+</span><span class='line'>  <span class="vi">@list_item</span> <span class="o">=</span> <span class="vi">@list</span><span class="o">.</span><span class="n">list_items</span><span class="o">.</span><span class="n">find</span><span class="p">(</span> <span class="n">params</span><span class="o">[</span> <span class="ss">:id</span> <span class="o">]</span> <span class="p">)</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">stale?</span><span class="p">(</span> <span class="ss">:etag</span> <span class="o">=&gt;</span> <span class="vi">@list_item</span><span class="p">,</span> <span class="ss">:last_modified</span> <span class="o">=&gt;</span> <span class="vi">@list_item</span><span class="o">.</span><span class="n">updated_at</span><span class="o">.</span><span class="n">utc</span><span class="p">,</span> <span class="ss">:public</span> <span class="o">=&gt;</span> <span class="kp">true</span> <span class="p">)</span>
+</span><span class='line'>    <span class="n">respond_with</span><span class="p">(</span> <span class="vi">@list_item</span> <span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="cm">=begin</span>
+</span><span class='line'><span class="cm">stale?语句会通过响应发送回一个etag与一个last_modified日期。如果下一个请求是相同的URL，</span>
+</span><span class='line'><span class="cm">那么浏览器会把这个etag和last_modified日期发送给服务器。然后stale?方法会对这两个参数进行分析，</span>
+</span><span class='line'><span class="cm">如果内容相同，则返回304，如果出现参数值不同，那么说明有新的内容，这样返回200。</span>
+</span><span class='line'><span class="cm">=end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>成生项目时如果用mongoid则：</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">rails</span> <span class="kp">new</span> <span class="n">app_name</span> <span class="o">--</span><span class="n">skip</span><span class="o">-</span><span class="n">active</span><span class="o">-</span><span class="n">record</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>解析html</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">raw</span> <span class="p">(</span><span class="s1">&#39;string&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="s1">&#39;string&#39;</span><span class="o">.</span><span class="n">html_safe</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>rails3日期选择框:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;</span><span class="sx">%= date_select :variable, :attribute, options %&gt;</span>
+</span><span class='line'><span class="sx">&lt;%=</span> <span class="n">datetime_select</span> <span class="ss">:variable</span><span class="p">,</span> <span class="ss">:attribute</span><span class="p">,</span> <span class="n">options</span> <span class="o">%&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>格式化字符串</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="s2">&quot;Person&quot;</span><span class="o">.</span><span class="n">tableize</span>      <span class="c1"># =&gt; &quot;people&quot;</span>
+</span><span class='line'><span class="s2">&quot;Invoice&quot;</span><span class="o">.</span><span class="n">tableize</span>     <span class="c1"># =&gt; &quot;invoices&quot;</span>
+</span><span class='line'><span class="s2">&quot;InvoiceLine&quot;</span><span class="o">.</span><span class="n">tableize</span> <span class="c1"># =&gt; &quot;invoice_lines&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">TianShuai</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-20T19:21:00+08:00" pubdate data-updated="true">Aug 20<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/rails/'>rails</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/08/20/linux-xi-tong-ming-ling-da-quan/" title="Previous Post: linux 系统命令大全">&laquo; linux 系统命令大全</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/08/20/zong-he/" title="Next Post: 我收藏的网址－－－实时更新">我收藏的网址－－－实时更新 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>关于作者</h1>
+  <p><img src="/images/180x180.jpg"></p>
+  <p>Ruby PHP 程序猿</p>
+  <p>喜欢的标签：sinatra gvim git</p>
+  <p>喜欢开源的东西, 爱折腾</p>
+</section>
+<section>
+  <h1>标签云</h1>
+    <span id="tag-cloud"><a href='/blog/categories/life' style='font-size: 120.0%'>life(1)</a> <a href='/blog/categories/linux' style='font-size: 120.0%'>linux(1)</a> <a href='/blog/categories/rails' style='font-size: 140.0%'>rails(2)</a> <a href='/blog/categories/ruby' style='font-size: 160.0%'>ruby(3)</a> <a href='/blog/categories/vim' style='font-size: 120.0%'>vim(1)</a> <a href='/blog/categories/zong-he' style='font-size: 120.0%'>综合(1)</a> </span>
+</section>
+<section>
+  <h1>最近内容</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/08/20/zong-he/">我收藏的网址－－－实时更新</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/08/20/rails3-zai-xian-wen-dang-%5Bnil%5D%5Bnil%5Dshi-shi-geng-xin/">Rails3 在线文档－－实时更新</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/08/20/linux-xi-tong-ming-ling-da-quan/">Linux 系统命令大全</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/28/ruby-jin-jie/">Ruby 进阶</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/28/ruby-bian-cheng-feng-ge-jie-shao/">Ruby 编程风格介绍</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - TianShuai -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'tianshuai';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://tianshuai.github.io/blog/2013/08/20/rails3-zai-xian-wen-dang-%5Bnil%5D%5Bnil%5Dshi-shi-geng-xin/';
+        var disqus_url = 'http://tianshuai.github.io/blog/2013/08/20/rails3-zai-xian-wen-dang-%5Bnil%5D%5Bnil%5Dshi-shi-geng-xin/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
