@@ -3,7 +3,7 @@ layout: post
 title: "Ruby 编程风格介绍"
 date: 2013-03-28 14:33
 comments: true
-categories: 
+categories: ruby
 ---
 
 学习一门新的语言时，要先养成好的编程风格，然后将这种风格应用到coding中，慢慢地成为习惯。

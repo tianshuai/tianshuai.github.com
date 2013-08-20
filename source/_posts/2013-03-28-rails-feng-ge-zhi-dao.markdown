@@ -3,7 +3,7 @@ layout: post
 title: "Rails 风格指导"
 date: 2013-03-28 14:20
 comments: true
-categories: 
+categories: rails
 ---
 
 感谢译者。

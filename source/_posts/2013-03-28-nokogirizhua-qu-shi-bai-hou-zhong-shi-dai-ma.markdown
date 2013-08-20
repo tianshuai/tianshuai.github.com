@@ -3,7 +3,7 @@ layout: post
 title: "Nokogiri抓取失败后重试代码"
 date: 2013-03-28 13:58
 comments: true
-categories: 
+categories: ruby 
 ---
 
 非常喜欢Nokogiri的简洁，尤其是根据css和xpath查找元素。有时又觉得Nokogiri太简洁了，连抓取失败重试的机制都没有。可惜在景德镇，网络经常丢包，真是郁闷。

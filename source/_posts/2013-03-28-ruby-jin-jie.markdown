@@ -3,7 +3,7 @@ layout: post
 title: "ruby 进阶"
 date: 2013-03-28 14:48
 comments: true
-categories: 
+categories: ruby
 ---
 
 1.下载网页中图片
