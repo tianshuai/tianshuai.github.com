@@ -41,8 +41,14 @@
         <lastmod>2013-08-20T20:01:52+08:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://tianshuai.github.io/blog/2013/08/26/g-plus-plus-internal-error-killed-program-cc1plus/
+        </loc>
+        <lastmod>2013-08-26T16:34:30+08:00</lastmod>
+    </url>
+    <url>
         <loc>http://tianshuai.github.io/blog/archives/</loc>
-        <lastmod>2013-08-20T20:01:52+08:00</lastmod>
+        <lastmod>2013-08-26T16:34:30+08:00</lastmod>
     </url>
     <url>
         <loc>http://tianshuai.github.io/robots.txt</loc>
@@ -50,6 +56,6 @@
     </url>
     <url>
         <loc>http://tianshuai.github.io/</loc>
-        <lastmod>2013-08-20T20:01:52+08:00</lastmod>
+        <lastmod>2013-08-26T16:34:30+08:00</lastmod>
     </url>
 </urlset>

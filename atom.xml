@@ -4,7 +4,7 @@
   <title><![CDATA[TianShuai &prime;s Blog]]></title>
   <link href="http://tianshuai.github.io/atom.xml" rel="self"/>
   <link href="http://tianshuai.github.io/"/>
-  <updated>2013-08-20T20:02:11+08:00</updated>
+  <updated>2013-08-26T16:34:48+08:00</updated>
   <id>http://tianshuai.github.io/</id>
   <author>
     <name><![CDATA[TianShuai]]></name>
@@ -12,6 +12,48 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[g++: Internal error: Killed (program cc1plus)]]></title>
+    <link href="http://tianshuai.github.io/blog/2013/08/26/g-plus-plus-internal-error-killed-program-cc1plus/"/>
+    <updated>2013-08-26T16:22:00+08:00</updated>
+    <id>http://tianshuai.github.io/blog/2013/08/26/g-plus-plus-internal-error-killed-program-cc1plus</id>
+    <content type="html"><![CDATA[<p>买了阿里云服务，系统为centos 6.3，内存512M.通过passenger安装nginx:　rvmsudo Passenger-install-nginx-module 在编译nginx时总是报错：<code>g++: Internal error: Killed (program cc1plus)</code>google很多终于找到问题：<a href="http://www.linlook.com/index/article/articleid/1350/">http://www.linlook.com/index/article/articleid/1350/</a>
+以下引自原处：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>内存不足， 在linux下增加临时swap空间
+</span><span class='line'>step 1:
+</span><span class='line'>　　#dd if=/dev/zero of=/home/swap bs=1024 count=500000
+</span><span class='line'>　　注释：of=/home/swap,放置swap的空间; count的大小就是增加的swap空间的大小，1024就是块大小，这里是1K，所以总共空间就是bs*count=500M
+</span><span class='line'>step 2:
+</span><span class='line'>　　# mkswap /home/swap
+</span><span class='line'>　　注释：把刚才空间格式化成swap各式
+</span><span class='line'>step 3:
+</span><span class='line'>　　#swapon /home/swap
+</span><span class='line'>　　注释：使刚才创建的swap空间
+</span><span class='line'>
+</span><span class='line'>      如果想关闭刚开辟的swap空间，只需命令：#swapoff
+</span><span class='line'>
+</span><span class='line'> 
+</span><span class='line'>如上操作以后，你的安装过程就少了这道阻拦拉拉拉！！！ 当然对于公司工作估计很难遇到此种情况啦啦，你们配置都很牛逼滴！</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[我收藏的网址－－－实时更新]]></title>

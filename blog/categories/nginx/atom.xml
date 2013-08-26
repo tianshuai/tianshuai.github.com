@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: nginx | TianShuai &prime;s Blog]]></title>
+  <link href="http://tianshuai.github.io/blog/categories/nginx/atom.xml" rel="self"/>
+  <link href="http://tianshuai.github.io/"/>
+  <updated>2013-08-26T16:34:48+08:00</updated>
+  <id>http://tianshuai.github.io/</id>
+  <author>
+    <name><![CDATA[TianShuai]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[g++: Internal error: Killed (program cc1plus)]]></title>
+    <link href="http://tianshuai.github.io/blog/2013/08/26/g-plus-plus-internal-error-killed-program-cc1plus/"/>
+    <updated>2013-08-26T16:22:00+08:00</updated>
+    <id>http://tianshuai.github.io/blog/2013/08/26/g-plus-plus-internal-error-killed-program-cc1plus</id>
+    <content type="html"><![CDATA[<p>买了阿里云服务，系统为centos 6.3，内存512M.通过passenger安装nginx:　rvmsudo Passenger-install-nginx-module 在编译nginx时总是报错：<code>g++: Internal error: Killed (program cc1plus)</code>google很多终于找到问题：<a href="http://www.linlook.com/index/article/articleid/1350/">http://www.linlook.com/index/article/articleid/1350/</a>
+以下引自原处：</p>
+
+<p>```
+内存不足， 在linux下增加临时swap空间
+step 1:
+　　#dd if=/dev/zero of=/home/swap bs=1024 count=500000
+　　注释：of=/home/swap,放置swap的空间; count的大小就是增加的swap空间的大小，1024就是块大小，这里是1K，所以总共空间就是bs*count=500M
+step 2:
+　　# mkswap /home/swap
+　　注释：把刚才空间格式化成swap各式
+step 3:
+　　#swapon /home/swap
+　　注释：使刚才创建的swap空间</p>
+
+<pre><code>  如果想关闭刚开辟的swap空间，只需命令：#swapoff
+</code></pre>
+
+<p>如上操作以后，你的安装过程就少了这道阻拦拉拉拉！！！ 当然对于公司工作估计很难遇到此种情况啦啦，你们配置都很牛逼滴！
+```</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -9,10 +9,7 @@
   <meta name="author" content="TianShuai">
 
   
-  <meta name="description" content="在线js测试:
-http://www.ostools.net/jsbin#source 在线Markdown测试:
-http://johnmacfarlane.net/pandoc/try/ rails插件集合:
-http://blog.163.com/prevBlogPerma.do?host= &hellip;">
+  <meta name="description" content="买了阿里云服务，系统为centos 6.3，内存512M.通过passenger安装nginx:　rvmsudo Passenger-install-nginx-module 在编译nginx时总是报错：g++: Internal error: Killed (program cc1plus) &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -68,6 +65,77 @@ http://blog.163.com/prevBlogPerma.do?host= &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/08/26/g-plus-plus-internal-error-killed-program-cc1plus/">G++: Internal Error: Killed (Program Cc1plus)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-26T16:22:00+08:00" pubdate data-updated="true">Aug 26<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/08/26/g-plus-plus-internal-error-killed-program-cc1plus/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>买了阿里云服务，系统为centos 6.3，内存512M.通过passenger安装nginx:　rvmsudo Passenger-install-nginx-module 在编译nginx时总是报错：<code>g++: Internal error: Killed (program cc1plus)</code>google很多终于找到问题：<a href="http://www.linlook.com/index/article/articleid/1350/">http://www.linlook.com/index/article/articleid/1350/</a>
+以下引自原处：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>内存不足， 在linux下增加临时swap空间
+</span><span class='line'>step 1:
+</span><span class='line'>　　#dd if=/dev/zero of=/home/swap bs=1024 count=500000
+</span><span class='line'>　　注释：of=/home/swap,放置swap的空间; count的大小就是增加的swap空间的大小，1024就是块大小，这里是1K，所以总共空间就是bs*count=500M
+</span><span class='line'>step 2:
+</span><span class='line'>　　# mkswap /home/swap
+</span><span class='line'>　　注释：把刚才空间格式化成swap各式
+</span><span class='line'>step 3:
+</span><span class='line'>　　#swapon /home/swap
+</span><span class='line'>　　注释：使刚才创建的swap空间
+</span><span class='line'>
+</span><span class='line'>      如果想关闭刚开辟的swap空间，只需命令：#swapoff
+</span><span class='line'>
+</span><span class='line'> 
+</span><span class='line'>如上操作以后，你的安装过程就少了这道阻拦拉拉拉！！！ 当然对于公司工作估计很难遇到此种情况啦啦，你们配置都很牛逼滴！</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -713,11 +781,15 @@ Haml，(Slim) 优于 Erb. 所以不要期望在这里找到 Test::Unit, CSS 及 
 </section>
 <section>
   <h1>标签云</h1>
-    <span id="tag-cloud"><a href='/blog/categories/life' style='font-size: 120.0%'>life(1)</a> <a href='/blog/categories/linux' style='font-size: 120.0%'>linux(1)</a> <a href='/blog/categories/rails' style='font-size: 140.0%'>rails(2)</a> <a href='/blog/categories/ruby' style='font-size: 160.0%'>ruby(3)</a> <a href='/blog/categories/vim' style='font-size: 120.0%'>vim(1)</a> <a href='/blog/categories/zong-he' style='font-size: 120.0%'>综合(1)</a> </span>
+    <span id="tag-cloud"><a href='/blog/categories/life' style='font-size: 120.0%'>life(1)</a> <a href='/blog/categories/linux' style='font-size: 120.0%'>linux(1)</a> <a href='/blog/categories/nginx' style='font-size: 120.0%'>nginx(1)</a> <a href='/blog/categories/rails' style='font-size: 140.0%'>rails(2)</a> <a href='/blog/categories/ruby' style='font-size: 160.0%'>ruby(3)</a> <a href='/blog/categories/vim' style='font-size: 120.0%'>vim(1)</a> <a href='/blog/categories/zong-he' style='font-size: 120.0%'>综合(1)</a> </span>
 </section>
 <section>
   <h1>最近内容</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/08/26/g-plus-plus-internal-error-killed-program-cc1plus/">G++: Internal Error: Killed (Program Cc1plus)</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2013/08/20/zong-he/">我收藏的网址－－－实时更新</a>
@@ -733,10 +805,6 @@ Haml，(Slim) 优于 Erb. 所以不要期望在这里找到 Test::Unit, CSS 及 
     
       <li class="post">
         <a href="/blog/2013/03/28/ruby-jin-jie/">Ruby 进阶</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/03/28/ruby-bian-cheng-feng-ge-jie-shao/">Ruby 编程风格介绍</a>
       </li>
     
   </ul>
