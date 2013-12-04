@@ -4,7 +4,7 @@
   <title><![CDATA[Category: rails | TianShuai &prime;s Blog]]></title>
   <link href="http://tianshuai.github.io/blog/categories/rails/atom.xml" rel="self"/>
   <link href="http://tianshuai.github.io/"/>
-  <updated>2013-09-02T19:42:37+08:00</updated>
+  <updated>2013-12-04T16:20:47+08:00</updated>
   <id>http://tianshuai.github.io/</id>
   <author>
     <name><![CDATA[TianShuai]]></name>
@@ -12,6 +12,17 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[rails4新特性(参考链接)]]></title>
+    <link href="http://tianshuai.github.io/blog/2013/10/09/rails4yu-lao-ban-ben-de-dui-bi/"/>
+    <updated>2013-10-09T16:46:00+08:00</updated>
+    <id>http://tianshuai.github.io/blog/2013/10/09/rails4yu-lao-ban-ben-de-dui-bi</id>
+    <content type="html"><![CDATA[<p>参考链接:<br/>
+<a href="http://ruby-china.org/topics/15579">Ruby on Rails 升级指南 （3.2 => 4.0）</a><br/>
+<a href="http://ruby-china.org/topics/9705">拥抱 Rails 4 &mdash; 详解新的变化</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[rails3 在线文档－－实时更新]]></title>
